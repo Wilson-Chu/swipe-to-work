@@ -41,5 +41,3 @@ npm start
 - Github -> User Settings
 - Integrations.Applications
 - Render - Configure
-
-### Nathan's Changes!!
