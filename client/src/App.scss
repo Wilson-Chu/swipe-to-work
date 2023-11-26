@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  max-width: 1000px;
+  margin: .2em;
+  text-align: center;
+
+  div {
+    color: green;
+  }
+}
