@@ -1,28 +1,25 @@
-import {useState} from 'react';
-import DataList from './components/DataList';
-import Status from './components/Status';
-import useApplicationData from './hooks/useApplicationData';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import useApplicationData from "./hooks/useApplicationData";
+import "./App.scss";
+import Home from "./pages/Home";
+import Preferences from "./pages/Preferences";
+import Saved from "./pages/Saved";
+import Navbar from "./components/Navbar";
+import data from "./mockdata/data";
 
 export default function App() {
-  const [text, setText] = useState("");
-  const {status, error, data, addItem, deleteItem, fetchItems} = useApplicationData();
-
-  const addFriend = function() {
-    addItem(text);
-  };
-
   return (
     <div className="App">
-      <h1>My Anything List</h1>
-
-      <Status status={status} error={error} />
-
-      <button onClick={fetchItems}>Reload</button>
-      <input type="text" value={text} onChange={e => setText(e.target.value)} />
-      <button onClick={addFriend}>Add</button>
-
-      <DataList friends={data} deleteItem={deleteItem} />
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/account" element={<Account />} /> */}
+          <Route path="/preferences" element={<Preferences />} />
+          <Route path="/saved" element={<Saved />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
