@@ -4,9 +4,10 @@ function Saved(props) {
   return (
     <>
       <div>
+        <h2>Saved Jobs</h2>
         <ul>
         <li>
-          I'm saved!
+          I'm a cool info box right here!
         </li>
         </ul>
       </div>
