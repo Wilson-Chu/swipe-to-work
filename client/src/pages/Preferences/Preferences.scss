@@ -1,0 +1,26 @@
+.pref {
+  background-color: #FFFAEB;
+  font-family: 'Poppins', sans-serif;
+  color: #130E01;
+  padding-bottom: 1rem;
+
+  h2 {
+    background-color: #FF8400;
+    color: #FFFAEB;
+    padding: 0.5rem;
+    border-bottom: dotted 0.3rem #130E01;
+  }
+
+}
+
+.preferences-input {
+  display: flex;
+  flex-direction: column;
+
+
+  label {
+    padding: 1rem;
+    text-align: center;
+  }
+
+}

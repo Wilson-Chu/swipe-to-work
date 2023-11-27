@@ -24,7 +24,7 @@ CREATE TABLE preferences (
 CREATE TABLE saved_jobs (
   id SERIAL PRIMARY KEY NOT NULL,
   job_posting_id VARCHAR(255),
-  applied BOOLEAN DEFAULT NULL,
+  applied BOOLEAN DEFAULT FALSE,
   company TEXT,
   job_title VARCHAR(255),
   city VARCHAR (255),
