@@ -1,32 +1,49 @@
 import React from "react";
 import "./Preferences.scss";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Preferences(props) {
-  
-  const [jobTitle, setJobTitle] = useState('');
-  const [company, setCompany] = useState('');
-  const [city, setCity] = useState('');
-  const [province, setProvince] = useState('');
-  const [minSalary, setMinSalary] = useState('');
-  const [jobType, setJobType] = useState('')
-  const [remote, setRemote] = useState('');
-  const [experience, setExperience] = useState('');
-  const [education, setEducation] = useState('');
+  const [jobTitle, setJobTitle] = useState("");
+  const [company, setCompany] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+  const [minSalary, setMinSalary] = useState("");
+  const [jobType, setJobType] = useState("");
+  const [remote, setRemote] = useState("");
+  const [experience, setExperience] = useState("");
+  const [education, setEducation] = useState("");
 
+  const navigate = useNavigate();
 
   const handleSave = (event) => {
     event.preventDefault();
 
-    
+    const newPrefs = {
+      jobTitle,
+      company,
+      city,
+      province,
+      minSalary,
+      jobType,
+      remote,
+      experience,
+      education,
+      userID: 1,
+    };
 
-  }
+    axios
+      .put("/api/prefs", newPrefs)
+      .then((res) => navigate("/"))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
       <h2>My Job Preferences</h2>
 
-      <body>
+      <div>
         <label>
           Job Title:
           <input
@@ -138,7 +155,7 @@ function Preferences(props) {
         </label>
 
         <button onClick={handleSave}>Save</button>
-      </body>
+      </div>
     </>
   );
 }

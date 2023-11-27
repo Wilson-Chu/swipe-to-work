@@ -24,6 +24,10 @@ const pool = require('./database/connect');
 const itemRoutes = require('./routes/itemRoutes');
 app.use('/api/items', itemRoutes(pool));
 
+const prefRoutes = require("./routes/prefRoutes");
+app.use("/api/prefs", prefRoutes(pool));
+
+
 // Simple Endpoint - no routes module
 app.get("/api/status", (req, res) => {
   res.json({version: "1.01"});
