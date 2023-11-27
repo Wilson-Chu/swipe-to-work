@@ -1,9 +1,9 @@
 import React from "react";
 
-const ActionButtons = function () {
+const ActionButtons = function (props) {
   return (
     <div className="action-buttons">
-      <button type="button">
+      <button type="button" onClick={props.nextJob}>
         Pass
       </button>
       <button type="button">
