@@ -1,14 +1,26 @@
 import React from "react";
 import "./Preferences.scss";
+import { useState } from "react";
 
 function Preferences(props) {
-  const [jobTitle, setJobTitle] = useState("");
+  
+  const [jobTitle, setJobTitle] = useState('');
+  const [company, setCompany] = useState('');
+  const [city, setCity] = useState('');
+  const [province, setProvince] = useState('');
+  const [minSalary, setMinSalary] = useState('');
+  const [jobType, setJobType] = useState('')
+  const [remote, setRemote] = useState('');
+  const [experience, setExperience] = useState('');
+  const [education, setEducation] = useState('');
 
 
-  // const handleSave = (event) => {
-  //   event.preventDefault();
+  const handleSave = (event) => {
+    event.preventDefault();
 
-  // }
+    
+
+  }
 
   return (
     <>
@@ -26,17 +38,28 @@ function Preferences(props) {
 
         <label>
           Company:
-          <input type="text"></input>
+          <input
+            type="text"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+          />
         </label>
 
         <label>
           City:
-          <input type="text"></input>
+          <input
+            type="text"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
         </label>
 
         <label>
           Province:
-          <select>
+          <select
+            value={province}
+            onChange={(e) => setProvince(e.target.value)}
+          >
             <option>NL</option>
             <option>PE</option>
             <option>NS</option>
@@ -55,7 +78,10 @@ function Preferences(props) {
 
         <label>
           Salary:
-          <select>
+          <select
+            value={minSalary}
+            onChange={(e) => setMinSalary(e.target.value)}
+          >
             <option value="">Select Salary</option>
             <option value="40000"> $40,000+ </option>
             <option value="60000"> $60,000+ </option>
@@ -66,7 +92,7 @@ function Preferences(props) {
 
         <label>
           Job Type:
-          <select>
+          <select value={jobType} onChange={(e) => setJobType(e.target.value)}>
             <option value="">Select Job Type</option>
             <option value="Fulltime">Fulltime</option>
             <option value="Temporary">Temporary</option>
@@ -75,25 +101,34 @@ function Preferences(props) {
 
         <label>
           Remote:
-          <select>
-            <option value=""> Select Remote </option>
-            <option value="remote"> Yes </option>
-            <option value="not remote"> No </option>
+          <select
+            value={remote}
+            onChange={(e) => setRemote(e.target.value === "true")}
+          >
+            <option value="false"> Select Remote </option>
+            <option value="true"> Yes </option>
+            <option value="false"> No </option>
           </select>
         </label>
 
         <label>
           Experience:
-          <select>
-            <option value=""> Select Experience </option>
-            <option value="required"> Required </option>
-            <option value="not required"> Not Required </option>
+          <select
+            value={experience}
+            onChange={(e) => setExperience(e.target.value === "true")}
+          >
+            <option value="false"> Select Experience </option>
+            <option value="true"> Required </option>
+            <option value="false"> Not Required </option>
           </select>
         </label>
 
         <label>
           Required Education Level:
-          <select>
+          <select
+            value={education}
+            onChange={(e) => setEducation(e.target.value)}
+          >
             <option value=""> Select Education Level </option>
             <option value="postgraduate"> Postgraduate degree </option>
             <option value="bachelor"> Bachelor's degree </option>
