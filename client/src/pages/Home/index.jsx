@@ -1,16 +1,26 @@
 import React from 'react';
+import data from "../../mockdata/data"
+import MainJobPoints from './MainJobPoints';
+import JobDetailsModal from './JobDetailsModal';
+import ActionButtons from './ActionButtons';
+import "./Home.scss"
+import { useState } from 'react';
 
-function Home(props) {
+const Home = function(props) {
+
+  const [modal, setModal] = useState(false)
+
+  const openModal = function () {
+    setModal(true)
+  }
   return (
-    <>
       <div>
-        <div>picture here...</div>
-        <div>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-          Section 1.10.32 of "de Finibus Bonorum et Malorum", wr
-        </div>
+        {data.data[2].employer_logo && <div><img className="main-image" src={data.data[2].employer_logo} alt="employer logo" onClick={() => openModal()}/></div>}
+        {!data.data[2].employer_logo && <div><img className="main-image" src="https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg" alt="jobs" onClick={() => openModal()}/></div>}
+        <MainJobPoints data={data.data} />
+        <ActionButtons />
+        {!!modal && <JobDetailsModal data={data.data}/>}
       </div>
-    </>
   );
 }
 
