@@ -1,0 +1,25 @@
+.main-image {
+  max-width: 40rem;
+  max-height: 50rem;
+}
+
+.main-job-points {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  list-style-type: none;
+}
+
+.main-points-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-job-details {
+  list-style-type: none;
+}
