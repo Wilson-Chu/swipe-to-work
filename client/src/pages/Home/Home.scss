@@ -23,3 +23,29 @@
 .modal-job-details {
   list-style-type: none;
 }
+
+.job-details-modal {
+  background-color: white;
+  box-shadow: 0 0 0 50vmax rgba(0,0,0,.5);
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  height: 85%;
+  width: 75%;
+  overflow-y: scroll;
+  border-radius: 12px;
+}
+
+.job-details-modal__close-button {
+  background-color: white;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 16px;
+  margin-top: 16px;
+}
