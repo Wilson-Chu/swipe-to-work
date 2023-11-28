@@ -27,6 +27,10 @@ app.use('/api/items', itemRoutes(pool));
 const prefRoutes = require("./routes/prefRoutes");
 app.use("/api/prefs", prefRoutes(pool));
 
+const savedRoutes = require("./routes/savedRoutes");
+app.use("/api/savedJobs", savedRoutes(pool));
+
+
 
 // Simple Endpoint - no routes module
 app.get("/api/status", (req, res) => {
