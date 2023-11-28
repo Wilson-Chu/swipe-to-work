@@ -28,7 +28,7 @@ const Home = function(props) {
         {data.data[job].employer_logo && <div><img className="main-image" src={data.data[2].employer_logo} alt="employer logo" onClick={() => openModal()}/></div>}
         {!data.data[job].employer_logo && <div><img className="main-image" src="https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg" alt="jobs" onClick={() => openModal()}/></div>}
         <MainJobPoints data={data.data} job={job}/>
-        <ActionButtons nextJob={nextJob}/>
+        <ActionButtons data={data.data} job={job} nextJob={nextJob}/>
         {!!modal && <JobDetailsModal data={data.data} closeModal={closeModal} job={job}/>}
       </div>
   );
