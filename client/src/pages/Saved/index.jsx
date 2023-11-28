@@ -3,7 +3,7 @@ import "./saved.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import JobDetailsModal from "../Home/JobDetailsModal";
+import SavedJobItem from "./SavedJobItem";
 
 function Saved(props) {
   const [savedJobs, setSavedJobs] = useState([]);
@@ -20,7 +20,8 @@ function Saved(props) {
   return (
     <>
       <h2>My Saved Jobs</h2>
-      <section>
+
+      {/* <section>
         <div className="top-saved-box">
           <FontAwesomeIcon
             icon="fa-solid fa-check"
@@ -38,7 +39,12 @@ function Saved(props) {
             <a href={savedJobs.website} target="_blank" rel="noopener noreferrer">Apply To Job</a>
           </span>
         </div>
-      </section>
+      </section> */}
+      <SavedJobItem
+        job_title={savedJobs.job_title}
+        company={savedJobs.company}
+        website={savedJobs.website}
+      />
     </>
   );
 }
