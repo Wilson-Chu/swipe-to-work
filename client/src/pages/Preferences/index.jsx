@@ -12,8 +12,8 @@ function Preferences(props) {
   const [province, setProvince] = useState("");
   const [minSalary, setMinSalary] = useState("0");
   const [jobType, setJobType] = useState("");
-  const [remote, setRemote] = useState("");
-  const [experience, setExperience] = useState("");
+  const [remote, setRemote] = useState(undefined);
+  const [experience, setExperience] = useState(undefined);
   const [education, setEducation] = useState("");
 
   const navigate = useNavigate();
@@ -25,8 +25,12 @@ function Preferences(props) {
     // const formattedMinSalary = minSalary === "" ? null : Number(minSalary);
 
     // for boolean rows: convert the initial state to false when user doesnt make any changes
-    const formattedRemote = remote === "" ? false : remote;
-    const formattedExperience = experience === "" ? false : experience;
+    // const formattedRemote = remote === undefined ? false : remote;
+    // const formattedExperience = experience === undefined ? false : experience;
+
+    // for boolean rows: convert the option of "Select xxx" to false
+    const formattedRemote = remote === undefined ? false : remote === null ? false : remote;
+    const formattedExperience = experience === undefined ? false : experience === null ? false : experience;
 
     const newPrefs = {
       jobTitle,
@@ -130,7 +134,18 @@ function Preferences(props) {
           Remote:
           <select
             value={remote}
-            onChange={(e) => setRemote(e.target.value === "true")}
+            // onChange={(e) => setRemote(e.target.value === "true")}
+
+            // allow user to go back to Select Remote option after selecting Yes/No
+            onChange={(e) =>
+              setRemote(
+                e.target.value === "true"
+                  ? true
+                  : e.target.value === "false"
+                  ? false
+                  : null
+              )
+            }
           >
             <option value=""> Select Remote </option>
             <option value="true"> Yes </option>
@@ -142,7 +157,16 @@ function Preferences(props) {
           Experience:
           <select
             value={experience}
-            onChange={(e) => setExperience(e.target.value === "true")}
+            // onChange={(e) => setExperience(e.target.value === "true")}
+            onChange={(e) =>
+              setExperience(
+                e.target.value === "true"
+                  ? true
+                  : e.target.value === "false"
+                  ? false
+                  : null
+              )
+            }
           >
             <option value=""> Select Experience </option>
             <option value="true"> Required </option>
