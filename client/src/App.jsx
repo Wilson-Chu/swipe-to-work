@@ -9,10 +9,10 @@ import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import data from "./mockdata/data";
 
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
-library.add(fas, faCheck);
+library.add(fas, faCheck, faCircleXmark);
 
 // const {realData, fetchItems} = useApplicationData();
 
