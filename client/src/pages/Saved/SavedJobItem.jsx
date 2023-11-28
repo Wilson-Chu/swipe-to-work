@@ -1,7 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SavedJobItem({ job_title, company, website }) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
+
+  const removeSavedJob = function(id) {
+    deleteSavedJob(id);
+  };
+
   return (
     <>
       <section className="saved-job-item">
@@ -17,6 +22,7 @@ function SavedJobItem({ job_title, company, website }) {
           <FontAwesomeIcon
             icon="fa-solid fa-circle-xmark"
             className="delete-saved"
+            onClick={() => removeSavedJob(id)}
           />
         </div>
         <div className="bottom-saved-box">

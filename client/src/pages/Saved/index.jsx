@@ -17,6 +17,18 @@ function Saved(props) {
       .catch((error) => console.log(error));
   }, []);
 
+  const deleteSavedJob = function(id) {
+    axios.delete(`/api/savedJobs/${id}`)
+      .then(res => {
+        setSavedJobs(savedJobs.filter(item => item.id !== id));
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+
+    setSavedJobs(savedJobs.filter(item => item.id !== id));
+  };
+
   return (
     <>
       <h2>My Saved Jobs</h2>
@@ -25,13 +37,15 @@ function Saved(props) {
         savedJobs.map((job, index) => (
           <SavedJobItem
             key={index}
+            id={job.id}
             job_title={job.job_title}
             company={job.company}
             website={job.website}
+            deleteSavedJob={deleteSavedJob}
           />
         ))
       ) : (
-        <p>No saved jobs yet.</p>
+        <p>No saved jobs.</p>
       )}
     </>
   );
