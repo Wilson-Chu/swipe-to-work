@@ -2,12 +2,11 @@ import React from "react";
 import "./saved.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import JobDetailsModal from "../Home/JobDetailsModal";
 
 function Saved(props) {
   const [savedJobs, setSavedJobs] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -31,7 +30,7 @@ function Saved(props) {
           <h3>
             {savedJobs.job_title}, {savedJobs.company}
           </h3>
-          <p>X</p>
+          <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="delete-saved"/>
         </div>
         <div className="bottom-saved-box">
           <span>Review Posting</span>

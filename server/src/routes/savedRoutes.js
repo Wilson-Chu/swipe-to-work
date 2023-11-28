@@ -2,7 +2,7 @@ const express = require('express');
 const {getSavedJobs, addSavedJob, deleteSavedJob} = require('../database/savedJobs');
 const router = express.Router();
 
-const routes = function(pool) {
+const routes = function() {
 
   router.get("/", (req, res) => {
     getSavedJobs().then(data => {
@@ -15,8 +15,37 @@ const routes = function(pool) {
   });
 
   router.post("/", (req, res) => {
-    const name = req.body.name;
-    addItem(name).then(data => {
+    const {
+      job_posting_id,
+      applied,
+      company,
+      job_title,
+      city,
+      province,
+      min_salary,
+      job_description,
+      job_type,
+      is_remote,
+      posted_at,
+      website,
+      user_id
+    } = req.body;
+
+    addSavedJob(    
+      job_posting_id,
+      applied,
+      company,
+      job_title,
+      city,
+      province,
+      min_salary,
+      job_description,
+      job_type,
+      is_remote,
+      posted_at,
+      website,
+      user_id)
+      .then(data => {
       res.json(data);
     })
       .catch(err => {
@@ -27,7 +56,7 @@ const routes = function(pool) {
 
   router.delete("/:id", (req, res) => {
     const id = req.params.id;
-    deleteItem(id).then(data => {
+    deleteSavedJob(id).then(data => {
       res.json(data);
     })
       .catch(err => {
