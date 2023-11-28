@@ -3,6 +3,7 @@
   font-family: 'Poppins', sans-serif;
   color: #130E01;
   padding-bottom: 1rem;
+  
 
   h2 {
     background-color: #FF8400;
@@ -10,6 +11,7 @@
     padding: 0.5rem;
     border-bottom: dotted 0.3rem #CF4307;
     font-size: 1.8rem;
+    margin-top: 0rem;
   }
 
 }
@@ -23,6 +25,7 @@
   label {
     padding: 1rem;
     text-align: center;
+    font-weight: bold;
 
     input {
       width: fit-content;
