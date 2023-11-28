@@ -35,7 +35,7 @@ function Navbar(props) {
               style={{ color: "#f8fcfc" }}
             />
           </span>
-          <Link to="/saved">Saved</Link>
+          <Link to="/saved">Saved Jobs</Link>
         </li>
       </div>
     </nav>

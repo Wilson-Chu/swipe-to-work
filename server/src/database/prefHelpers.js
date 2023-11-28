@@ -41,9 +41,10 @@ const updatePref = function (
 };
 
 const getPref = function (userID) {
-  const sql = "SELECT * FROM preferences WHERE id = userID";
+  const sql = "SELECT * FROM preferences WHERE user_id =$1";
 
-  return pool.query(sql).then((res) => {
+  return pool.query(sql, [userID]).then((res) => {
+    console.log(res.rows);
     return res.rows[0];
   });
 };

@@ -10,16 +10,36 @@ function Preferences(props) {
   const [company, setCompany] = useState("");
   const [city, setCity] = useState("");
   const [province, setProvince] = useState("");
-  const [minSalary, setMinSalary] = useState("");
+  const [minSalary, setMinSalary] = useState("0");
   const [jobType, setJobType] = useState("");
-  const [remote, setRemote] = useState("");
-  const [experience, setExperience] = useState("");
+  const [remote, setRemote] = useState(undefined);
+  const [experience, setExperience] = useState(undefined);
   const [education, setEducation] = useState("");
+
+  const [jobTitleError, setJobTitleError] = useState("");
 
   const navigate = useNavigate();
 
   const handleSave = (event) => {
     event.preventDefault();
+
+    // Check if the job title is filled
+    if (!jobTitle.trim()) {
+      setJobTitleError("Job Title cannot be empty");
+      return;
+    }
+    // Reset the job title error when input is not empty
+    setJobTitleError("");
+
+    // for boolean rows: convert the option of "Select xxx" to false
+    const formattedRemote =
+      remote === undefined ? false : remote === null ? false : remote;
+    const formattedExperience =
+      experience === undefined
+        ? false
+        : experience === null
+        ? false
+        : experience;
 
     const newPrefs = {
       jobTitle,
@@ -28,8 +48,8 @@ function Preferences(props) {
       province,
       minSalary,
       jobType,
-      remote,
-      experience,
+      remote: formattedRemote,
+      experience: formattedExperience,
       education,
       userID: 1,
     };
@@ -44,14 +64,22 @@ function Preferences(props) {
     <div className="pref">
       <h2>My Job Preferences</h2>
 
-      <div className="preferences-input">
+      <form className="preferences-input">
         <label>
+        {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
           Job Title:
           <input
-            placeholder="web developper?"
+            required
+            placeholder="web developper...?"
             type="text"
             value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
+            onChange={(e) => {
+              setJobTitle(e.target.value);
+              // Clear the error when the user types
+              setJobTitleError((prev) =>
+                e.target.value ? "" : "Job Title cannot be empty"
+              );
+            }}
           />
         </label>
 
@@ -79,6 +107,7 @@ function Preferences(props) {
             value={province}
             onChange={(e) => setProvince(e.target.value)}
           >
+            <option value="">Select Province</option>
             <option>NL</option>
             <option>PE</option>
             <option>NS</option>
@@ -99,7 +128,7 @@ function Preferences(props) {
           Salary:
           <select
             value={minSalary}
-            onChange={(e) => setMinSalary(e.target.value)}
+            onChange={(e) => setMinSalary(Number(e.target.value))}
           >
             <option value="0">Select Salary</option>
             <option value="40000"> $40,000+ </option>
@@ -112,7 +141,7 @@ function Preferences(props) {
         <label>
           Job Type:
           <select value={jobType} onChange={(e) => setJobType(e.target.value)}>
-            <option value="">Select Job Type</option>
+            <option value="NULL">Select Job Type</option>
             <option value="Fulltime">Fulltime</option>
             <option value="Temporary">Temporary</option>
           </select>
@@ -122,9 +151,18 @@ function Preferences(props) {
           Remote:
           <select
             value={remote}
-            onChange={(e) => setRemote(e.target.value === "true")}
+            // allow user to go back to the Select Remote option after selecting Yes/No
+            onChange={(e) =>
+              setRemote(
+                e.target.value === "true"
+                  ? true
+                  : e.target.value === "false"
+                  ? false
+                  : null
+              )
+            }
           >
-            <option value="false"> Select Remote </option>
+            <option value=""> Select Remote </option>
             <option value="true"> Yes </option>
             <option value="false"> No </option>
           </select>
@@ -134,9 +172,17 @@ function Preferences(props) {
           Experience:
           <select
             value={experience}
-            onChange={(e) => setExperience(e.target.value === "true")}
+            onChange={(e) =>
+              setExperience(
+                e.target.value === "true"
+                  ? true
+                  : e.target.value === "false"
+                  ? false
+                  : null
+              )
+            }
           >
-            <option value="false"> Select Experience </option>
+            <option value=""> Select Experience </option>
             <option value="true"> Required </option>
             <option value="false"> Not Required </option>
           </select>
@@ -148,19 +194,18 @@ function Preferences(props) {
             value={education}
             onChange={(e) => setEducation(e.target.value)}
           >
-            <option value=""> Select Education Level </option>
+            <option value="null"> Select Education Level </option>
             <option value="postgraduate"> Postgraduate degree </option>
             <option value="bachelor"> Bachelor's degree </option>
             <option value="associates"> Associate's degree </option>
             <option value="high school"> High School </option>
           </select>
         </label>
-      </div>
+      </form>
 
       <button className="button-74" role="button" onClick={handleSave}>
         Save
       </button>
-
     </div>
   );
 }
