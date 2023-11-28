@@ -1,5 +1,6 @@
 import React from "react";
 import "./Preferences.scss";
+import "./buttons.scss";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -40,10 +41,10 @@ function Preferences(props) {
   };
 
   return (
-    <>
+    <div className="pref">
       <h2>My Job Preferences</h2>
 
-      <div>
+      <div className="preferences-input">
         <label>
           Job Title:
           <input
@@ -153,10 +154,13 @@ function Preferences(props) {
             <option value="high school"> High School </option>
           </select>
         </label>
-
-        <button onClick={handleSave}>Save</button>
       </div>
-    </>
+
+      <button className="button-74" role="button" onClick={handleSave}>
+        Save
+      </button>
+
+    </div>
   );
 }
 

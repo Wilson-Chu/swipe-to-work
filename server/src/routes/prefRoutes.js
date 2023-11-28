@@ -26,6 +26,7 @@ const routes = function(pool) {
   // });
 
   router.put("/", (req, res) => {
+
     const {
       jobTitle,
       company,
@@ -38,6 +39,7 @@ const routes = function(pool) {
       education,
       userID,
     } = req.body;
+
     const updatedPref = {
       jobTitle,
       company,
@@ -49,6 +51,7 @@ const routes = function(pool) {
       experience,
       education,
     };
+    
     updatePref(updatedPref, Number(userID))
       .then((data) => {
         res.json(data);
