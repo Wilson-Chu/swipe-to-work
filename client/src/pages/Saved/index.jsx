@@ -10,7 +10,7 @@ function Saved(props) {
         <div className="top-saved-box">
           <FontAwesomeIcon
             icon="fa-solid fa-check"
-            size="2xl"
+            size="xl"
             className="check-applied"
           />
           <h3>Job Title, Company Name</h3>
