@@ -1,21 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
+import logo from "../public/logo-yellowbg.png";
+
 
 function Navbar(props) {
   return (
     <nav>
-      <ul className="menu">
+      <div className="menu">
         <li>
           <Link to="/preferences">Preferences</Link>
         </li>
-        <h1>
-          <Link to="/">Swipe to Work</Link>
-        </h1>
+        <li id="logo">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+        </li>
         <li>
           <Link to="/saved">Saved</Link>
         </li>
-      </ul>
+      </div>
     </nav>
   );
 }

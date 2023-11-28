@@ -1,17 +1,30 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 3em;
-    background-color: #bd7aa8;
-    
-  }
-  
-  ul.menu {
+  display: flex;
+  align-items: center;
+  padding: 0 3em;
+  padding-top: 1rem;
+  background-color: #bd7aa8;
+  height: 80px;
+
+  .menu {
     list-style: none;
     display: flex;
-  
+    justify-content: space-between;
+
     li {
       margin: 0 1em;
+      margin-left: 18px;
     }
   }
+}
+
+a:-webkit-any-link {
+  color: #f8fcf9;
+  font-family: "Raleway", sans-serif;
+}
+
+#logo {
+  img {
+    width: 12rem;
+  }
+}
