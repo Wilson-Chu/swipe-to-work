@@ -24,10 +24,6 @@ function Preferences(props) {
     // debugging codes
     // const formattedMinSalary = minSalary === "" ? null : Number(minSalary);
 
-    // for boolean rows: convert the initial state to false when user doesnt make any changes
-    // const formattedRemote = remote === undefined ? false : remote;
-    // const formattedExperience = experience === undefined ? false : experience;
-
     // for boolean rows: convert the option of "Select xxx" to false
     const formattedRemote = remote === undefined ? false : remote === null ? false : remote;
     const formattedExperience = experience === undefined ? false : experience === null ? false : experience;
@@ -134,8 +130,6 @@ function Preferences(props) {
           Remote:
           <select
             value={remote}
-            // onChange={(e) => setRemote(e.target.value === "true")}
-
             // allow user to go back to Select Remote option after selecting Yes/No
             onChange={(e) =>
               setRemote(
@@ -157,7 +151,6 @@ function Preferences(props) {
           Experience:
           <select
             value={experience}
-            // onChange={(e) => setExperience(e.target.value === "true")}
             onChange={(e) =>
               setExperience(
                 e.target.value === "true"
