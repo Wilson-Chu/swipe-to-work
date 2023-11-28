@@ -26,10 +26,10 @@ function SavedJobItem({ job_title, company, website }) {
               <span>Apply To Job  </span>
               <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
             </a>
-            
           </span>
         </div>
       </section>
+      <br />
     </>
   );
 }

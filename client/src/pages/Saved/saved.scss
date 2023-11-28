@@ -1,7 +1,7 @@
 .saved-job-item {
   box-sizing: border-box;
   padding: 1em;
-  background-color: azure;
+  background-color: aliceblue;
   box-shadow: 0.3em 0.3em 0.3em 1px rgba(0, 0, 255, .2);
 }
 
@@ -28,8 +28,8 @@
   color: grey;
 
   &:hover{
-  cursor: pointer;
-  color: lightcoral;
+    cursor: pointer;
+    color: lightcoral;
  } 
 }
 
@@ -37,8 +37,9 @@
   color: darkgreen;
   font-weight: bold;
   text-decoration: none;
-}
 
-// a {
-//   color: red;
-// }
+  &:hover{
+    cursor: pointer;
+    color: green;
+  }
+}

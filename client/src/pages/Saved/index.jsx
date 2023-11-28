@@ -12,7 +12,7 @@ function Saved(props) {
     axios
       .get("/api/savedJobs")
       .then((res) => {
-        setSavedJobs(res.data[0]);
+        setSavedJobs(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -21,30 +21,18 @@ function Saved(props) {
     <>
       <h2>My Saved Jobs</h2>
 
-      {/* <section>
-        <div className="top-saved-box">
-          <FontAwesomeIcon
-            icon="fa-solid fa-check"
-            size="xl"
-            className="check-applied"
+      {savedJobs.length > 0 ? (
+        savedJobs.map((job, index) => (
+          <SavedJobItem
+            key={index}
+            job_title={job.job_title}
+            company={job.company}
+            website={job.website}
           />
-          <h3>
-            {savedJobs.job_title}, {savedJobs.company}
-          </h3>
-          <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="delete-saved"/>
-        </div>
-        <div className="bottom-saved-box">
-          <span>Review Posting</span>
-          <span>
-            <a href={savedJobs.website} target="_blank" rel="noopener noreferrer">Apply To Job</a>
-          </span>
-        </div>
-      </section> */}
-      <SavedJobItem
-        job_title={savedJobs.job_title}
-        company={savedJobs.company}
-        website={savedJobs.website}
-      />
+        ))
+      ) : (
+        <p>No saved jobs yet.</p>
+      )}
     </>
   );
 }
