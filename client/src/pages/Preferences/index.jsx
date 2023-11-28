@@ -142,7 +142,7 @@ function Preferences(props) {
         </label>
 
         <label>
-          Required Education Level:
+          Education Level:
           <select
             value={education}
             onChange={(e) => setEducation(e.target.value)}

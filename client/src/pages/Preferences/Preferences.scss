@@ -1,15 +1,42 @@
 .pref {
-  background-color: #FFFAEB;
-  font-family: 'Poppins', sans-serif;
+  background-color: #f8fcf9;
+  font-family: "Raleway", sans-serif;
   color: #130E01;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
+  
 
   h2 {
-    background-color: #FF8400;
-    color: #FFFAEB;
+    background-color: #f8fcf9;
+    color: #854893;
     padding: 0.5rem;
-    border-bottom: dotted 0.3rem #CF4307;
+    padding-top: 1rem;
+    border-bottom: 0.3rem #CF4307;
     font-size: 1.8rem;
+    margin-top: 0rem;
+    text-transform:uppercase;
+    letter-spacing:1px;
+
+    &:before {
+      background-color: #bd7aa8;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 5px;
+      position: relative;
+      right: -47px;
+    }
+
+    &:after {
+      background-color: #bd7aa8;
+      content: '';
+      display: block;
+      position:relative; right:-320px; bottom:0;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 0.25em;
+    }
+
   }
 
 }
@@ -23,6 +50,7 @@
   label {
     padding: 1rem;
     text-align: center;
+    font-weight: bold;
 
     input {
       width: fit-content;
