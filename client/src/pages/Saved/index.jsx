@@ -14,6 +14,7 @@ function Saved(props) {
             className="check-applied"
           />
           <h3>Job Title, Company Name</h3>
+          <p>X</p>
         </div>
         <div className="bottom-saved-box">
           <span>Review Posting</span>
