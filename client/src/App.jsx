@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
@@ -7,6 +8,11 @@ import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import data from "./mockdata/data";
+
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas, faCheck);
 
 export default function App() {
   return (
