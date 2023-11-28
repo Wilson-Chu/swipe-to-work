@@ -21,8 +21,12 @@ function Preferences(props) {
   const handleSave = (event) => {
     event.preventDefault();
 
-    // debug minSalary
+    // debugging codes
     // const formattedMinSalary = minSalary === "" ? null : Number(minSalary);
+
+    // for boolean rows: convert the initial state to false when user doesnt make any changes
+    const formattedRemote = remote === "" ? false : remote;
+    const formattedExperience = experience === "" ? false : experience;
 
     const newPrefs = {
       jobTitle,
@@ -31,8 +35,8 @@ function Preferences(props) {
       province,
       minSalary,
       jobType,
-      remote,
-      experience,
+      remote: formattedRemote,
+      experience: formattedExperience,
       education,
       userID: 1,
     };
@@ -103,11 +107,7 @@ function Preferences(props) {
           Salary:
           <select
             value={minSalary}
-            onChange={(e) =>
-              setMinSalary(
-                e.target.value === "0" ? null : Number(e.target.value)
-              )
-            }
+            onChange={(e) => setMinSalary(Number(e.target.value))}
           >
             <option value="0">Select Salary</option>
             <option value="40000"> $40,000+ </option>
@@ -156,7 +156,7 @@ function Preferences(props) {
             value={education}
             onChange={(e) => setEducation(e.target.value)}
           >
-            <option value="NULL"> Select Education Level </option>
+            <option value="null"> Select Education Level </option>
             <option value="postgraduate"> Postgraduate degree </option>
             <option value="bachelor"> Bachelor's degree </option>
             <option value="associates"> Associate's degree </option>
