@@ -17,4 +17,18 @@ section {
 
 .check-applied {
   color: grey;
+
+  &:hover{
+    cursor: pointer;
+    color: green;
+  }
+}
+
+.delete-saved {
+  color: grey;
+
+  &:hover{
+  cursor: pointer;
+  color: lightcoral;
+ } 
 }
