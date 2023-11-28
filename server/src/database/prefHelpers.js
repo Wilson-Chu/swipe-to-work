@@ -40,4 +40,12 @@ const updatePref = function (
     });
 };
 
-module.exports = { updatePref };
+const getPref = function (userID) {
+  const sql = "SELECT * FROM preferences WHERE id = userID";
+
+  return pool.query(sql).then((res) => {
+    return res.rows[0];
+  });
+};
+
+module.exports = { updatePref, getPref };

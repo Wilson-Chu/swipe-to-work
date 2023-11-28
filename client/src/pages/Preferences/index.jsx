@@ -48,6 +48,7 @@ function Preferences(props) {
         <label>
           Job Title:
           <input
+            placeholder="web developper?"
             type="text"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
@@ -100,7 +101,7 @@ function Preferences(props) {
             value={minSalary}
             onChange={(e) => setMinSalary(e.target.value)}
           >
-            <option value="">Select Salary</option>
+            <option value="0">Select Salary</option>
             <option value="40000"> $40,000+ </option>
             <option value="60000"> $60,000+ </option>
             <option value="80000"> $80,000+ </option>
