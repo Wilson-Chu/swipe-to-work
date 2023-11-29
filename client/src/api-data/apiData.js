@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 function fetchData() {
   const options = {
@@ -10,7 +10,7 @@ function fetchData() {
       country: 'CA'
     },
     headers: {
-      'X-RapidAPI-Key': 'd914f1a3dcmshf64c1f3e8b4277dp1f067ejsn38af48253647',
+      'X-RapidAPI-Key': process.env.REACT_APP_RAPIDAPI_KEY,
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
     }
   };
