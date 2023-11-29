@@ -151,7 +151,7 @@ function Preferences(props) {
           Remote:
           <select
             value={remote}
-            // allow user to go back to Select Remote option after selecting Yes/No
+            // allow user to go back to the Select Remote option after selecting Yes/No
             onChange={(e) =>
               setRemote(
                 e.target.value === "true"
