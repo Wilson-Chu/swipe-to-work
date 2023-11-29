@@ -6,18 +6,18 @@ import "./ActionButtons.scss"
 const ActionButtons = function (props) {
   const saveJob = function () {
     const jobData = {
-      job_posting_id: props.data[props.job].job_id,
+      job_posting_id: props.jobs[props.jobIndex].job_id,
       applied: false,
-      company: props.data[props.job].employer_name,
-      job_title: props.data[props.job].job_title,
-      city: props.data[props.job].job_city,
-      province: props.data[props.job].job_state,
-      min_salary: props.data[props.job].job_min_salary,
-      job_description: descWithLineBreaks(props.data[props.job].job_description),
-      job_type: props.data[props.job].job_employment_type,
-      is_remote: props.data[props.job].job_is_remote,
-      posted_at: props.data[props.job].job_posted_at_datetime_utc.split("T").shift(),
-      website: props.data[props.job].job_apply_link || props.data[props.job].employer_website || 'https://www.google.com',
+      company: props.jobs[props.jobIndex].employer_name,
+      job_title: props.jobs[props.jobIndex].job_title,
+      city: props.jobs[props.jobIndex].job_city,
+      province: props.jobs[props.jobIndex].job_state,
+      min_salary: props.jobs[props.jobIndex].job_min_salary,
+      job_description: descWithLineBreaks(props.jobs[props.jobIndex].job_description),
+      job_type: props.jobs[props.jobIndex].job_employment_type,
+      is_remote: props.jobs[props.jobIndex].job_is_remote,
+      posted_at: props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift(),
+      website: props.jobs[props.jobIndex].job_apply_link || props.jobs[props.jobIndex].employer_website || 'https://www.google.com',
       user_id: 1
     }
 
