@@ -8,38 +8,38 @@ const JobDetailsModal = function (props) {
       <button className="job-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={props.closeModal} />
       </button>
-      <h2>{props.data[props.job].job_title}</h2>
+      <h2>{props.jobs[props.jobIndex].job_title}</h2>
       <ul className="modal-job-details">
         <li>
-          Company: {props.data[props.job].employer_name}
+          Company: {props.jobs[props.jobIndex].employer_name}
         </li>
         <li>
-          City: {props.data[props.job].job_city}
+          City: {props.jobs[props.jobIndex].job_city}
         </li>
         <li>
-          Province: {props.data[props.job].job_state}
+          Province: {props.jobs[props.jobIndex].job_state}
         </li>
         <li>
-          Mininum salary: {props.data[props.job].job_min_salary ? props.data[props.job].job_min_salary : "N/A"}
+          Mininum salary: {props.jobs[props.jobIndex].job_min_salary ? props.jobs[props.jobIndex].job_min_salary : "N/A"}
         </li>
         <li>
-          Maximum salary: {props.data[props.job].job_max_salary ? props.data[props.job].job_max_salary : "N/A"}
+          Maximum salary: {props.jobs[props.jobIndex].job_max_salary ? props.jobs[props.jobIndex].job_max_salary : "N/A"}
         </li>
         <li>
-          Job type: {props.data[props.job].job_employment_type}
+          Job type: {props.jobs[props.jobIndex].job_employment_type}
         </li>
         <li>
-          Job is remote? {(props.data[props.job].job_is_remote).toString()}
+          Job is remote? {(props.jobs[props.jobIndex].job_is_remote).toString()}
         </li>
         <li>
-          Job description: {descWithLineBreaks(props.data[props.job].job_description)}
+          Job description: {descWithLineBreaks(props.jobs[props.jobIndex].job_description)}
         </li>
         <li>
-          Posted at: {props.data[props.job].job_posted_at_datetime_utc.split("T").shift()}
+          Posted at: {props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift()}
         </li>
-          Education required: {educationList(props.data)}
+          Education required: {educationList(props.jobs)}
         <li>
-          No expereince required? {(props.data[props.job].job_required_experience.no_experience_required).toString()}
+          No expereince required? {(props.jobs[props.jobIndex].job_required_experience.no_experience_required).toString()}
         </li>
       </ul>
     </div>

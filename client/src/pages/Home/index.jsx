@@ -1,51 +1,26 @@
 import React from 'react';
-// import data from "../../mockdata/data"
 import fetchData from '../../api-data/data'; 
 import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
+import useApplicationData from '../../hooks/useApplicationData';
 import "./Home.scss"
 import { useState, useEffect } from 'react';
-import fetchData from "../../api-data/apiData"
+import axios from 'axios';
 
-// import fetchData from "../../api-data/apiData"
 
 const Home = function(props) {
 
-  // useEffect(() => {
-    
-  //   const apiData=searchData;
-  //   console.log(apiData);
-  // }, []);
-
-  fetchData();
-
-  const [job, setJob] = useState(0)
-  const [modal, setModal] = useState(false)
-
-  const openModal = function () {
-    setModal(true)
-  }
-
-  const closeModal = function () {
-    setModal(false)
-  }
-
-  const nextJob = function() {
-    setJob(prev =>  prev + 1)
-  }
-
-useEffect(() => {
-  fetchData();
-}, [])
-
-// fetchData();
+  const {jobs, jobIndex, modal, openModal, closeModal, nextJob} = useApplicationData();
+  console.log("JOBS", jobs)
+  console.log("INDEX", jobIndex)
+ 
 
   return (
       <div className='home'>
-        <MainJobPoints data={data.data} job={job} openModal={openModal}/>
-        <ActionButtons data={data.data} job={job} nextJob={nextJob}/>
-        {!!modal && <JobDetailsModal data={data.data} closeModal={closeModal} job={job}/>}
+        <MainJobPoints jobs={jobs} jobIndex={jobIndex}  openModal={openModal}/>
+        <ActionButtons jobs={jobs} jobIndex={jobIndex} nextJob={nextJob}/>
+        {!!modal && <JobDetailsModal jobs={jobs} closeModal={closeModal} jobIndex={jobIndex}/>}
       </div>
   );
 }

@@ -3,6 +3,7 @@ const express = require("express");
 const uniqid = require('uniqid');
 const morgan = require('morgan');
 const path = require('path');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -12,6 +13,8 @@ const cwd = process.cwd();
 const public = path.join(cwd, '..', 'public');
 app.use(express.static(public));
 // Note: Do Not make a route for "/" below or it will override our static public
+
+app.use(cors());
 
 // So we can read JSON body requests
 app.use(express.json());
@@ -30,6 +33,8 @@ app.use("/api/prefs", prefRoutes(pool));
 const savedRoutes = require("./routes/savedRoutes");
 app.use("/api/savedJobs", savedRoutes(pool));
 
+const jobRoutes = require("./routes/jobRoutes");
+app.use("/api/jobs", jobRoutes(pool));
 
 
 // Simple Endpoint - no routes module
