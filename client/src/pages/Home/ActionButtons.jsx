@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios"
 import { descWithLineBreaks } from "../Home/homeHelpers"
+import "./ActionButtons.scss"
 
 const ActionButtons = function (props) {
   const saveJob = function () {
@@ -44,13 +45,13 @@ const ActionButtons = function (props) {
 
   return (
     <div className="action-buttons">
-      <button type="button" onClick={props.nextJob}>
+      <button className="action-button" type="button" onClick={props.nextJob}>
         Pass
       </button>
-      <button type="button" onClick={randomChoice}>
+      <button className="action-button" type="button" onClick={randomChoice}>
         Random!
       </button>
-      <button type="button" onClick={handleSaveAndNext}>
+      <button className="action-button" type="button" onClick={handleSaveAndNext}>
         Save
       </button>
     </div>
