@@ -6,6 +6,7 @@ import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 import "./Home.scss"
 import { useState } from 'react';
+import fetchData from "../../api-data/apiData"
 
 const Home = function(props) {
 
@@ -35,10 +36,8 @@ const Home = function(props) {
 fetchData();
 
   return (
-      <div>
-        {data.data[job].employer_logo && <div><img className="main-image" src={data.data[2].employer_logo} alt="employer logo" onClick={() => openModal()}/></div>}
-        {!data.data[job].employer_logo && <div><img className="main-image" src="https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg" alt="jobs" onClick={() => openModal()}/></div>}
-        <MainJobPoints data={data.data} job={job}/>
+      <div className='home'>
+        <MainJobPoints data={data.data} job={job} openModal={openModal}/>
         <ActionButtons data={data.data} job={job} nextJob={nextJob}/>
         {!!modal && <JobDetailsModal data={data.data} closeModal={closeModal} job={job}/>}
       </div>
