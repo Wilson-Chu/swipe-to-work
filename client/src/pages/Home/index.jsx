@@ -5,7 +5,7 @@ import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 import "./Home.scss"
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Home = function(props) {
 
@@ -32,9 +32,11 @@ const Home = function(props) {
     setJob(prev =>  prev + 1)
   }
 
+fetchData();
+
   return (
       <div>
-        {data.data[job].employer_logo && <div><img className="main-image" src={data.data[job].employer_logo} alt="employer logo" onClick={() => openModal()}/></div>}
+        {data.data[job].employer_logo && <div><img className="main-image" src={data.data[2].employer_logo} alt="employer logo" onClick={() => openModal()}/></div>}
         {!data.data[job].employer_logo && <div><img className="main-image" src="https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg" alt="jobs" onClick={() => openModal()}/></div>}
         <MainJobPoints data={data.data} job={job}/>
         <ActionButtons data={data.data} job={job} nextJob={nextJob}/>
