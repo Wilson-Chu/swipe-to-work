@@ -26,7 +26,9 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
           />
         </div>
         <div className="bottom-saved-box">
-          <span>Review Posting</span>
+          <span onClick={() => console.log(`You clicked on job posting: ${id}`)}>
+            Review Posting
+          </span>
           <span>
             <a href={website} target="_blank" rel="noopener noreferrer" className="apply-link">
               <span>Apply To Job  </span>
