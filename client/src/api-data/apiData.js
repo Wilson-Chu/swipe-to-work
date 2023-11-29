@@ -1,18 +1,37 @@
-import axios from "axios"
+import axios from "axios";
+
+// function fetchData() {
+//   const options = {
+//     method: "GET",
+//     url: "https://jsearch.p.rapidapi.com/search",
+//     params: {
+//       query: "developer in california",
+//       date_posted: "all",
+//       country: "CA",
+//     },
+//     headers: {
+//       "X-RapidAPI-Key": "",
+//       "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+//     },
+//   };
+// };
+
+
+
 
 function fetchData() {
   const options = {
-    method: 'GET',
-    url: 'https://jsearch.p.rapidapi.com/search',
+    method: "GET",
+    url: "https://jsearch.p.rapidapi.com/search",
     params: {
-      query: 'developer in Canada',
-      date_posted: 'all',
-      country: 'CA'
+      query: "developer in california",
+      date_posted: "all",
+      country: "CA",
     },
     headers: {
-      'X-RapidAPI-Key':
-      'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-    }
+      "X-RapidAPI-Key": "", // process.env.REACT_APP_RAPIDAPI_KEY
+      "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+    },
   };
 
   return axios.request(options)
