@@ -5,6 +5,8 @@ import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 import "./Home.scss"
 import { useState } from 'react';
+import fetchData from "../../api-data/apiData"
+
 // import fetchData from "../../api-data/apiData"
 
 const Home = function(props) {
@@ -24,6 +26,7 @@ const Home = function(props) {
     setJob(prev =>  prev + 1)
   }
 
+fetchData();
 // fetchData();
 
   return (
