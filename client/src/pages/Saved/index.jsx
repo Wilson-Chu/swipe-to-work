@@ -3,7 +3,7 @@ import "./saved.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import JobDetailsModal from "../Home/JobDetailsModal";
+import SavedJobItem from "./SavedJobItem";
 
 function Saved(props) {
   const [savedJobs, setSavedJobs] = useState([]);
@@ -12,33 +12,41 @@ function Saved(props) {
     axios
       .get("/api/savedJobs")
       .then((res) => {
-        setSavedJobs(res.data[0]);
+        setSavedJobs(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
+  const deleteSavedJob = function(id) {
+    axios.delete(`/api/savedJobs/${id}`)
+      .then(res => {
+        setSavedJobs(savedJobs.filter(item => item.id !== id));
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+
+    setSavedJobs(savedJobs.filter(item => item.id !== id));
+  };
+
   return (
     <>
       <h2>My Saved Jobs</h2>
-      <section>
-        <div className="top-saved-box">
-          <FontAwesomeIcon
-            icon="fa-solid fa-check"
-            size="xl"
-            className="check-applied"
+
+      {savedJobs.length > 0 ? (
+        savedJobs.map((job, index) => (
+          <SavedJobItem
+            key={index}
+            id={job.id}
+            job_title={job.job_title}
+            company={job.company}
+            website={job.website}
+            deleteSavedJob={deleteSavedJob}
           />
-          <h3>
-            {savedJobs.job_title}, {savedJobs.company}
-          </h3>
-          <FontAwesomeIcon icon="fa-solid fa-circle-xmark" className="delete-saved"/>
-        </div>
-        <div className="bottom-saved-box">
-          <span>Review Posting</span>
-          <span>
-            <a href={savedJobs.website} target="_blank" rel="noopener noreferrer">Apply To Job</a>
-          </span>
-        </div>
-      </section>
+        ))
+      ) : (
+        <p>No saved jobs.</p>
+      )}
     </>
   );
 }

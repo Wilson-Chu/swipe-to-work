@@ -3,7 +3,7 @@ const pool = require("./connect");
 // module.exports = function(pool) {
 
 const getSavedJobs = function () {
-  const sql = "SELECT * FROM saved_jobs ORDER BY id";
+  const sql = "SELECT * FROM saved_jobs ORDER BY id DESC";
 
   return pool.query(sql)
     .then(res => {
