@@ -1,6 +1,7 @@
 .main-image {
-  max-width: 40rem;
-  max-height: 50rem;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .main-job-points {
