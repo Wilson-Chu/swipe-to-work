@@ -5,7 +5,7 @@ const router = express.Router();
 const routes = function(pool) {
 
   router.get("/", (req, res) => {
-    getPref()
+    getPref(1) // hardcoded userid for now
       .then((data) => {
         res.json(data);
       })
@@ -50,7 +50,7 @@ const routes = function(pool) {
       jobType,
       remote,
       experience,
-      education,
+      education
     };
     
     updatePref(updatedPref, Number(userID))
