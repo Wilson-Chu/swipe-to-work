@@ -16,17 +16,30 @@ function Preferences(props) {
   const [experience, setExperience] = useState(undefined);
   const [education, setEducation] = useState("");
 
+  const [jobTitleError, setJobTitleError] = useState("");
+
   const navigate = useNavigate();
 
   const handleSave = (event) => {
     event.preventDefault();
 
-    // debugging codes
-    // const formattedMinSalary = minSalary === "" ? null : Number(minSalary);
+    // Check if the job title is filled
+    if (!jobTitle.trim()) {
+      setJobTitleError("Job Title cannot be empty");
+      return;
+    }
+    // Reset the job title error when input is not empty
+    setJobTitleError("");
 
     // for boolean rows: convert the option of "Select xxx" to false
-    const formattedRemote = remote === undefined ? false : remote === null ? false : remote;
-    const formattedExperience = experience === undefined ? false : experience === null ? false : experience;
+    const formattedRemote =
+      remote === undefined ? false : remote === null ? false : remote;
+    const formattedExperience =
+      experience === undefined
+        ? false
+        : experience === null
+        ? false
+        : experience;
 
     const newPrefs = {
       jobTitle,
@@ -51,14 +64,22 @@ function Preferences(props) {
     <div className="pref">
       <h2>My Job Preferences</h2>
 
-      <div className="preferences-input">
+      <form className="preferences-input">
         <label>
+        {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
           Job Title:
           <input
+            required
             placeholder="web developper...?"
             type="text"
             value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
+            onChange={(e) => {
+              setJobTitle(e.target.value);
+              // Clear the error when the user types
+              setJobTitleError((prev) =>
+                e.target.value ? "" : "Job Title cannot be empty"
+              );
+            }}
           />
         </label>
 
@@ -180,7 +201,7 @@ function Preferences(props) {
             <option value="high school"> High School </option>
           </select>
         </label>
-      </div>
+      </form>
 
       <button className="button-74" role="button" onClick={handleSave}>
         Save
