@@ -8,6 +8,8 @@ import "./Home.scss"
 import { useState } from 'react';
 import fetchData from "../../api-data/apiData"
 
+// import fetchData from "../../api-data/apiData"
+
 const Home = function(props) {
 
   // useEffect(() => {
@@ -34,6 +36,7 @@ const Home = function(props) {
   }
 
 fetchData();
+// fetchData();
 
   return (
       <div className='home'>
