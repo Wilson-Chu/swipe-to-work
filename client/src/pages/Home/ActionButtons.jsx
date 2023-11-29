@@ -20,7 +20,7 @@ const ActionButtons = function (props) {
       user_id: 1
     }
 
-    axios.post("/api/savedJobs", jobData)
+    return axios.post("/api/savedJobs", jobData)
       .then(response => {
         console.log("Data saved:", response.data);
       })
@@ -29,17 +29,25 @@ const ActionButtons = function (props) {
       });
   };
 
-  const handleSaveAndNext = () => {
+  const handleSaveAndNext = function() {
     saveJob();
     props.nextJob();
   };
+
+  const randomChoice = function() {
+    if (Math.random() < 0.5) {
+      saveJob();
+    } else {
+      props.nextJob();
+    }
+  }
 
   return (
     <div className="action-buttons">
       <button type="button" onClick={props.nextJob}>
         Pass
       </button>
-      <button type="button">
+      <button type="button" onClick={randomChoice}>
         Random!
       </button>
       <button type="button" onClick={handleSaveAndNext}>
