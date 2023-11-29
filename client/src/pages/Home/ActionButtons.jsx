@@ -16,7 +16,7 @@ const ActionButtons = function (props) {
       job_type: props.data[props.job].job_employment_type,
       is_remote: props.data[props.job].job_is_remote,
       posted_at: props.data[props.job].job_posted_at_datetime_utc.split("T").shift(),
-      website: props.data[props.job].employer_website,
+      website: props.data[props.job].job_apply_link || props.data[props.job].employer_website || 'https://www.google.com',
       user_id: 1
     }
 
