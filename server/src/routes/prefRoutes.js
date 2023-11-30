@@ -15,17 +15,6 @@ const routes = function(pool) {
       });
   });
 
-  // router.post("/", (req, res) => {
-  //   const name = req.body.name;
-  //   addItem(name).then(data => {
-  //     res.json(data);
-  //   })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //       res.status(500).json({error: err.message});
-  //     });
-  // });
-
   router.put("/", (req, res) => {
     console.log(req.headers)
     const {
@@ -62,18 +51,7 @@ const routes = function(pool) {
         res.status(500).json({ error: err.message });
       });
   });
-
-  // router.delete("/:id", (req, res) => {
-  //   const id = req.params.id;
-  //   deleteItem(id).then(data => {
-  //     res.json(data);
-  //   })
-  //     .catch(err => {
-  //       console.log(err.message);
-  //       res.status(500).json({error: err.message});
-  //     });
-  // });
-
+  
   return router;
 };
 

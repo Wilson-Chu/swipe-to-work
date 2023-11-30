@@ -1,5 +1,4 @@
 import React from 'react';
-import fetchData from '../../api-data/data'; 
 import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
