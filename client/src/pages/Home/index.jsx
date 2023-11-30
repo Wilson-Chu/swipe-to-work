@@ -3,17 +3,14 @@ import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 import "./Home.scss"
-import useApplicationData from '../../hooks/useApplicationData';
 
 const Home = function(props) {
 
-  const {state, openModal, closeModal, nextJob} = useApplicationData();
-
   return (
       <div className='home'>
-        <MainJobPoints jobs={state.jobs} jobIndex={state.jobIndex}  openModal={openModal}/>
-        <ActionButtons jobs={state.jobs} jobIndex={state.jobIndex} nextJob={nextJob}/>
-        {!!state.modal && <JobDetailsModal jobs={state.jobs} closeModal={closeModal} jobIndex={state.jobIndex}/>}
+        <MainJobPoints jobs={props.jobs} jobIndex={props.jobIndex}  openModal={props.openModal}/>
+        <ActionButtons jobs={props.jobs} jobIndex={props.jobIndex} nextJob={props.nextJob}/>
+        {!!props.modal && <JobDetailsModal jobs={props.jobs} closeModal={props.closeModal} jobIndex={props.jobIndex}/>}
       </div>
   );
 }
