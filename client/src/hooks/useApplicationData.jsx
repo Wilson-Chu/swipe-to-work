@@ -20,7 +20,7 @@ const useApplicationData = function () {
 
   // Fetch data on first render
   useEffect(() => {
-    console.log("Heloo!!!");
+    console.log("job postings fetched from jsearch api");
     fetchItems();
   }, []);
 
