@@ -1,26 +1,47 @@
-.main-image {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.main-job-points {
-  display: flex;
-  justify-content: space-around;
-  padding: 0;
-  list-style-type: none;
-}
-
 .main-points-container {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
+.main-img-container {
+  width: 40rem;
+  height: 30rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fcf9;
+  
+  .main-image {
+  max-width: 95%;
+  max-height: 90%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  }
+}
+
+.main-points-text-container {
+  background-color: #f8fcf9;
+
+  .main-job-points {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    list-style-type: none;
+  }
+}
+
+
 .action-buttons {
   display: flex;
   justify-content: space-between;
+  background-color: #f8fcf9;
+  padding-bottom: 2rem;
+
 }
+
 
 .modal-job-details {
   list-style-type: none;
