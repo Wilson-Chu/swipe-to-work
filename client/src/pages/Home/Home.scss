@@ -34,9 +34,11 @@
   .main-job-points {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 0;
     list-style-type: none;
     padding-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
     .fa-solid, .fas {
       font-size: x-large;
