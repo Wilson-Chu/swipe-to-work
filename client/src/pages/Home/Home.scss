@@ -11,8 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8fcf9;
-  
+
   .main-image {
   max-width: 95%;
   max-height: 90%;
@@ -23,7 +22,6 @@
 }
 
 .main-points-text-container {
-  background-color: #f8fcf9;
 
   .main-job-points {
     display: flex;
@@ -31,15 +29,17 @@
     padding: 0;
     list-style-type: none;
   }
+
+
 }
 
 
 .action-buttons {
   display: flex;
   justify-content: space-between;
-  background-color: #f8fcf9;
+  // background-color: #f8fcf9;
   padding-bottom: 2rem;
-
+  
 }
 
 

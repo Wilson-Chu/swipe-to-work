@@ -7,14 +7,21 @@ export default defineConfig({
 
   server: {
     proxy: {
-      '/api': {
+      "/api": {
         target: "http://localhost:8080",
         changeOrigin: true,
         secure: false,
         // We can even re-write the request
         // rewrite: path => path.replace('/api', ''),
-      }
-    }
+      },
+    },
   },
 
-})
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@import './bootstrap-variables.scss';`,
+  //     },
+  //   },
+  // },
+});
