@@ -22,6 +22,12 @@
 }
 
 .main-points-text-container {
+  h2 {
+    background-image: url("../../public/h2-p2.png");
+    background-size: cover;
+    background-position: center;
+    color: #f8fcf9;
+  }
 
   .main-job-points {
     display: flex;
@@ -36,8 +42,7 @@
 
 .action-buttons {
   display: flex;
-  justify-content: space-between;
-  // background-color: #f8fcf9;
+  justify-content: space-around;
   padding-bottom: 2rem;
   
 }
