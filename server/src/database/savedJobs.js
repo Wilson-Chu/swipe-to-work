@@ -1,7 +1,5 @@
 const pool = require("./connect");
 
-// module.exports = function(pool) {
-
 const getSavedJobs = function () {
   const sql = "SELECT * FROM saved_jobs ORDER BY id DESC";
 
@@ -70,9 +68,5 @@ const deleteSavedJob = function (id) {
       return res.rows[0];
     });
 };
-
-// return { getSavedJobs, addSavedJob, deleteSavedJob };
-
-// };
 
 module.exports = { getSavedJobs, addSavedJob, deleteSavedJob };

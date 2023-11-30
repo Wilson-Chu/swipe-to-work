@@ -37,7 +37,7 @@ const ActionButtons = function (props) {
 
   const randomChoice = function() {
     if (Math.random() < 0.5) {
-      saveJob();
+      handleSaveAndNext();
     } else {
       props.nextJob();
     }
