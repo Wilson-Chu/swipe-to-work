@@ -52,6 +52,7 @@ const useApplicationData = function () {
 
   // Fetch data on first render
   useEffect(() => {
+    console.log("Heloo!!!");
     fetchItems();
   }, []);
 

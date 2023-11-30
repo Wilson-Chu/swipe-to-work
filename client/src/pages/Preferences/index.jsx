@@ -55,7 +55,7 @@ function Preferences(props) {
     };
 
     axios
-      .put("/api/prefs", newPrefs)
+      .put("/api/prefs", newPrefs, {headers: { 'x-user-auth': 999}})
       .then((res) => navigate("/"))
       .catch((error) => console.log(error));
   };

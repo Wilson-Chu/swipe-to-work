@@ -27,7 +27,7 @@ const routes = function(pool) {
   // });
 
   router.put("/", (req, res) => {
-
+    console.log(req.headers)
     const {
       jobTitle,
       company,

@@ -1,7 +1,8 @@
 const axios = require("axios");
 // const {fetchPrefs} = require("./fetchPrefs")
+const { updatePref, getPref } = require("../database/prefHelpers");
 
-const fetchData =  function() {
+const fetchData = async function() {
 
     // axios
     //   .get("/api/prefs")
@@ -37,12 +38,17 @@ const fetchData =  function() {
     //         throw error;
     //     });
     //   })
+    
+    const data = await getPref(1)
+    console.log(data);
+    // .then((res) => (console.log(res.job_title)));
+    // console.log(getPref(1));
 
     const options = {
       method: "GET",
       url: "https://jsearch.p.rapidapi.com/search",
       params: {
-        query: "developer in toronto, canada",
+        query: `${data.job_title} in toronto, canada`,
         page: "1",
         date_posted: "all",
         country: "CA",
