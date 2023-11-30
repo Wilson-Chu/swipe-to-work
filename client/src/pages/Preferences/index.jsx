@@ -70,7 +70,7 @@ function Preferences(props) {
           Job Title:
           <input
             required
-            placeholder="web developper...?"
+            placeholder="web developer...?"
             type="text"
             value={jobTitle}
             onChange={(e) => {
