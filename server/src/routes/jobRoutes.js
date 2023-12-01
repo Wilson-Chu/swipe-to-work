@@ -10,7 +10,7 @@ const routes = function() {
     console.log("fetchdata test")
     fetchData()
       .then(data => res.json(data.data))
-      .catch(error => console.error(error, "job route"));
+      .catch(error => console.error(error, "job route error"));
 
   })
 
