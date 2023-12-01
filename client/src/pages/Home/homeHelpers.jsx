@@ -1,19 +1,25 @@
 export const educationList = (job) => {
   const requiredEducation = [];
   for (const key in job) {
-    if (key === "degree_mentioned") { break; }
+    if (key === "degree_mentioned") { continue; }
+    if (key === "degree_preferred") { continue; }
+    if (key === "professional_certification_mentioned") { continue; }
     if (job[key] === true) {
       let educationType = key.replace(/_/g, " ");
       requiredEducation.push(educationType);
     }
   }
-  return requiredEducation; // Return the array of education types
+  if (requiredEducation.length === 0) {
+    requiredEducation.push("N/A")
+  }
+  return requiredEducation;
 };
 
 export const descWithLineBreaks = (jobDescription) => {
   return jobDescription.split("\n").map((line, index) => {
     return (
-      <p key={index}>
+      <p className="job-desc-details"
+        key={index}>
         {line}
       </p>
     );
