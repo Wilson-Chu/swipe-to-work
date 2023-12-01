@@ -1,3 +1,21 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40rem;
+  height: 30rem;
+  padding-top: 9rem;
+
+  h2 {
+    padding-top: 1rem;
+  }
+}
+
+.spinner {
+  display: block;
+  margin: 0 auto;
+}
+
 .main-points-container {
   display: flex;
   flex-direction: column;
@@ -81,7 +99,6 @@
         font-weight: 900;
       }
     }
-
   }
 }
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import { jobTypeFormatter } from './homeHelpers'
+import { css } from "@emotion/react";
+import { DotLoader, ClipLoader } from "react-spinners";
+
 
 const MainJobPoints = function (props) {
 
@@ -13,7 +16,21 @@ const MainJobPoints = function (props) {
   return (
     props.jobs.length > 0 && (
       <>
-        {!!props.loading && <h2>Finding your perfect job!</h2>}
+        {!!props.loading && (
+          <div className="spinner-container">
+            <DotLoader
+              css={`
+                .spinner {
+                  background-color: transparent;
+                }
+              `}
+              size={70}
+              color="#854893"
+            />
+            <h2>Finding your perfect job!</h2>
+          </div>
+        )}
+
         {!props.loading && (
           <div
             className={`main-points-container ${isJobSaved ? "saved" : ""} ${
@@ -55,10 +72,9 @@ const MainJobPoints = function (props) {
                 <li>
                   <i className="fa-regular fa-clock"></i>
                   <p>
-                    {
-                      jobTypeFormatter(props.jobs[props.jobIndex]
-                        .job_employment_type)
-                    }
+                    {jobTypeFormatter(
+                      props.jobs[props.jobIndex].job_employment_type
+                    )}
                   </p>
                 </li>
               </ul>
