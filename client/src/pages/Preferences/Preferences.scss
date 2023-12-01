@@ -12,7 +12,10 @@
     letter-spacing:1px;
     font-family: 'Comfortaa', sans-serif;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-image: url("../../public/h2-pref4.png");
+    background-size: cover;
+    background-position: center;
 
     &:before {
       background-color: #bd7aa8;
