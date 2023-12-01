@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, applied}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({})
@@ -23,6 +23,10 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
       console.log("Error:", error);
     }
   };
+
+  const clickApply = function () {
+
+  }
 
   return (
     <>

@@ -22,7 +22,8 @@ export default function App() {
     fetchItems,
     swipeLeft,
     swipeRight,
-    setLoading
+    setLoading,
+    updateAppliedJobs // update appliedJobs array with jobId 
   } = useApplicationData();
   
   // just for layout testing:
