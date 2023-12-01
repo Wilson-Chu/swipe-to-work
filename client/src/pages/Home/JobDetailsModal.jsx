@@ -36,7 +36,7 @@ const JobDetailsModal = function (props) {
         </li>
           Education required: {educationList(props.jobs)}
         <li>
-          No expereince required? {(props.jobs[props.jobIndex].job_required_experience.no_experience_required).toString()}
+          No experience required? {(props.jobs[props.jobIndex].job_required_experience.no_experience_required).toString()}
         </li>
       </ul>
     </div>

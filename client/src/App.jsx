@@ -18,39 +18,39 @@ import { useState, useCallback, useEffect } from "react";
 
 export default function App() {
 
-  const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
+  // const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
   
   // just for layout testing:
-  // const [jobIndex, setJobIndex] = useState(0);
-  // const [modal, setModal] = useState(false);
+  const [jobIndex, setJobIndex] = useState(0);
+  const [modal, setModal] = useState(false);
 
-  // const openModal = function () {
-  //   setModal(true);
-  // };
+  const openModal = function () {
+    setModal(true);
+  };
 
-  // const closeModal = function () {
-  //   setModal(false);
-  // };
+  const closeModal = function () {
+    setModal(false);
+  };
 
-  // const nextJob = function () {
-  //   setJobIndex((prev) => prev + 1);
-  // };
+  const nextJob = function () {
+    setJobIndex((prev) => prev + 1);
+  };
 
-  // const fetchItems = useCallback(() => {
-  //   axios
-  //     .get("/api/jobs")
-  //     .then((res) => {
-  //       setJobs(res.data);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // });
+  const fetchItems = useCallback(() => {
+    axios
+      .get("/api/jobs")
+      .then((res) => {
+        setJobs(res.data);
+      })
+      .catch((error) => console.log(error.message));
+  });
 
-  // useEffect(() => {
-  //   console.log("job postings fetched from jsearch api");
-  //   fetchItems();
-  // }, []);
+  useEffect(() => {
+    console.log("job postings fetched from jsearch api");
+    fetchItems();
+  }, []);
   
-  // const state = { jobs: data.data, jobIndex, modal };
+  const state = { jobs: data.data, jobIndex, modal };
 
 
 
