@@ -7,7 +7,7 @@ import "./Home.scss"
 
 const Home = function(props) {
 
-  const { isJobSaved, setIsJobSaved } = props;
+  const { isJobSaved, setIsJobSaved, isJobPassed, setIsJobPassed } = props;
 
   return (
     <div className="home">
@@ -16,12 +16,14 @@ const Home = function(props) {
         jobIndex={props.jobIndex}
         openModal={props.openModal}
         isJobSaved={isJobSaved}
+        isJobPassed={isJobPassed}
       />
       <ActionButtons
         jobs={props.jobs}
         jobIndex={props.jobIndex}
         nextJob={props.nextJob}
         setIsJobSaved={setIsJobSaved}
+        setIsJobPassed={setIsJobPassed}
       />
       {!!props.modal && (
         <JobDetailsModal

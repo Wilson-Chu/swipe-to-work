@@ -4,20 +4,33 @@
   position: relative;
   transition: transform 0.5s ease;
 
-  @keyframes slideOutRight {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(180%);
-    }
+  &.saved {
+    animation: slideOutRight 0.5s ease;
   }
+
+  &.passed {
+    animation: slideOutLeft 0.5s ease;
+  }
+ 
 }
 
-.job-saved {
-  // transform: translateX(100%);
-  animation: slideOut 0.5s ease;
+@keyframes slideOutRight {
+   0% {
+     transform: translateX(0);
+   }
+   100% {
+     transform: translateX(180%);
+   }
 }
+@keyframes slideOutLeft {
+   0% {
+     transform: translateX(0);
+   }
+   100% {
+     transform: translateX(-180%);
+   }
+}
+
 
 .main-img-container {
   width: 40rem;

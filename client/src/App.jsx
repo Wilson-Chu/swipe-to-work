@@ -19,6 +19,7 @@ export default function App() {
   const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
   
   const [isJobSaved, setIsJobSaved] = useState(false);
+  const [isJobPassed, setIsJobPassed] = useState(false);
 
 
   return (
@@ -38,6 +39,8 @@ export default function App() {
                 nextJob={nextJob}
                 isJobSaved={isJobSaved}
                 setIsJobSaved={setIsJobSaved}
+                isJobPassed={isJobPassed}
+                setIsJobPassed={setIsJobPassed}
               />
             }
           />

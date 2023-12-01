@@ -5,7 +5,7 @@ import "./ActionButtons.scss"
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ActionButtons = function (props) {
-  const { setIsJobSaved } = props;
+  const { setIsJobSaved, setIsJobPassed } = props;
 
   const saveJob = function () {
     const jobData = {
@@ -52,19 +52,32 @@ const ActionButtons = function (props) {
     }
   }
 
+  const handlePass = function() {
+    setIsJobPassed(true);
+    props.nextJob();
+    setTimeout(() => {
+      setIsJobPassed(false);
+    }, 1000);
+
+  }
+
   return (
     <div className="action-buttons">
-      <button className="action-button" type="button" onClick={props.nextJob}>
+      <button className="action-button" type="button" onClick={handlePass}>
         Pass
       </button>
       <button className="action-button" type="button" onClick={randomChoice}>
         Random!
       </button>
-      <button className="action-button" type="button" onClick={handleSaveAndNext}>
+      <button
+        className="action-button"
+        type="button"
+        onClick={handleSaveAndNext}
+      >
         Save
       </button>
     </div>
-  )
+  );
 }
 
 

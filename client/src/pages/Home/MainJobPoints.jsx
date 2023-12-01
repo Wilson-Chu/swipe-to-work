@@ -2,7 +2,7 @@ import React from 'react';
 
 const MainJobPoints = function (props) {
 
-  const { isJobSaved } = props;
+  const { isJobSaved, isJobPassed } = props;
 
   const handleImageError = (event) => {
     // Replace any broken image with the default image
@@ -12,12 +12,12 @@ const MainJobPoints = function (props) {
   return (
     props.jobs.length > 0 && (
       <div
-        // className={`main-points-container ${isJobSaved ? "saved" : ""} ${
-        //   isJobPassed ? "passed" : ""
-        // }`}
-        className={
-          isJobSaved ? "job-saved" : "main-points-container"
-        }
+        className={`main-points-container ${isJobSaved ? "saved" : ""} ${
+          isJobPassed ? "passed" : ""
+        }`}
+        // className={
+        //   isJobSaved ? "job-saved" : "main-points-container"
+        // }
       >
         {props.jobs[props.jobIndex].employer_logo && (
           <div className="main-img-container">
