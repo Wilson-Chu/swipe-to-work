@@ -7,7 +7,9 @@ export const ACTIONS = {
   CLOSE_MODAL: "CLOSE_MODAL",
   NEXT_JOB: "NEXT_JOB",
   SWIPE_RIGHT: "SWIPE_RIGHT",
-  SWIPE_LEFT: "SWIPE_LEFT"
+  SWIPE_LEFT: "SWIPE_LEFT",
+  LOADING: "LOADING",
+  FINISHED_LOADING: "FINISHED_LOADING"
 }
 
 const reducer = (state, action) => {
@@ -16,7 +18,7 @@ const reducer = (state, action) => {
       return { ...state, jobs: action.value }
 
     case ACTIONS.SHOW_MORE_DETAILS:
-      return { ...state, modal: action.value }
+      return { ...state, modal: true }
 
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false }
@@ -30,6 +32,12 @@ const reducer = (state, action) => {
     case ACTIONS.SWIPE_LEFT:
       return {...state, isJobPassed: action.value};
 
+    case ACTIONS.LOADING:
+        return { ...state, loading: true }
+  
+    case ACTIONS.FINISHED_LOADING:
+        return { ...state, loading: false }
+
     default:
       throw new Error(`${action.type} is not recognized`)
   }
@@ -40,16 +48,20 @@ const initialState = {
   jobIndex: 0,
   modal: false,
   isJobSaved: false,
-  isJobPassed: false
+  isJobPassed: false,
+  loading: false
 };
 
 const useApplicationData = function () {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const setLoading = (loading) => {
+    dispatch({ type: loading ? ACTIONS.LOADING : ACTIONS.FINISHED_LOADING });
+  };
 
   const openModal = function () {
-    dispatch({ type: ACTIONS.SHOW_MORE_DETAILS, value: true });
+    dispatch({ type: ACTIONS.SHOW_MORE_DETAILS});
   };
 
   const closeModal = function () {
@@ -79,14 +91,18 @@ const useApplicationData = function () {
   }
 
   const fetchItems = useCallback(() => {
-
+    setLoading(true)
     axios
       .get("/api/jobs")
       .then((res) => {
         console.log("test");
         dispatch({ type: ACTIONS.SET_JOBS_DATA, value: res.data });
+        setLoading(false)
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        setLoading(false)
+        console.log(error.message)
+      });
   });
 
   // Fetch data on first render
@@ -95,7 +111,7 @@ const useApplicationData = function () {
   }, []);
 
 
-  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight };
+  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight, setLoading };
 };
 
 export default useApplicationData;

@@ -11,7 +11,9 @@ const MainJobPoints = function (props) {
 
   return (
     props.jobs.length > 0 && (
-      <div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
+      <>
+      {!!props.loading && <h2>Finding your perfect job!</h2>}
+      {!props.loading && <div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
         {props.jobs[props.jobIndex].employer_logo && (
           <div className="main-img-container">
             <img
@@ -50,7 +52,8 @@ const MainJobPoints = function (props) {
             </li>
           </ul>
         </div>
-      </div>
+      </div>}
+      </>
     )
   );
 };
