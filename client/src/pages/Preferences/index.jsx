@@ -58,7 +58,10 @@ function Preferences(props) {
       .put("/api/prefs", newPrefs, {headers: { 'x-user-auth': 999}}) // headers can be accessed using req.headers later [useful for userID]
       .then(() => props.fetchItems())
       .then(() => navigate("/"))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        props.setLoading(false)
+        console.log(error)
+      });
   };
 
   return (

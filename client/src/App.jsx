@@ -22,6 +22,7 @@ export default function App() {
     fetchItems,
     swipeLeft,
     swipeRight,
+    setLoading
   } = useApplicationData();
   
   // just for layout testing:
@@ -69,6 +70,7 @@ export default function App() {
                 jobs={state.jobs}
                 jobIndex={state.jobIndex}
                 modal={state.modal}
+                loading={state.loading}
                 openModal={openModal}
                 closeModal={closeModal}
                 nextJob={nextJob}
@@ -86,7 +88,7 @@ export default function App() {
 
           <Route
             path="/preferences"
-            element={<Preferences jobs={state.jobs} fetchItems={fetchItems} />}
+            element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading}/>}
           />
 
           <Route path="/saved" element={<Saved />} />
