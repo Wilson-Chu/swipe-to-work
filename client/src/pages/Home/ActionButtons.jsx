@@ -5,7 +5,8 @@ import "./ActionButtons.scss"
 import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ActionButtons = function (props) {
-  const { setIsJobSaved, setIsJobPassed } = props;
+  
+  const { swipeLeft, swipeRight } = props;
 
   const saveJob = function () {
     const jobData = {
@@ -35,13 +36,8 @@ const ActionButtons = function (props) {
 
   const handleSaveAndNext = function() {
     saveJob();
-    // control slide animation
-    setIsJobSaved(true);
+    swipeRight();
     props.nextJob();
-    setTimeout(() => {
-      setIsJobSaved(false);
-    }, 1000);
-  
   };
 
   const randomChoice = function() {
@@ -53,12 +49,8 @@ const ActionButtons = function (props) {
   }
 
   const handlePass = function() {
-    setIsJobPassed(true);
+    swipeLeft();
     props.nextJob();
-    setTimeout(() => {
-      setIsJobPassed(false);
-    }, 1000);
-
   }
 
   return (
@@ -69,11 +61,7 @@ const ActionButtons = function (props) {
       <button className="action-button" type="button" onClick={randomChoice}>
         Random!
       </button>
-      <button
-        className="action-button"
-        type="button"
-        onClick={handleSaveAndNext}
-      >
+      <button className="action-button" type="button" onClick={handleSaveAndNext}>
         Save
       </button>
     </div>

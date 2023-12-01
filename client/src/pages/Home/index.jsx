@@ -7,7 +7,7 @@ import "./Home.scss"
 
 const Home = function(props) {
 
-  const { isJobSaved, setIsJobSaved, isJobPassed, setIsJobPassed } = props;
+  const { isJobSaved, swipeRight, isJobPassed, swipeLeft } = props;
 
   return (
     <div className="home">
@@ -22,8 +22,8 @@ const Home = function(props) {
         jobs={props.jobs}
         jobIndex={props.jobIndex}
         nextJob={props.nextJob}
-        setIsJobSaved={setIsJobSaved}
-        setIsJobPassed={setIsJobPassed}
+        swipeRight={swipeRight}
+        swipeLeft={swipeLeft}
       />
       {!!props.modal && (
         <JobDetailsModal

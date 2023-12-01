@@ -11,15 +11,21 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 
-// swipe animation
-import { useState } from "react";
 
 export default function App() {
 
-  const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
+  const {
+    state,
+    openModal,
+    closeModal,
+    nextJob,
+    fetchItems,
+    swipeLeft,
+    swipeRight,
+  } = useApplicationData();
   
-  const [isJobSaved, setIsJobSaved] = useState(false);
-  const [isJobPassed, setIsJobPassed] = useState(false);
+  // const [isJobSaved, setIsJobSaved] = useState(false);
+  // const [isJobPassed, setIsJobPassed] = useState(false);
 
 
   return (
@@ -37,10 +43,10 @@ export default function App() {
                 openModal={openModal}
                 closeModal={closeModal}
                 nextJob={nextJob}
-                isJobSaved={isJobSaved}
-                setIsJobSaved={setIsJobSaved}
-                isJobPassed={isJobPassed}
-                setIsJobPassed={setIsJobPassed}
+                isJobSaved={state.isJobSaved}
+                swipeRight={swipeRight}
+                isJobPassed={state.isJobPassed}
+                swipeLeft={swipeLeft}
               />
             }
           />

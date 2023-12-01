@@ -5,7 +5,9 @@ export const ACTIONS = {
   SET_JOBS_DATA: "SET_JOBS_DATA",
   SHOW_MORE_DETAILS: "SHOW_MORE_DETAILS",
   CLOSE_MODAL: "CLOSE_MODAL",
-  NEXT_JOB: "NEXT_JOB"
+  NEXT_JOB: "NEXT_JOB",
+  SWIPE_RIGHT: "SWIPE_RIGHT",
+  SWIPE_LEFT: "SWIPE_LEFT"
 }
 
 const reducer = (state, action) => {
@@ -21,6 +23,12 @@ const reducer = (state, action) => {
 
     case ACTIONS.NEXT_JOB:
       return { ...state, jobIndex: state.jobIndex + 1 };
+    
+    case ACTIONS.SWIPE_RIGHT:
+      return {...state, isJobSaved: action.value};
+
+    case ACTIONS.SWIPE_LEFT:
+      return {...state, isJobPassed: action.value};
 
     default:
       throw new Error(`${action.type} is not recognized`)
@@ -30,8 +38,10 @@ const reducer = (state, action) => {
 const initialState = {
   jobs: [],
   jobIndex: 0,
-  modal: false
-}
+  modal: false,
+  isJobSaved: false,
+  isJobPassed: false
+};
 
 const useApplicationData = function () {
 
@@ -50,6 +60,24 @@ const useApplicationData = function () {
     dispatch({ type: ACTIONS.NEXT_JOB });
   };
 
+  useEffect(() => {
+    // execute only when isJobSaved or isJobPassed is true -> allow animation to happen again
+    if (state.isJobSaved || state.isJobPassed) {
+      setTimeout(() => {
+        dispatch({ type: ACTIONS.SWIPE_RIGHT, value: false });
+        dispatch({ type: ACTIONS.SWIPE_LEFT, value: false });
+      }, 1000);
+    }
+  }, [state.isJobSaved, state.isJobPassed]);
+
+  const swipeRight = function() {
+    dispatch({type: ACTIONS.SWIPE_RIGHT, value: true});
+  };
+
+  const swipeLeft = function() {
+    dispatch({type: ACTIONS.SWIPE_LEFT, value: true});
+  }
+
   const fetchItems = useCallback(() => {
 
     axios
@@ -67,7 +95,7 @@ const useApplicationData = function () {
   }, []);
 
 
-  return { state, fetchItems, openModal, closeModal, nextJob };
+  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight };
 };
 
 export default useApplicationData;
