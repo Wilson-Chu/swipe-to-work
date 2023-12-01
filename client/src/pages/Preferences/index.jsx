@@ -112,19 +112,19 @@ function Preferences(props) {
             onChange={(e) => setProvince(e.target.value)}
           >
             <option className="opt" value="">Select Province</option>
-            <option>NL</option>
-            <option>PE</option>
-            <option>NS</option>
-            <option>NB</option>
-            <option>QC</option>
-            <option>ON</option>
-            <option>MB</option>
-            <option>SK</option>
-            <option>AB</option>
-            <option>BC</option>
-            <option>YT</option>
-            <option>NT</option>
-            <option>NU</option>
+            <option value="Ontario">ON</option>
+            <option value="Quebec">QC</option>
+            <option value="Nova Scotia">NS</option>
+            <option value="New Brunswick">NB</option>
+            <option value="Manitoba">MB</option>
+            <option value="British Columbia">BC</option>
+            <option value="Prince Edward Island">PEI</option>
+            <option value="Saskatchewan">SK</option>
+            <option value="Alberta">AB</option>
+            <option value="Newfoundland and Labrador">NL</option>
+            <option value="Northwest Territories">NT</option>
+            <option value="Yukon">YT</option>
+            <option value="Nunavut">NU</option>
           </select>
         </label>
 
@@ -146,8 +146,10 @@ function Preferences(props) {
           Job Type:
           <select value={jobType} onChange={(e) => setJobType(e.target.value)}>
             <option value="NULL">Select Job Type</option>
-            <option value="Fulltime">Fulltime</option>
-            <option value="Temporary">Temporary</option>
+            <option value="FULLTIME">Full-time</option>
+            <option value="PARTTIME">Part-time</option>
+            <option value="CONTRACTOR">Contractor</option>
+            <option value="INTERN">Internship</option>
           </select>
         </label>
 
