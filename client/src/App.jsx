@@ -24,7 +24,7 @@ export default function App() {
           <Route path="/" element={<Home jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal} nextJob={nextJob}/>} />
           {/* <Route path="/account" element={<Account />} /> */}
           <Route path="/preferences" element={<Preferences jobs={state.jobs} fetchItems={fetchItems}/>} />
-          <Route path="/saved" element={<Saved />} />
+          <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
         </Routes>
       </Router>
     </div>

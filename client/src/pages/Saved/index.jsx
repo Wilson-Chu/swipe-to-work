@@ -4,12 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SavedJobItem from "./SavedJobItem";
-import useApplicationData from "../../hooks/useApplicationData";
-import JobDetailsModal from "../Home/JobDetailsModal";
 
 function Saved(props) {
-  const { jobs, jobIndex, modal, openModal, closeModal, nextJob } =
-    useApplicationData();
 
   const [savedJobs, setSavedJobs] = useState([]);
 
@@ -45,19 +41,22 @@ function Saved(props) {
             <div key={index}>
               <SavedJobItem
                 id={job.id}
+                job={job}
                 job_title={job.job_title}
                 company={job.company}
                 website={job.website}
                 deleteSavedJob={deleteSavedJob}
-                openModal={openModal}
+                openModal={props.openModal}
+                jobIndex={props.jobIndex}
+                modal={props.modal}
               />
-              {!!modal && (
+              {/* {!!props.modal && (
                 <JobDetailsModal
-                  jobs={jobs}
-                  closeModal={closeModal}
-                  jobIndex={3}
+                  jobs={savedJobs}
+                  closeModal={props.closeModal}
+                  jobIndex={props.jobIndex}
                 />
-              )}
+              )} */}
             </div>
           ))}
         </>

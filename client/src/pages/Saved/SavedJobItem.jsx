@@ -1,11 +1,25 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import SavedJobModal from "./SavedJobModal";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openModal }) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openModal, jobIndex, job, modal }) {
+
+  const [oneSavedJob, setOneSavedJob] = useState({})
 
   const removeSavedJob = function(id) {
     deleteSavedJob(id);
   };
+
+  const savedJobItemModal = function(job){
+    setOneSavedJob(job)
+  }
+
+const reviewPosting = function(){
+  console.log(`Opening posting at id: ${id}`, job)
+  setOneSavedJob(job);
+  console.log(oneSavedJob);
+}
 
   return (
     <>
@@ -26,7 +40,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openMod
           />
         </div>
         <div className="bottom-saved-box">
-          <span onClick={() => openModal()}>
+          <span onClick={() => reviewPosting()}>
             Review Posting
           </span>
           <span>
@@ -37,6 +51,11 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openMod
           </span>
         </div>
       </section>
+                    {!!modal && (
+                <SavedJobModal
+                  job={oneSavedJob}
+                />
+              )}            
       <br />
     </>
   );

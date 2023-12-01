@@ -23,9 +23,6 @@ const JobDetailsModal = function (props) {
           Mininum salary: {props.jobs[props.jobIndex].job_min_salary ? props.jobs[props.jobIndex].job_min_salary : "N/A"}
         </li>
         <li>
-          Maximum salary: {props.jobs[props.jobIndex].job_max_salary ? props.jobs[props.jobIndex].job_max_salary : "N/A"}
-        </li>
-        <li>
           Job type: {props.jobs[props.jobIndex].job_employment_type}
         </li>
         <li>
