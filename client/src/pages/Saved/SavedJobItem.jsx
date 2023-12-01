@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openModal }) {
 
   const removeSavedJob = function(id) {
     deleteSavedJob(id);
@@ -26,7 +26,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
           />
         </div>
         <div className="bottom-saved-box">
-          <span onClick={() => console.log(`You clicked on job posting: ${id}`)}>
+          <span onClick={() => openModal()}>
             Review Posting
           </span>
           <span>
