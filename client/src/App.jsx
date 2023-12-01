@@ -7,6 +7,7 @@ import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -57,8 +58,13 @@ export default function App() {
   // }, []);
   
   // const state = { jobs: data.data, jobIndex, modal };
+
+  /* testing only... */
+  console.log(state.appliedJobs.length)
+  /* end of testing */
   
   return (
+    <AppliedJobsProvider>
     <div className="App">
       <Router>
         <Navbar />
@@ -98,5 +104,6 @@ export default function App() {
         <Footer />
       </Router>
     </div>
+    </AppliedJobsProvider>
   );
 }

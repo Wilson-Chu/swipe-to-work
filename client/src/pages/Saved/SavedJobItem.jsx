@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
+import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 
 function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, applied}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({})
+
+  const { appliedJobs, updateAppliedJobs } = useAppliedJobsContext();
 
   const removeSavedJob = function(id) {
     deleteSavedJob(id);
@@ -24,9 +27,15 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
     }
   };
 
-  const clickApply = function () {
+  const handleUpdateAppliedJobs = () => {
+    // Call updateAppliedJobs function here
+    updateAppliedJobs(id);
+    console.log("appliedJobs: ", appliedJobs);
+  };
 
-  }
+  useEffect(() => {
+    console.log("appliedJobsInUseEffect:", appliedJobs);
+  }, [appliedJobs]);
 
   return (
     <>
@@ -36,6 +45,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
             icon="fa-solid fa-check"
             size="xl"
             className="check-applied"
+            // how to know if applied = T/F and change colors?
           />
           <h3>
             {job_title}, {company}
@@ -50,7 +60,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           <span onClick={() => reviewPosting()}>
             Review Posting
           </span>
-          <span>
+          <span onClick={handleUpdateAppliedJobs}>
             <a href={website} target="_blank" rel="noopener noreferrer" className="apply-link">
               <span>Apply To Job  </span>
               <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
