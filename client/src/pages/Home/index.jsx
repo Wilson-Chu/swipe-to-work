@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 
-import useApplicationData from '../../hooks/useApplicationData';
+// import useApplicationData from '../../hooks/useApplicationData';
 import data from '../../mockdata/data';
 
 import "./Home.scss"
