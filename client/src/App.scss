@@ -1,14 +1,41 @@
+// @import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/functions";
+@import './bootstrap-variables.scss';
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/root";
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-image: url("./public/bg2-t77.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  // overflow: hidden;
+  
   
 }
 
 .App {
   max-width: 1000px;
-  margin: .2em;
+  margin: 0.2em;
   text-align: center;
+  font-family: "Raleway", sans-serif;
+  // background-image: url("./public/bg-po2.png");
+  background-image: url("./public/bg-w.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+  border-radius: 8%;
+  padding-bottom: 0.5rem;
+  
 }
 
 /* theme color
