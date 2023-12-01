@@ -9,7 +9,8 @@ export const ACTIONS = {
   SWIPE_RIGHT: "SWIPE_RIGHT",
   SWIPE_LEFT: "SWIPE_LEFT",
   LOADING: "LOADING",
-  FINISHED_LOADING: "FINISHED_LOADING"
+  FINISHED_LOADING: "FINISHED_LOADING",
+  CLEAR_JOBS: "CLEAR_JOBS",
 }
 
 const reducer = (state, action) => {
@@ -37,6 +38,9 @@ const reducer = (state, action) => {
   
     case ACTIONS.FINISHED_LOADING:
         return { ...state, loading: false }
+    
+    case ACTIONS.CLEAR_JOBS:
+      return {...state, jobs: []}
 
     default:
       throw new Error(`${action.type} is not recognized`)
@@ -49,7 +53,7 @@ const initialState = {
   modal: false,
   isJobSaved: false,
   isJobPassed: false,
-  loading: false
+  loading: true
 };
 
 const useApplicationData = function () {
@@ -72,6 +76,10 @@ const useApplicationData = function () {
     dispatch({ type: ACTIONS.NEXT_JOB });
   };
 
+  const clearJobs = function() {
+    dispatch({ type: ACTIONS.CLEAR_JOBS})
+  }
+
   useEffect(() => {
     // execute only when isJobSaved or isJobPassed is true -> allow animation to happen again
     if (state.isJobSaved || state.isJobPassed) {
@@ -92,6 +100,7 @@ const useApplicationData = function () {
 
   const fetchItems = useCallback(() => {
     setLoading(true)
+    clearJobs();
     axios
       .get("/api/jobs")
       .then((res) => {
