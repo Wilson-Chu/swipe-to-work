@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MainJobPoints = function (props) {
-  console.log(props);
 
   const handleImageError = (event) => {
     // Replace any broken image with the default image

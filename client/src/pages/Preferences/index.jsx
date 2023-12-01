@@ -56,7 +56,8 @@ function Preferences(props) {
 
     axios
       .put("/api/prefs", newPrefs, {headers: { 'x-user-auth': 999}}) // headers can be accessed using req.headers later [useful for userID]
-      .then((res) => navigate("/"))
+      .then(() => props.fetchItems())
+      .then(() => navigate("/"))
       .catch((error) => console.log(error));
   };
 
@@ -70,7 +71,7 @@ function Preferences(props) {
           Job Title:
           <input
             required
-            placeholder="web developper...?"
+            placeholder="web developer...?"
             type="text"
             value={jobTitle}
             onChange={(e) => {

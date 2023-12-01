@@ -2,12 +2,11 @@ import React from 'react';
 import MainJobPoints from './MainJobPoints';
 import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
+
 import useApplicationData from '../../hooks/useApplicationData';
 import data from '../../mockdata/data';
-import "./Home.scss"
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
+import "./Home.scss"
 
 const Home = function(props) {
   // const {jobs, jobIndex, modal, openModal, closeModal, nextJob} = useApplicationData();
@@ -29,19 +28,12 @@ const Home = function(props) {
     setJobIndex((prev) => prev + 1);
   };
 
-
   return (
-    <div className="home">
-      <MainJobPoints jobs={jobs} jobIndex={jobIndex} openModal={openModal} />
-      <ActionButtons jobs={jobs} jobIndex={jobIndex} nextJob={nextJob} />
-      {!!modal && (
-        <JobDetailsModal
-          jobs={jobs}
-          closeModal={closeModal}
-          jobIndex={jobIndex}
-        />
-      )}
-    </div>
+      <div className='home'>
+        <MainJobPoints jobs={props.jobs} jobIndex={props.jobIndex}  openModal={props.openModal}/>
+        <ActionButtons jobs={props.jobs} jobIndex={props.jobIndex} nextJob={props.nextJob}/>
+        {!!props.modal && <JobDetailsModal jobs={props.jobs} closeModal={props.closeModal} jobIndex={props.jobIndex}/>}
+      </div>
   );
 }
 
