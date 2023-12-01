@@ -1,6 +1,5 @@
 import React from "react";
 import closeSymbol from "../../assets/closeSymbol.svg"
-import { educationList, descWithLineBreaks } from "./homeHelpers";
 import "./JobDetailsModal.scss"
 import {
   educationList,
