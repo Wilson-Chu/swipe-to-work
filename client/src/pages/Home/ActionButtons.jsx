@@ -2,8 +2,12 @@ import React from "react";
 import axios from "axios"
 import { descWithLineBreaks } from "../Home/homeHelpers"
 import "./ActionButtons.scss"
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ActionButtons = function (props) {
+  
+  const { swipeLeft, swipeRight } = props;
+
   const saveJob = function () {
     const jobData = {
       job_posting_id: props.jobs[props.jobIndex].job_id,
@@ -13,7 +17,7 @@ const ActionButtons = function (props) {
       city: props.jobs[props.jobIndex].job_city,
       province: props.jobs[props.jobIndex].job_state,
       min_salary: props.jobs[props.jobIndex].job_min_salary,
-      job_description: descWithLineBreaks(props.jobs[props.jobIndex].job_description),
+      job_description: props.jobs[props.jobIndex].job_description,
       job_type: props.jobs[props.jobIndex].job_employment_type,
       is_remote: props.jobs[props.jobIndex].job_is_remote,
       posted_at: props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift(),
@@ -32,6 +36,7 @@ const ActionButtons = function (props) {
 
   const handleSaveAndNext = function() {
     saveJob();
+    swipeRight();
     props.nextJob();
   };
 
@@ -39,13 +44,18 @@ const ActionButtons = function (props) {
     if (Math.random() < 0.5) {
       handleSaveAndNext();
     } else {
-      props.nextJob();
+      handlePass();
     }
+  }
+
+  const handlePass = function() {
+    swipeLeft();
+    props.nextJob();
   }
 
   return (
     <div className="action-buttons">
-      <button className="action-button" type="button" onClick={props.nextJob}>
+      <button className="action-button" type="button" onClick={handlePass}>
         Pass
       </button>
       <button className="action-button" type="button" onClick={randomChoice}>
@@ -55,7 +65,7 @@ const ActionButtons = function (props) {
         Save
       </button>
     </div>
-  )
+  );
 }
 
 

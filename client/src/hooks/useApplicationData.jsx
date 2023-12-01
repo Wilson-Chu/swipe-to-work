@@ -5,7 +5,11 @@ export const ACTIONS = {
   SET_JOBS_DATA: "SET_JOBS_DATA",
   SHOW_MORE_DETAILS: "SHOW_MORE_DETAILS",
   CLOSE_MODAL: "CLOSE_MODAL",
-  NEXT_JOB: "NEXT_JOB"
+  NEXT_JOB: "NEXT_JOB",
+  SWIPE_RIGHT: "SWIPE_RIGHT",
+  SWIPE_LEFT: "SWIPE_LEFT",
+  LOADING: "LOADING",
+  FINISHED_LOADING: "FINISHED_LOADING"
 }
 
 const reducer = (state, action) => {
@@ -14,13 +18,25 @@ const reducer = (state, action) => {
       return { ...state, jobs: action.value }
 
     case ACTIONS.SHOW_MORE_DETAILS:
-      return { ...state, modal: action.value }
+      return { ...state, modal: true }
 
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false }
 
     case ACTIONS.NEXT_JOB:
       return { ...state, jobIndex: state.jobIndex + 1 };
+    
+    case ACTIONS.SWIPE_RIGHT:
+      return {...state, isJobSaved: action.value};
+
+    case ACTIONS.SWIPE_LEFT:
+      return {...state, isJobPassed: action.value};
+
+    case ACTIONS.LOADING:
+        return { ...state, loading: true }
+  
+    case ACTIONS.FINISHED_LOADING:
+        return { ...state, loading: false }
 
     default:
       throw new Error(`${action.type} is not recognized`)
@@ -30,16 +46,22 @@ const reducer = (state, action) => {
 const initialState = {
   jobs: [],
   jobIndex: 0,
-  modal: false
-}
+  modal: false,
+  isJobSaved: false,
+  isJobPassed: false,
+  loading: false
+};
 
 const useApplicationData = function () {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const setLoading = (loading) => {
+    dispatch({ type: loading ? ACTIONS.LOADING : ACTIONS.FINISHED_LOADING });
+  };
 
   const openModal = function () {
-    dispatch({ type: ACTIONS.SHOW_MORE_DETAILS, value: true });
+    dispatch({ type: ACTIONS.SHOW_MORE_DETAILS});
   };
 
   const closeModal = function () {
@@ -50,15 +72,37 @@ const useApplicationData = function () {
     dispatch({ type: ACTIONS.NEXT_JOB });
   };
 
-  const fetchItems = useCallback(() => {
+  useEffect(() => {
+    // execute only when isJobSaved or isJobPassed is true -> allow animation to happen again
+    if (state.isJobSaved || state.isJobPassed) {
+      setTimeout(() => {
+        dispatch({ type: ACTIONS.SWIPE_RIGHT, value: false });
+        dispatch({ type: ACTIONS.SWIPE_LEFT, value: false });
+      }, 1000);
+    }
+  }, [state.isJobSaved, state.isJobPassed]);
 
+  const swipeRight = function() {
+    dispatch({type: ACTIONS.SWIPE_RIGHT, value: true});
+  };
+
+  const swipeLeft = function() {
+    dispatch({type: ACTIONS.SWIPE_LEFT, value: true});
+  }
+
+  const fetchItems = useCallback(() => {
+    setLoading(true)
     axios
       .get("/api/jobs")
       .then((res) => {
         console.log("test");
         dispatch({ type: ACTIONS.SET_JOBS_DATA, value: res.data });
+        setLoading(false)
       })
-      .catch((error) => console.log(error.message));
+      .catch((error) => {
+        setLoading(false)
+        console.log(error.message)
+      });
   });
 
   // Fetch data on first render
@@ -67,7 +111,7 @@ const useApplicationData = function () {
   }, []);
 
 
-  return { state, fetchItems, openModal, closeModal, nextJob };
+  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight, setLoading };
 };
 
 export default useApplicationData;

@@ -6,19 +6,24 @@ import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 
-// for layout testing
-import data from "./mockdata/data" 
-import axios from "axios";
-import { useState, useCallback, useEffect } from "react";
-
 export default function App() {
 
-  const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
+  const {
+    state,
+    openModal,
+    closeModal,
+    nextJob,
+    fetchItems,
+    swipeLeft,
+    swipeRight,
+    setLoading
+  } = useApplicationData();
   
   // just for layout testing:
   // const [jobIndex, setJobIndex] = useState(0);
@@ -51,19 +56,45 @@ export default function App() {
   // }, []);
   
   // const state = { jobs: data.data, jobIndex, modal };
-
-
-
+  
   return (
     <div className="App">
       <Router>
         <Navbar />
+
         <Routes>
-          <Route path="/" element={<Home jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal} nextJob={nextJob}/>} />
+          <Route
+            path="/"
+            element={
+              <Home
+                jobs={state.jobs}
+                jobIndex={state.jobIndex}
+                modal={state.modal}
+                loading={state.loading}
+                openModal={openModal}
+                closeModal={closeModal}
+                nextJob={nextJob}
+                isJobSaved={state.isJobSaved}
+                swipeRight={swipeRight}
+                isJobPassed={state.isJobPassed}
+                swipeLeft={swipeLeft}
+              />
+            }
+          />
+
           {/* <Route path="/account" element={<Account />} /> */}
           <Route path="/preferences" element={<Preferences jobs={state.jobs} fetchItems={fetchItems}/>} />
+          <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
+
+          <Route
+            path="/preferences"
+            element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading}/>}
+          />
+
           <Route path="/saved" element={<Saved />} />
         </Routes>
+        
+        <Footer />
       </Router>
     </div>
   );

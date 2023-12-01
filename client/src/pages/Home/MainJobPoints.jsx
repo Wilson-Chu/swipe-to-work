@@ -2,6 +2,8 @@ import React from 'react';
 
 const MainJobPoints = function (props) {
 
+  const { isJobSaved, isJobPassed } = props;
+
   const handleImageError = (event) => {
     // Replace any broken image with the default image
     event.target.src = "https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg";
@@ -9,7 +11,9 @@ const MainJobPoints = function (props) {
 
   return (
     props.jobs.length > 0 && (
-      <div className="main-points-container">
+      <>
+      {!!props.loading && <h2>Finding your perfect job!</h2>}
+      {!props.loading && <div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
         {props.jobs[props.jobIndex].employer_logo && (
           <div className="main-img-container">
             <img
@@ -48,7 +52,8 @@ const MainJobPoints = function (props) {
             </li>
           </ul>
         </div>
-      </div>
+      </div>}
+      </>
     )
   );
 };

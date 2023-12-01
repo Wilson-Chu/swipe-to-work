@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Shell for React/Express combined app",
   "main": "server.js",
+  "proxy": "http://localhost:5173",
   "scripts": {
     "install:server": "cd server && npm install",
     "install:client": "cd client && npm install",
@@ -23,6 +24,7 @@
     "sass": "^1.69.5"
   },
   "dependencies": {
+    "boostrap": "^2.0.0",
     "dotenv": "^16.3.1",
     "node-sass": "^9.0.0",
     "react-router-dom": "^6.20.0"

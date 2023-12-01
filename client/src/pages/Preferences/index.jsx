@@ -58,16 +58,19 @@ function Preferences(props) {
       .put("/api/prefs", newPrefs, {headers: { 'x-user-auth': 999}}) // headers can be accessed using req.headers later [useful for userID]
       .then(() => props.fetchItems())
       .then(() => navigate("/"))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        props.setLoading(false)
+        console.log(error)
+      });
   };
 
   return (
     <div className="pref">
       <h2>My Job Preferences</h2>
 
-      <form className="preferences-input">
+      <form className="preferences-inputs">
         <label>
-        {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
+          {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
           Job Title:
           <input
             required
@@ -108,7 +111,7 @@ function Preferences(props) {
             value={province}
             onChange={(e) => setProvince(e.target.value)}
           >
-            <option value="">Select Province</option>
+            <option className="opt" value="">Select Province</option>
             <option>NL</option>
             <option>PE</option>
             <option>NS</option>
