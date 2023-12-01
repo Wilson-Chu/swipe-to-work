@@ -84,7 +84,7 @@ const MainJobPoints = function (props) {
         />
         <h2>Finding your perfect job!</h2>
       </div>}
-        {!props.loading && <h2 className='loading-text'>Oops, please expand your search!</h2>}
+        {!props.loading && <h2 className='try-again-text'>Oops, please expand your search!</h2>}
       </>
     )
   );
