@@ -48,7 +48,7 @@ const ActionButtons = function (props) {
     if (Math.random() < 0.5) {
       handleSaveAndNext();
     } else {
-      props.nextJob();
+      handlePass();
     }
   }
 
