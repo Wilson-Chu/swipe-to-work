@@ -2,8 +2,11 @@ import React from "react";
 import axios from "axios"
 import { descWithLineBreaks } from "../Home/homeHelpers"
 import "./ActionButtons.scss"
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 const ActionButtons = function (props) {
+  const { setIsJobSaved } = props;
+
   const saveJob = function () {
     const jobData = {
       job_posting_id: props.jobs[props.jobIndex].job_id,
@@ -32,7 +35,12 @@ const ActionButtons = function (props) {
 
   const handleSaveAndNext = function() {
     saveJob();
+    setIsJobSaved(true);
     props.nextJob();
+    setTimeout(() => {
+      setIsJobSaved(false);
+    }, 1000);
+  
   };
 
   const randomChoice = function() {

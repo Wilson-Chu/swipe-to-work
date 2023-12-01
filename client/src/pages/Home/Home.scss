@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: transform 0.5s ease;
+  
+}
+
+.job-saved {
+  transform: translateX(100%);
 }
 
 .main-img-container {

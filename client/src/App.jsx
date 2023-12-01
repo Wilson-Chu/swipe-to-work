@@ -11,47 +11,14 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 
-// for layout testing
-import data from "./mockdata/data" 
-import axios from "axios";
-import { useState, useCallback, useEffect } from "react";
+// swipe animation
+import { useState } from "react";
 
 export default function App() {
 
   const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
   
-  // just for layout testing:
-  // const [jobIndex, setJobIndex] = useState(0);
-  // const [modal, setModal] = useState(false);
-
-  // const openModal = function () {
-  //   setModal(true);
-  // };
-
-  // const closeModal = function () {
-  //   setModal(false);
-  // };
-
-  // const nextJob = function () {
-  //   setJobIndex((prev) => prev + 1);
-  // };
-
-  // const fetchItems = useCallback(() => {
-  //   axios
-  //     .get("/api/jobs")
-  //     .then((res) => {
-  //       setJobs(res.data);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // });
-
-  // useEffect(() => {
-  //   console.log("job postings fetched from jsearch api");
-  //   fetchItems();
-  // }, []);
-  
-  // const state = { jobs: data.data, jobIndex, modal };
-
+  const [isJobSaved, setIsJobSaved] = useState(false);
 
 
   return (
@@ -59,9 +26,26 @@ export default function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal} nextJob={nextJob}/>} />
+          <Route
+            path="/"
+            element={
+              <Home
+                jobs={state.jobs}
+                jobIndex={state.jobIndex}
+                modal={state.modal}
+                openModal={openModal}
+                closeModal={closeModal}
+                nextJob={nextJob}
+                isJobSaved={isJobSaved}
+                setIsJobSaved={setIsJobSaved}
+              />
+            }
+          />
           {/* <Route path="/account" element={<Account />} /> */}
-          <Route path="/preferences" element={<Preferences jobs={state.jobs} fetchItems={fetchItems}/>} />
+          <Route
+            path="/preferences"
+            element={<Preferences jobs={state.jobs} fetchItems={fetchItems} />}
+          />
           <Route path="/saved" element={<Saved />} />
         </Routes>
       </Router>
