@@ -1,57 +1,76 @@
-h2 {
-   color: #854893;
-   padding: 0.5rem;
-   padding-top: 1rem;
-   font-size: 1.8rem;
-   margin-top: 0rem;
-   text-transform:uppercase;
-   letter-spacing:1px;
-   font-family: 'Comfortaa', sans-serif;
-   font-weight: bold;
-   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-   background-image: url("../../public/h2-pref4.png");
-   background-size: cover;
-   background-position: center;
+.saved-jobs-container {
+  h2 {
+     color: #854893;
+     padding: 0.5rem;
+     padding-top: 1rem;
+     font-size: 1.8rem;
+     margin-top: 0rem;
+     text-transform:uppercase;
+     letter-spacing:1px;
+     font-family: 'Comfortaa', sans-serif;
+     font-weight: bold;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+     background-image: url("../../public/h2-pref4.png");
+     background-size: cover;
+     background-position: center;
+  
+     &:before {
+        background-color: #bd7aa8;
+        content: '';
+        display: block;
+        height: 3px;
+        width: 75px;
+        margin-bottom: 5px;
+        position: relative;
+        right: -155px;
+      }
+  
+      &:after {
+        background-color: #bd7aa8;
+        content: '';
+        display: block;
+        position:relative; left: 338px;; bottom:0;
+        height: 3px;
+        width: 75px;
+        margin-bottom: 0.25em;
+      }
+   }
+  
+  p {
+    font-size: 1.5rem;
+    width: 40rem;
+    height: 20rem;
+    padding-top: 5rem;
+   }
+}
 
-   &:before {
-      background-color: #bd7aa8;
-      content: '';
-      display: block;
-      height: 3px;
-      width: 75px;
-      margin-bottom: 5px;
-      position: relative;
-      right: -155px;
-    }
+.saved-jobs {
+  padding-top: 0.5rem;
+}
 
-    &:after {
-      background-color: #bd7aa8;
-      content: '';
-      display: block;
-      position:relative; left: 338px;; bottom:0;
-      height: 3px;
-      width: 75px;
-      margin-bottom: 0.25em;
-    }
- }
-
-p {
-  font-size: 1.5rem;
-  width: 40rem;
-  height: 20rem;
-  padding-top: 5rem;
- }
 
 .saved-job-item {
   box-sizing: border-box;
   padding: 1em;
-  background-color: aliceblue;
+  background-color: #f8ece5;
   box-shadow: 0.3em 0.3em 0.3em 1px rgba(0, 0, 255, .2);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  
 }
 
 .top-saved-box {
   display: flex;
   justify-content: space-around;
+
+  h3{
+    font-size: 1.6rem;
+    font-family: 'Lexend', sans-serif;
+  }
 }
 
 .bottom-saved-box {
