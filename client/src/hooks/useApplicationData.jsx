@@ -11,6 +11,7 @@ export const ACTIONS = {
   LOADING: "LOADING",
   FINISHED_LOADING: "FINISHED_LOADING",
   CLEAR_JOBS: "CLEAR_JOBS",
+  UPDATE_APPLIED: "UPDATE_APPLIED"
 }
 
 const reducer = (state, action) => {
@@ -42,6 +43,22 @@ const reducer = (state, action) => {
     case ACTIONS.CLEAR_JOBS:
       return {...state, jobs: []}
 
+    case ACTIONS.UPDATE_APPLIED:
+      const { jobId } = action.payload;
+      const applied = state.appliedJobs.includes(jobId);
+      
+      if (!applied) {
+        return {
+          ...state,
+          appliedJobs: [...state.appliedJobs, jobId]
+        };
+      } else {
+        return {
+          ...state,
+          appliedJobs: state.appliedJobs.filter(appliedJobId => appliedJobId !== jobId)
+        };
+      };
+
     default:
       throw new Error(`${action.type} is not recognized`)
   }
@@ -53,7 +70,8 @@ const initialState = {
   modal: false,
   isJobSaved: false,
   isJobPassed: false,
-  loading: true
+  loading: true,
+  appliedJobs: []
 };
 
 const useApplicationData = function () {
@@ -98,6 +116,10 @@ const useApplicationData = function () {
     dispatch({type: ACTIONS.SWIPE_LEFT, value: true});
   }
 
+  const updateAppliedJobs = (jobId) => {
+    dispatch({ type: ACTIONS.UPDATE_APPLIED, payload: { jobId } });
+  };
+
   const fetchItems = useCallback(() => {
     setLoading(true)
     clearJobs();
@@ -120,7 +142,7 @@ const useApplicationData = function () {
   }, []);
 
 
-  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight, setLoading };
+  return { state, fetchItems, openModal, closeModal, nextJob, swipeLeft, swipeRight, setLoading, updateAppliedJobs };
 };
 
 export default useApplicationData;
