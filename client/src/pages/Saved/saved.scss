@@ -2,7 +2,6 @@ h2 {
    color: #854893;
    padding: 0.5rem;
    padding-top: 1rem;
-   border-bottom: 0.3rem #CF4307;
    font-size: 1.8rem;
    margin-top: 0rem;
    text-transform:uppercase;
@@ -34,6 +33,13 @@ h2 {
       width: 75px;
       margin-bottom: 0.25em;
     }
+ }
+
+p {
+  font-size: 1.5rem;
+  width: 40rem;
+  height: 20rem;
+  padding-top: 5rem;
  }
 
 .saved-job-item {
