@@ -15,6 +15,7 @@ const Home = function(props) {
         jobs={props.jobs}
         jobIndex={props.jobIndex}
         openModal={props.openModal}
+        loading={props.loading}
         isJobSaved={isJobSaved}
         isJobPassed={isJobPassed}
       />
