@@ -4,6 +4,7 @@ import JobDetailsModal from './JobDetailsModal';
 import ActionButtons from './ActionButtons';
 import "./Home.scss"
 
+
 const Home = function(props) {
 
   return (

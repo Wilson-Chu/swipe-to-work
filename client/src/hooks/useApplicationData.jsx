@@ -55,6 +55,7 @@ const useApplicationData = function () {
     axios
       .get("/api/jobs")
       .then((res) => {
+        console.log("test");
         dispatch({ type: ACTIONS.SET_JOBS_DATA, value: res.data });
       })
       .catch((error) => console.log(error.message));

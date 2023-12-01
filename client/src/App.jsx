@@ -1,20 +1,58 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import useApplicationData from "./hooks/useApplicationData";
+import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
-import useApplicationData from './hooks/useApplicationData';
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 
+// for layout testing
+import data from "./mockdata/data" 
+import axios from "axios";
+import { useState, useCallback, useEffect } from "react";
+
 export default function App() {
 
   const {state, openModal, closeModal, nextJob, fetchItems} = useApplicationData();
+  
+  // just for layout testing:
+  // const [jobIndex, setJobIndex] = useState(0);
+  // const [modal, setModal] = useState(false);
+
+  // const openModal = function () {
+  //   setModal(true);
+  // };
+
+  // const closeModal = function () {
+  //   setModal(false);
+  // };
+
+  // const nextJob = function () {
+  //   setJobIndex((prev) => prev + 1);
+  // };
+
+  // const fetchItems = useCallback(() => {
+  //   axios
+  //     .get("/api/jobs")
+  //     .then((res) => {
+  //       setJobs(res.data);
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // });
+
+  // useEffect(() => {
+  //   console.log("job postings fetched from jsearch api");
+  //   fetchItems();
+  // }, []);
+  
+  // const state = { jobs: data.data, jobIndex, modal };
+
+
 
   return (
     <div className="App">

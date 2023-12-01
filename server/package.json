@@ -4,6 +4,7 @@
   "description": "",
   "proxy": "http://localhost:5173",
   "main": "server.js",
+  
   "scripts": {
     "start": "node src/server.js",
     "local": "nodemon src/server.js"
