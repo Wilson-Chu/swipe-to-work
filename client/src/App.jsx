@@ -12,7 +12,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 
-
 export default function App() {
 
   const {
@@ -25,6 +24,38 @@ export default function App() {
     swipeRight,
     setLoading
   } = useApplicationData();
+  
+  // just for layout testing:
+  // const [jobIndex, setJobIndex] = useState(0);
+  // const [modal, setModal] = useState(false);
+
+  // const openModal = function () {
+  //   setModal(true);
+  // };
+
+  // const closeModal = function () {
+  //   setModal(false);
+  // };
+
+  // const nextJob = function () {
+  //   setJobIndex((prev) => prev + 1);
+  // };
+
+  // const fetchItems = useCallback(() => {
+  //   axios
+  //     .get("/api/jobs")
+  //     .then((res) => {
+  //       setJobs(res.data);
+  //     })
+  //     .catch((error) => console.log(error.message));
+  // });
+
+  // useEffect(() => {
+  //   console.log("job postings fetched from jsearch api");
+  //   fetchItems();
+  // }, []);
+  
+  // const state = { jobs: data.data, jobIndex, modal };
   
   return (
     <div className="App">
@@ -52,6 +83,8 @@ export default function App() {
           />
 
           {/* <Route path="/account" element={<Account />} /> */}
+          <Route path="/preferences" element={<Preferences jobs={state.jobs} fetchItems={fetchItems}/>} />
+          <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
 
           <Route
             path="/preferences"

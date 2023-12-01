@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Shell for React/Express combined app",
   "main": "server.js",
+  "proxy": "http://localhost:5173",
   "scripts": {
     "install:server": "cd server && npm install",
     "install:client": "cd client && npm install",

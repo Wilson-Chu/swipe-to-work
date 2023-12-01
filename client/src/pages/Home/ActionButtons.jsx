@@ -17,7 +17,7 @@ const ActionButtons = function (props) {
       city: props.jobs[props.jobIndex].job_city,
       province: props.jobs[props.jobIndex].job_state,
       min_salary: props.jobs[props.jobIndex].job_min_salary,
-      job_description: descWithLineBreaks(props.jobs[props.jobIndex].job_description),
+      job_description: props.jobs[props.jobIndex].job_description,
       job_type: props.jobs[props.jobIndex].job_employment_type,
       is_remote: props.jobs[props.jobIndex].job_is_remote,
       posted_at: props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift(),

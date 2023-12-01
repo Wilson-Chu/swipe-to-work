@@ -11,6 +11,7 @@ export default defineConfig({
         target: "http://localhost:8080",
         changeOrigin: true,
         secure: false,
+        // Note from Wilson: was previously target: "http://localhost:8080" - changed for testing purposes
         // We can even re-write the request
         // rewrite: path => path.replace('/api', ''),
       },

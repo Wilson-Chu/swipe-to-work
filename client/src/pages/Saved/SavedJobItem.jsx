@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SavedJobModal from "./SavedJobModal";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [oneSavedJob, setOneSavedJob] = useState({})
 
   const removeSavedJob = function(id) {
     deleteSavedJob(id);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const reviewPosting = function () {
+    try {
+      setOneSavedJob(job);
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   return (
@@ -26,7 +43,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
           />
         </div>
         <div className="bottom-saved-box">
-          <span onClick={() => console.log(`You clicked on job posting: ${id}`)}>
+          <span onClick={() => reviewPosting()}>
             Review Posting
           </span>
           <span>
@@ -37,6 +54,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob }) {
           </span>
         </div>
       </section>
+          {isModalOpen && <SavedJobModal job={oneSavedJob} closeModal={closeModal} />}
       <br />
     </>
   );
