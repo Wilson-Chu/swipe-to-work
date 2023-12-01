@@ -65,9 +65,9 @@ function Preferences(props) {
     <div className="pref">
       <h2>My Job Preferences</h2>
 
-      <form className="preferences-input">
+      <form className="preferences-inputs">
         <label>
-        {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
+          {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
           Job Title:
           <input
             required
@@ -108,7 +108,7 @@ function Preferences(props) {
             value={province}
             onChange={(e) => setProvince(e.target.value)}
           >
-            <option value="">Select Province</option>
+            <option className="opt" value="">Select Province</option>
             <option>NL</option>
             <option>PE</option>
             <option>NS</option>
