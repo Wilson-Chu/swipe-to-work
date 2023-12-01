@@ -62,19 +62,24 @@
   .main-job-points {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     padding: 0;
     list-style-type: none;
     padding-top: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
-    .fa-solid, .fas {
-      font-size: x-large;
+    li {
+      width: 5rem;
+      
+      .fa-solid, .fas {
+        font-size: x-large;
+      }
+  
+      .fa-regular, .far {
+        font-size: large;
+      }
     }
 
-    .fa-regular, .far {
-      font-size: large;
-    }
   }
 }
 
