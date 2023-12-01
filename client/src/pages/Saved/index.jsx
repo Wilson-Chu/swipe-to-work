@@ -50,13 +50,6 @@ function Saved(props) {
                 jobIndex={props.jobIndex}
                 modal={props.modal}
               />
-              {/* {!!props.modal && (
-                <JobDetailsModal
-                  jobs={savedJobs}
-                  closeModal={props.closeModal}
-                  jobIndex={props.jobIndex}
-                />
-              )} */}
             </div>
           ))}
         </div>

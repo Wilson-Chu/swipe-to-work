@@ -50,6 +50,7 @@
 
 
 .saved-job-item {
+  max-width: 38rem;
   box-sizing: border-box;
   padding: 1em;
   background-color: #f8ece5;
@@ -80,10 +81,18 @@
 .top-saved-box {
   display: flex;
   justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 
   h3{
     font-size: 1.6rem;
     font-family: 'Lexend', sans-serif;
+    margin: 0;
+  }
+
+  svg {
+    text-align: center;
   }
 }
 
