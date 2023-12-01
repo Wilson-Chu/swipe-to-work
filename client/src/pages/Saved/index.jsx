@@ -32,11 +32,11 @@ function Saved(props) {
   };
 
   return (
-    <>
+    <div className="saved-jobs-container">
       <h2>My Saved Jobs</h2>
 
       {savedJobs.length > 0 ? (
-        <>
+        <div className="saved-jobs">
           {savedJobs.map((job, index) => (
             <div key={index}>
               <SavedJobItem
@@ -59,11 +59,11 @@ function Saved(props) {
               )} */}
             </div>
           ))}
-        </>
+        </div>
       ) : (
-        <p>No saved jobs.</p>
+        <p>No saved jobs</p>
       )}
-    </>
+    </div>
   );
 }
 

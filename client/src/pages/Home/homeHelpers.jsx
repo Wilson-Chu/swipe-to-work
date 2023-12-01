@@ -25,3 +25,14 @@ export const descWithLineBreaks = (jobDescription) => {
     );
   });
 };
+
+// original data from api -> job_employment_type: "FULLTIME"
+export const jobTypeFormatter = (jobType) => {
+  if (jobType) {
+    if (jobType.toLowerCase().includes("fulltime")) {
+      return "Full-time"
+    } else {
+      return "Part-time"
+    }
+  }
+};

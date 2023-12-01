@@ -2,6 +2,11 @@ import React from "react";
 import closeSymbol from "../../assets/closeSymbol.svg"
 import { educationList, descWithLineBreaks } from "./homeHelpers";
 import "./JobDetailsModal.scss"
+import {
+  educationList,
+  descWithLineBreaks,
+  jobTypeFormatter,
+} from "./homeHelpers";
 
 const JobDetailsModal = function (props) {
   return (
@@ -43,7 +48,7 @@ const JobDetailsModal = function (props) {
         </section>
       </div>
     </div>
-  )
+  );
 };
 
 export default JobDetailsModal;

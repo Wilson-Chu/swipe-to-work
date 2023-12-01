@@ -1,4 +1,8 @@
 import React from 'react';
+import { jobTypeFormatter } from './homeHelpers'
+import { css } from "@emotion/react";
+import { DotLoader, ClipLoader } from "react-spinners";
+
 
 const MainJobPoints = function (props) {
 
@@ -12,7 +16,18 @@ const MainJobPoints = function (props) {
   return (
     props.jobs.length > 0 && (
       <>
-        {!!props.loading && <h2 className='loading-text'>Finding your perfect job!</h2>}
+        {!!props.loading &&
+        <div className="spinner-container">
+        <DotLoader
+          css={`.spinner {
+              background-color: transparent;
+            }`
+          }
+          size={70}
+          color="#854893"
+        />
+        <h2>Finding your perfect job!</h2>
+      </div>}
         {!props.loading && <div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
           {props.jobs[props.jobIndex].employer_logo && (
             <div className="main-img-container">
@@ -57,7 +72,18 @@ const MainJobPoints = function (props) {
     ) ||
     props.jobs.length === 0 && (
       <>
-        {!!props.loading && <h2 className='loading-text'>Finding your perfect job!</h2>}
+        {!!props.loading && 
+        <div className="spinner-container">
+        <DotLoader
+          css={`.spinner {
+              background-color: transparent;
+            }`
+          }
+          size={70}
+          color="#854893"
+        />
+        <h2>Finding your perfect job!</h2>
+      </div>}
         {!props.loading && <h2 className='loading-text'>Oops, please expand your search!</h2>}
       </>
     )
