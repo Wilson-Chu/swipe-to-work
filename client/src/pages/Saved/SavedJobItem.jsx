@@ -2,33 +2,20 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openModal, jobIndex, job, modal }) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({})
-
-  useEffect(() => {
-    console.log("oneSavedJob: ", oneSavedJob);
-  }, [oneSavedJob]);
 
   const removeSavedJob = function(id) {
     deleteSavedJob(id);
   };
-
-  // const fetchData = async function() {
-  //   try {
-  //     const data = await getPref(1); // 1 is a sample userID
-  //     console.log(data);
-
-  // const savedJobItemModal = function(job){
-  //   setOneSavedJob(job)
-  // }
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
   const reviewPosting = function () {
-    console.log(`Opening posting at id: ${id}`, job);
     try {
       setOneSavedJob(job);
       setIsModalOpen(true);
@@ -67,11 +54,6 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, openMod
           </span>
         </div>
       </section>
-                    {/* {!!modal && (
-                <SavedJobModal
-                  job={oneSavedJob}
-                />
-              )}             */}
           {isModalOpen && <SavedJobModal job={oneSavedJob} closeModal={closeModal} />}
       <br />
     </>
