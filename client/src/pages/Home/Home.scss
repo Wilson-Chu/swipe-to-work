@@ -3,11 +3,20 @@
   flex-direction: column;
   position: relative;
   transition: transform 0.5s ease;
-  
+
+  @keyframes slideOutRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(180%);
+    }
+  }
 }
 
 .job-saved {
-  transform: translateX(100%);
+  // transform: translateX(100%);
+  animation: slideOut 0.5s ease;
 }
 
 .main-img-container {

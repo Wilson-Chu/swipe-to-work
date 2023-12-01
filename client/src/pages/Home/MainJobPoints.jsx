@@ -12,6 +12,9 @@ const MainJobPoints = function (props) {
   return (
     props.jobs.length > 0 && (
       <div
+        // className={`main-points-container ${isJobSaved ? "saved" : ""} ${
+        //   isJobPassed ? "passed" : ""
+        // }`}
         className={
           isJobSaved ? "job-saved" : "main-points-container"
         }

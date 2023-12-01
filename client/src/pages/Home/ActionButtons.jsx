@@ -35,6 +35,7 @@ const ActionButtons = function (props) {
 
   const handleSaveAndNext = function() {
     saveJob();
+    // control slide animation
     setIsJobSaved(true);
     props.nextJob();
     setTimeout(() => {
