@@ -23,6 +23,7 @@ export const descWithLineBreaks = (jobDescription) => {
 // original data from api -> job_employment_type: "FULLTIME"
 export const jobTypeFormatter = (jobType) => {
   if (jobType) {
+    // need to add more if statements for other job types
     if (jobType.toLowerCase().includes("fulltime")) {
       return "Full-time"
     } else {
