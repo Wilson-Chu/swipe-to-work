@@ -25,7 +25,7 @@ function Login(props) {
     //client-side validation
     if (!email || !password) {
       alert("Please enter both email and password");
-      return;
+      // return;
     }
 
     // talk to backend auth
@@ -67,6 +67,7 @@ function Login(props) {
               placeholder="name@example.com"
               value={email}
               onChange={handleEmailChange}
+              required
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
@@ -79,6 +80,7 @@ function Login(props) {
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
+              required
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
