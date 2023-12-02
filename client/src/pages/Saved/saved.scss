@@ -1,4 +1,5 @@
 .saved-jobs-container {
+
   .no-modal-title {
      color: #854893;
      padding: 0.5rem;
@@ -35,10 +36,22 @@
         margin-bottom: 0.25em;
       }
    }
+  
+  p {
+    font-size: 1.5rem;
+    width: 40rem;
+    height: 20rem;
+    padding-top: 5rem;
+    margin-left: 4rem;
+   }
+
 }
 
 .saved-jobs {
   padding-top: 0.5rem;
+  margin-left: 4rem;
+
+
 }
 
 

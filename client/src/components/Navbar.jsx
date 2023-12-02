@@ -10,6 +10,12 @@ function Navbar(props) {
   return (
     <nav>
       <div className="menu">
+        <li id="logo">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+        </li>
+
         <li>
           <span>
             <FontAwesomeIcon
@@ -21,11 +27,11 @@ function Navbar(props) {
           <Link to="/preferences">Preferences</Link>
         </li>
 
-        <li id="logo">
+        {/* <li id="logo">
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
-        </li>
+        </li> */}
 
         <li>
           <span>
@@ -36,6 +42,16 @@ function Navbar(props) {
             />
           </span>
           <Link to="/saved">Saved Jobs</Link>
+        </li>
+
+        <li>
+          <span>
+            <FontAwesomeIcon
+              icon="fa-solid fa-user"
+              style={{ color: "#f8fcfc" }}
+            />
+          </span>
+          <Link to="/login">Logout</Link>
         </li>
       </div>
     </nav>
