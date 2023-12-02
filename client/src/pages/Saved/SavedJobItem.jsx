@@ -66,7 +66,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           />
         </div>
         <div className="bottom-saved-box">
-          <span onClick={() => reviewPosting()}>
+          <span className = "review-link" onClick={() => reviewPosting()}>
             Review Posting
           </span>
           <span onClick={handleUpdateAppliedJobs}>
