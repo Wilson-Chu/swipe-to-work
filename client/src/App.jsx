@@ -28,37 +28,6 @@ export default function App() {
     updateAppliedJobs // update appliedJobs array with jobId 
   } = useApplicationData();
 
-  // just for layout testing:
-  // const [jobIndex, setJobIndex] = useState(0);
-  // const [modal, setModal] = useState(false);
-
-  // const openModal = function () {
-  //   setModal(true);
-  // };
-
-  // const closeModal = function () {
-  //   setModal(false);
-  // };
-
-  // const nextJob = function () {
-  //   setJobIndex((prev) => prev + 1);
-  // };
-
-  // const fetchItems = useCallback(() => {
-  //   axios
-  //     .get("/api/jobs")
-  //     .then((res) => {
-  //       setJobs(res.data);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // });
-
-  // useEffect(() => {
-  //   console.log("job postings fetched from jsearch api");
-  //   fetchItems();
-  // }, []);
-
-  // const state = { jobs: data.data, jobIndex, modal };
 
   /* testing only... */
   console.log(state.appliedJobs.length)
