@@ -20,39 +20,6 @@ function Login(props) {
     setPassword(e.target.value);
   };
 
-  // const handleSubmit = async () => {
-  //   e.preventDefault();
-
-  //   //client-side validation
-  //   if (!email || !password) {
-  //     return console.log("Please enter both email and password");
-  //   }
-
-  //   // talk to backend auth
-  //   try {
-  //     const response = await axios.post("/api/login", {
-  //       email,
-  //       password,
-  //     });
-
-  //     if (response.status === 200) {
-  //       const { userId } = response.data;
-  //       // for later use
-  //       setUserID(userId)
-  //       console.log("Logged in successfully. User ID:", userId);
-
-  //       navigate('/');
-
-  //     } else {
-  //       const { message } = response.data;
-  //       consol("Login failed:", message);
-  //     }
-
-  //   } catch (error) {
-  //     console.error("Login error:", error.message);
-  //   }
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
