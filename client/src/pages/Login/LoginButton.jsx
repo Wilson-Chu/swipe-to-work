@@ -9,7 +9,8 @@ const LoginButton = function () {
     !isAuthenticated && (
       <div className="login-page">
         <section>
-          Welcome to Swipe to Work, let's get you matched with your perfect job!
+          Welcome to Swipe to Work, <br/>
+          let's get you matched with your perfect job!
         </section>
         <button className="button-74" role="button" type="submit" onClick={() => loginWithRedirect()}>
           Log In
