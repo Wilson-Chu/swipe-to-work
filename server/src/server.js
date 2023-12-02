@@ -15,6 +15,11 @@ app.use(express.static(public));
 // Note: Do Not make a route for "/" below or it will override our static public
 
 app.use(cors());
+app.use(
+  cors({
+    exposedHeaders: ["x-user-auth"],
+  })
+);
 
 // So we can read JSON body requests
 app.use(express.json());

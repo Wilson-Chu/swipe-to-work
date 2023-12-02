@@ -1,8 +1,9 @@
-import React from 'react';
-import './Login.scss';
-import '../Preferences/buttons.scss';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./Login.scss";
+import "../Preferences/buttons.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login(props) {
   const [email, setEmail] = useState("");
@@ -19,39 +20,66 @@ function Login(props) {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = async () => {
+  // const handleSubmit = async () => {
+  //   e.preventDefault();
+
+  //   //client-side validation
+  //   if (!email || !password) {
+  //     return console.log("Please enter both email and password");
+  //   }
+
+  //   // talk to backend auth
+  //   try {
+  //     const response = await axios.post("/api/login", {
+  //       email,
+  //       password,
+  //     });
+
+  //     if (response.status === 200) {
+  //       const { userId } = response.data;
+  //       // for later use
+  //       setUserID(userId)
+  //       console.log("Logged in successfully. User ID:", userId);
+
+  //       navigate('/');
+
+  //     } else {
+  //       const { message } = response.data;
+  //       consol("Login failed:", message);
+  //     }
+
+  //   } catch (error) {
+  //     console.error("Login error:", error.message);
+  //   }
+  // };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    //client-side validation
     if (!email || !password) {
-      alert("Please enter both email and password");
-      return;
+      return alert("Please enter both email and password");
     }
 
-    // talk to backend auth
-    try {
-      const response = await axios.post("/api/login", {
-        email,
-        password,
+    axios
+      .post("/api/login", { email, password })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          const userId = res.headers["x-user-auth"];
+
+          setUserID((prev) => userId);
+          console.log(userID);
+
+          console.log("Logged in successfully. User ID:", userId);
+
+          // redirect to homepage
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        console.error("Login error:", error.response.data.message);
       });
-
-      if (response.status === 200) {
-        const { userId } = response.data;
-        // for later use
-        setUserID(userId)
-        console.log("Logged in successfully. User ID:", userId);
-        navigate('/');
-      } else {
-        const { message } = response.data;
-        console.error("Login failed:", message);
-      }
-
-    } catch (error) {
-      console.error("Login error:", error.message);
-    }
-
   };
-
 
   return (
     <>
