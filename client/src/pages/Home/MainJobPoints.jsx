@@ -12,7 +12,7 @@ const MainJobPoints = function (props) {
     // Replace any broken image with the default image
     event.target.src = "https://redlakejobs.ca/wp-content/uploads/2020/10/employment.jpg";
   };
-  
+
   return (
     props.jobs.length > 0 && (
       <>
@@ -28,7 +28,7 @@ const MainJobPoints = function (props) {
         />
         <h2>Finding your perfect job!</h2>
       </div>}
-        {!props.loading && <div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
+        {!props.loading && props.jobs.length > 0 && props.jobIndex < props.jobs.length ?(<div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
           {props.jobs[props.jobIndex].employer_logo && (
             <div className="main-img-container">
               <img
@@ -67,7 +67,11 @@ const MainJobPoints = function (props) {
               </li>
             </ul>
           </div>
-        </div>}
+        </div>) : (
+        <h2 className="no-more-jobs-text">
+          There are no more results! Change your preferenes and try again!
+        </h2>
+      )}
       </>
     ) ||
     props.jobs.length === 0 && (
@@ -84,7 +88,7 @@ const MainJobPoints = function (props) {
         />
         <h2>Finding your perfect job!</h2>
       </div>}
-        {!props.loading && <h2 className='try-again-text'>Oops, please expand your search!</h2>}
+        {!props.loading && <h2 className='try-again-text'>Oops, we couldn't find any jobs that match your set of preferences, please expand your search!</h2>}
       </>
     )
   );
