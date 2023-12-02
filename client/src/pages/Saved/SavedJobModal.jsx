@@ -1,10 +1,10 @@
 import React from "react";
 import closeSymbol from "../../assets/closeSymbol.svg";
 import {
-  educationList,
   descWithLineBreaks,
   jobTypeFormatter,
 } from "../Home/homeHelpers";
+import "./SavedJobModal.scss"
 
 const SavedJobModal = function (props) {
   const {
@@ -25,25 +25,21 @@ const SavedJobModal = function (props) {
   } = props.job;
 
   return (
-    <div className="job-details-modal">
-      <button className="job-details-modal__close-button">
+    <div className="saved-job-details-modal-container">
+      <button className="saved-job-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" onClick={props.closeModal} />
       </button>
       <h2>{job_title}</h2>
-      <ul className="modal-job-details">
-        <li>Company: {company}</li>
-        <li>City: {city}</li>
-        <li>Province: {province}</li>
-        <li>Mininum salary: {min_salary ? min_salary : "N/A"}</li>
-        <li>Job type: {jobTypeFormatter(job_type)}</li>
-        <li>Job is remote? {is_remote.toString()}</li>
-        <li>Job description: {descWithLineBreaks(job_description)}</li>
-        <li>Posted at: {posted_at.split("T").shift()}</li>
-        {/* Education required: {educationList(props.jobs)}
-          <li>
-            No experience required? {(props.jobs[props.jobIndex].job_required_experience.no_experience_required).toString()}
-          </li> */}
-      </ul>
+      <div className="saved-modal-job-details">
+        <section><span>Company:</span> {company}</section>
+        <section><span>City:</span> {city}</section>
+        <section><span>Province:</span> {province}</section>
+        <section><span>Mininum salary:</span> {min_salary ? min_salary : "N/A"}</section>
+        <section><span>Job type:</span> {jobTypeFormatter(job_type)}</section>
+        <section><span>Job is remote?</span> {is_remote.toString()}</section>
+        <section><span className="saved-job-desc">Job description:</span>{descWithLineBreaks(job_description)}</section>
+        <section><span>Posted at:</span> {posted_at.split("T").shift()}</section>
+      </div>
     </div>
   );
 };

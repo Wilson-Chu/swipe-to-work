@@ -11,7 +11,8 @@ export const ACTIONS = {
   LOADING: "LOADING",
   FINISHED_LOADING: "FINISHED_LOADING",
   CLEAR_JOBS: "CLEAR_JOBS",
-  UPDATE_APPLIED: "UPDATE_APPLIED"
+  UPDATE_APPLIED: "UPDATE_APPLIED",
+  RESET_JOB_INDEX: "RESER_JOB_INDEX"
 }
 
 const reducer = (state, action) => {
@@ -59,6 +60,9 @@ const reducer = (state, action) => {
         };
       };
 
+    case ACTIONS.RESET_JOB_INDEX:
+      return {...state, jobIndex: 0}
+
     default:
       throw new Error(`${action.type} is not recognized`)
   }
@@ -98,6 +102,10 @@ const useApplicationData = function () {
     dispatch({ type: ACTIONS.CLEAR_JOBS})
   }
 
+  const resetJobIndex = function() {
+    dispatch({ type: ACTIONS.RESET_JOB_INDEX})
+  }
+
   useEffect(() => {
     // execute only when isJobSaved or isJobPassed is true -> allow animation to happen again
     if (state.isJobSaved || state.isJobPassed) {
@@ -121,8 +129,10 @@ const useApplicationData = function () {
   };
 
   const fetchItems = useCallback(() => {
-    setLoading(true)
+    setLoading(true);
     clearJobs();
+    resetJobIndex();
+    
     axios
       .get("/api/jobs")
       .then((res) => {

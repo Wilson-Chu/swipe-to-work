@@ -1,10 +1,6 @@
 .saved-jobs-container {
 
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: stretch;
-
-  h2 {
+  .no-modal-title {
      color: #854893;
      padding: 0.5rem;
      padding-top: 1rem;
@@ -48,6 +44,7 @@
     padding-top: 5rem;
     margin-left: 4rem;
    }
+
 }
 
 .saved-jobs {
@@ -114,6 +111,10 @@
 
   span {
     color: #854893;
+  }
+
+  .review-link {
+    cursor: pointer;
   }
 }
 
