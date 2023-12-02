@@ -7,12 +7,13 @@ import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Login from "./pages/Login";
+import Login from "./pages/Login/LoginButton";
 import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
+
 
 export default function App() {
 
@@ -97,11 +98,10 @@ export default function App() {
               element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading} />}
             />
             <Route path="/login" element={<Login />} />
-        </Routes>
-
-        <Footer />
-      </Router>
-    </div>
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
     </AppliedJobsProvider>
   );
 }
