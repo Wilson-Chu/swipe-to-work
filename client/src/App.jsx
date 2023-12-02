@@ -26,7 +26,7 @@ export default function App() {
     setLoading,
     updateAppliedJobs // update appliedJobs array with jobId 
   } = useApplicationData();
-  
+
   // just for layout testing:
   // const [jobIndex, setJobIndex] = useState(0);
   // const [modal, setModal] = useState(false);
@@ -56,54 +56,51 @@ export default function App() {
   //   console.log("job postings fetched from jsearch api");
   //   fetchItems();
   // }, []);
-  
+
   // const state = { jobs: data.data, jobIndex, modal };
 
   /* testing only... */
   console.log(state.appliedJobs.length)
   /* end of testing */
-  
+
   return (
     <AppliedJobsProvider>
-    <div className="App">
-      <Router>
-        <Navbar />
+      <div className="App">
+        <Router>
+          <Navbar />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home
-                jobs={state.jobs}
-                jobIndex={state.jobIndex}
-                modal={state.modal}
-                loading={state.loading}
-                openModal={openModal}
-                closeModal={closeModal}
-                nextJob={nextJob}
-                isJobSaved={state.isJobSaved}
-                swipeRight={swipeRight}
-                isJobPassed={state.isJobPassed}
-                swipeLeft={swipeLeft}
-              />
-            }
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  jobs={state.jobs}
+                  jobIndex={state.jobIndex}
+                  modal={state.modal}
+                  loading={state.loading}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                  nextJob={nextJob}
+                  isJobSaved={state.isJobSaved}
+                  swipeRight={swipeRight}
+                  isJobPassed={state.isJobPassed}
+                  swipeLeft={swipeLeft}
+                />
+              }
+            />
 
-          {/* <Route path="/account" element={<Account />} /> */}
-          <Route path="/preferences" element={<Preferences jobs={state.jobs} fetchItems={fetchItems}/>} />
-          <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
+            {/* <Route path="/account" element={<Account />} /> */}
+            <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal} />} />
+            <Route
+              path="/preferences"
+              element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading} />}
+            />
 
-          <Route
-            path="/preferences"
-            element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading}/>}
-          />
+          </Routes>
 
-          <Route path="/saved" element={<Saved />} />
-        </Routes>
-        
-        <Footer />
-      </Router>
-    </div>
+          <Footer />
+        </Router>
+      </div>
     </AppliedJobsProvider>
   );
 }
