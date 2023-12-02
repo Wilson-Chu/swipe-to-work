@@ -10,6 +10,7 @@ export const ACTIONS = {
   SWIPE_LEFT: "SWIPE_LEFT",
   LOADING: "LOADING",
   FINISHED_LOADING: "FINISHED_LOADING",
+  CLEAR_JOBS: "CLEAR_JOBS",
   UPDATE_APPLIED: "UPDATE_APPLIED"
 }
 
@@ -38,6 +39,9 @@ const reducer = (state, action) => {
   
     case ACTIONS.FINISHED_LOADING:
         return { ...state, loading: false }
+    
+    case ACTIONS.CLEAR_JOBS:
+      return {...state, jobs: []}
 
     case ACTIONS.UPDATE_APPLIED:
       const { jobId } = action.payload;
@@ -66,7 +70,7 @@ const initialState = {
   modal: false,
   isJobSaved: false,
   isJobPassed: false,
-  loading: false,
+  loading: true,
   appliedJobs: []
 };
 
@@ -89,6 +93,10 @@ const useApplicationData = function () {
   const nextJob = function () {
     dispatch({ type: ACTIONS.NEXT_JOB });
   };
+
+  const clearJobs = function() {
+    dispatch({ type: ACTIONS.CLEAR_JOBS})
+  }
 
   useEffect(() => {
     // execute only when isJobSaved or isJobPassed is true -> allow animation to happen again
@@ -114,6 +122,7 @@ const useApplicationData = function () {
 
   const fetchItems = useCallback(() => {
     setLoading(true)
+    clearJobs();
     axios
       .get("/api/jobs")
       .then((res) => {
