@@ -6,7 +6,6 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({});
-  
   // slideout animation
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -19,7 +18,6 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
     setTimeout(() => {
       setIsDeleted(false)
     }, 1000)
-
   };
 
   const closeModal = () => {
@@ -37,7 +35,6 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job}) {
 
   return (
     <>
-      {/* <section className="saved-job-item"> */}
       <section className={`saved-job-item ${isDeleted ? "deleted": ""}`}>
         <div className="top-saved-box">
           <FontAwesomeIcon
