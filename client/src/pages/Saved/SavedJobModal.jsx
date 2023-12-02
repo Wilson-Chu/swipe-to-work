@@ -1,6 +1,10 @@
 import React from "react";
 import closeSymbol from "../../assets/closeSymbol.svg";
-import { educationList, descWithLineBreaks } from "../Home/homeHelpers";
+import {
+  educationList,
+  descWithLineBreaks,
+  jobTypeFormatter,
+} from "../Home/homeHelpers";
 
 const SavedJobModal = function (props) {
   const {
@@ -31,7 +35,7 @@ const SavedJobModal = function (props) {
         <li>City: {city}</li>
         <li>Province: {province}</li>
         <li>Mininum salary: {min_salary ? min_salary : "N/A"}</li>
-        <li>Job type: {job_type}</li>
+        <li>Job type: {jobTypeFormatter(job_type)}</li>
         <li>Job is remote? {is_remote.toString()}</li>
         <li>Job description: {descWithLineBreaks(job_description)}</li>
         <li>Posted at: {posted_at.split("T").shift()}</li>

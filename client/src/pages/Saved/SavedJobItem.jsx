@@ -6,12 +6,21 @@ import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, applied}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [oneSavedJob, setOneSavedJob] = useState({})
+  const [oneSavedJob, setOneSavedJob] = useState({});
+  // slideout animation
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const { appliedJobs, updateAppliedJobs } = useAppliedJobsContext();
 
   const removeSavedJob = function(id) {
+    //for slideout animation
+    setIsDeleted(true);
+
     deleteSavedJob(id);
+
+    setTimeout(() => {
+      setIsDeleted(false)
+    }, 1000)
   };
 
   const closeModal = () => {
@@ -39,7 +48,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
 
   return (
     <>
-      <section className="saved-job-item">
+      <section className={`saved-job-item ${isDeleted ? "deleted": ""}`}>
         <div className="top-saved-box">
           <FontAwesomeIcon
             icon="fa-solid fa-check"
