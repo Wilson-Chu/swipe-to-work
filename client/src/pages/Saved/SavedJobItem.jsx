@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
 import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, applied}) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, modal, applied}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({});
@@ -66,7 +66,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           />
         </div>
         <div className="bottom-saved-box">
-          <span onClick={() => reviewPosting()}>
+          <span onClick={() => reviewPosting()} className="review-link">
             Review Posting
           </span>
           <span onClick={handleUpdateAppliedJobs}>
@@ -77,7 +77,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           </span>
         </div>
       </section>
-          {isModalOpen && <SavedJobModal job={oneSavedJob} closeModal={closeModal} />}
+          {isModalOpen && <SavedJobModal job={oneSavedJob} closeModal={closeModal} modal={modal}/>}
       <br />
     </>
   );
