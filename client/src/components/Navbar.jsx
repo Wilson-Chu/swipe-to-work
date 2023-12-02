@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../public/logo-yellowbg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoginButton from "./LoginButton";
+import LogoutButton from "./LogoutButton";
 
 
 
@@ -51,7 +53,9 @@ function Navbar(props) {
               style={{ color: "#f8fcfc" }}
             />
           </span>
-          <Link to="/login">Logout</Link>
+          {/* <Link to="/login">Logout</Link> */}
+          <LoginButton></LoginButton>
+          <LogoutButton></LogoutButton>
         </li>
       </div>
     </nav>
