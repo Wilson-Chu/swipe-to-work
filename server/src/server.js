@@ -36,6 +36,9 @@ app.use("/api/savedJobs", savedRoutes(pool));
 const jobRoutes = require("./routes/jobRoutes");
 app.use("/api/jobs", jobRoutes(pool));
 
+const loginRoutes = require("./routes/loginRoutes");
+app.use("/api/login", loginRoutes(pool));
+
 
 // Simple Endpoint - no routes module
 app.get("/api/status", (req, res) => {
