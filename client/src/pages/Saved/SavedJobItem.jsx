@@ -45,7 +45,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
             icon="fa-solid fa-check"
             size="xl"
             className="check-applied"
-            // how to know if applied = T/F and change colors?
+            // how to know if applied = T/F and change state/colors?
           />
           <h3>
             {job_title}, {company}
