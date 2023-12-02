@@ -1,0 +1,63 @@
+.modal-job-details {
+  list-style-type: none;
+  display: flex;
+  margin: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  section {
+    margin-bottom: 10px;
+  }
+
+  span {
+    font-weight: bold;
+  }
+
+  .job-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .job-desc-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+    margin-bottom: 8px;
+  }
+}
+
+.job-details-modal-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 43%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  height: 80%;
+  width: 40rem;
+  overflow-y: scroll;
+  border-radius: 12px;
+
+  h2 {
+    font-weight: bold;
+  }
+}
+
+.job-details-modal__close-button {
+  background-color: white;
+  border: none;
+  color: white;
+  text-align: start;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 16px;
+  margin-top: 16px;
+  padding: 0;
+}
