@@ -7,6 +7,7 @@ import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
 import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -99,6 +100,8 @@ export default function App() {
           />
 
           <Route path="/saved" element={<Saved />} />
+
+          <Route path="/login" element={<Login />} />
         </Routes>
         
         <Footer />
