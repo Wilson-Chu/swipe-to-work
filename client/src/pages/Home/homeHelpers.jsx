@@ -31,8 +31,12 @@ export const jobTypeFormatter = (jobType) => {
   if (jobType) {
     if (jobType.toLowerCase().includes("fulltime")) {
       return "Full-time"
+    } else if (jobType.toLowerCase().includes("parttime")) {
+      return "Part-time";
+    } else if (jobType.toLowerCase().includes("contractor")) {
+      return "Contractor";
     } else {
-      return "Part-time"
+      return "Intern";
     }
   }
 };
