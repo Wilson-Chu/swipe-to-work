@@ -96,7 +96,7 @@ export default function App() {
               path="/preferences"
               element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading} />}
             />
-          <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
         </Routes>
 
         <Footer />
