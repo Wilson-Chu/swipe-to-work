@@ -95,7 +95,7 @@
   font-weight: bold;
 
   span {
-    color: #854893;
+    // color: #854893;
   }
 }
 
@@ -118,12 +118,12 @@
 }
 
 .apply-link {
-  color: darkgreen;
+  color: #854893;
   font-weight: bold;
   text-decoration: none;
 
   &:hover{
     cursor: pointer;
-    color: green;
+    color: #bf74d0;
   }
 }
