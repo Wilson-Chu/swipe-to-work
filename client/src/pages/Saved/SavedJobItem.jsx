@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
 import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, applied}) {
+function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateSavedJobMarker, job, applied}) {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({});
@@ -36,15 +36,48 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
     }
   };
 
+  const handleAppliedToggle = async () => {
+    // Toggle the 'applied' value if clicking on Check Mark icon
+    const updatedData = {
+      applied: !applied, // CHECK TO SEE IF THE DATABASE IS BEING UPDATED!!! (maybe use the updateAppliedJobs, appliedJobs etc..)
+    };
+
+    try {
+      const updatedAppliedToggleValue = await updateSavedJobMarker(id, updatedData);
+      console.log(`Saved job ${id} updated successfully. Applied toggle: ${updatedAppliedToggleValue}`);
+      // You can perform additional actions if needed
+    } catch (error) {
+      console.error("Error updating saved job:", error);
+      // Handle the error as needed
+    }
+  };
+
+  const handleApplyToJob = async () => {
+    // Always set applied to true if Apply to Job link is clicked
+    const updatedData = {
+      applied: true,
+    };
+  
+    try {
+      const updatedAppliedValue = await updateSavedJobMarker(id, updatedData);
+      console.log(`Saved job ${id} updated successfully. Applied: ${updatedAppliedValue}`);
+      // You can perform additional actions if needed
+    } catch (error) {
+      console.error("Error updating saved job:", error);
+      // Handle the error as needed
+    }
+  };
+
   const handleUpdateAppliedJobs = () => {
     // Call updateAppliedJobs function here
     updateAppliedJobs(id);
+
+    useEffect(() => {
+      console.log("appliedJobsInUseEffect:", appliedJobs);
+    }, [appliedJobs]);
+
     console.log("appliedJobs: ", appliedJobs);
   };
-
-  useEffect(() => {
-    console.log("appliedJobsInUseEffect:", appliedJobs);
-  }, [appliedJobs]);
 
   return (
     <>
@@ -53,8 +86,8 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           <FontAwesomeIcon
             icon="fa-solid fa-check"
             size="xl"
-            className="check-applied"
-            // how to know if applied = T/F and change state/colors?
+            className={`check-applied ${applied ? "mark-applied": ""}`}
+            onClick={handleAppliedToggle}
           />
           <h3>
             {job_title}, {company}
@@ -69,7 +102,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, ap
           <span className = "review-link" onClick={() => reviewPosting()}>
             Review Posting
           </span>
-          <span onClick={handleUpdateAppliedJobs}>
+          <span onClick={handleApplyToJob}>
             <a href={website} target="_blank" rel="noopener noreferrer" className="apply-link">
               <span>Apply To Job  </span>
               <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />
