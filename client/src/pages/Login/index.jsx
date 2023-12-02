@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.scss';
+import '../Preferences/buttons.scss';
 
 function Login(props) {
   return (
@@ -27,7 +28,7 @@ function Login(props) {
             <label htmlFor="floatingPassword">Password</label>
           </div>
 
-          <div className="form-check text-start my-3">
+          {/* <div className="form-check text-start my-3">
             <input
               className="form-check-input"
               type="checkbox"
@@ -37,8 +38,8 @@ function Login(props) {
             <label className="form-check-label" htmlFor="flexCheckDefault">
               Remember me
             </label>
-          </div>
-          <button className="btn btn-primary w-100 py-2" type="submit">
+          </div> */}
+          <button className="button-74" role="button" type="submit">
             Sign in
           </button>
         </form>
