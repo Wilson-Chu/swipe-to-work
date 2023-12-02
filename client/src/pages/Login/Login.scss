@@ -1,12 +1,12 @@
 @import "../../bootstrap-variables.scss";
 @import 'bootstrap/scss/bootstrap';
 
-.h3 {
-  padding-top: 1rem;
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40rem;
+  height: 30rem;
 }
 
-.form-floating {
-  padding-bottom: 1rem;
-  margin-right: 9rem;
-  margin-left: 9rem;
-}

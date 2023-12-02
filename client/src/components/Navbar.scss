@@ -32,6 +32,11 @@ a {
   font-family: "Raleway", sans-serif;
 }
 
+nav a:hover {
+  color: #f3b46a !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 #logo {
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;

@@ -54,7 +54,7 @@ function Saved(props) {
           ))}
         </div>
       ) : (
-        <p>No saved jobs</p>
+        <p id="msg-no-saved">No saved jobs</p>
       )}
     </div>
   );
