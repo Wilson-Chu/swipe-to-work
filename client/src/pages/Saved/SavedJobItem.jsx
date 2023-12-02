@@ -41,9 +41,11 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateS
     const updatedData = {
       applied: !applied, // CHECK TO SEE IF THE DATABASE IS BEING UPDATED!!! (maybe use the updateAppliedJobs, appliedJobs etc..)
     };
+    
+    console.log("Applied before update: ", applied);
 
     try {
-      const updatedAppliedToggleValue = await updateSavedJobMarker(id, updatedData);
+      let updatedAppliedToggleValue = await updateSavedJobMarker(id, updatedData);
       console.log(`Saved job ${id} updated successfully. Applied toggle: ${updatedAppliedToggleValue}`);
       // You can perform additional actions if needed
     } catch (error) {
