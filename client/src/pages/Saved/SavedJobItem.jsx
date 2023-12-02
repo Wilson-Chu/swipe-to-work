@@ -3,11 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
 import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 
-<<<<<<< HEAD
 function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateSavedJobMarker, job, applied}) {
-=======
-function SavedJobItem({ id, job_title, company, website, deleteSavedJob, job, modal, applied}) {
->>>>>>> b0cd9f9ace906cff4740b77bdd73a340bba82025
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({});
