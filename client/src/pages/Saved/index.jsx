@@ -33,7 +33,7 @@ function Saved(props) {
 
   return (
     <div className="saved-jobs-container">
-      <h2>My Saved Jobs</h2>
+      {!props.modal && <h2 className="no-modal-title">My Saved Jobs</h2>}
 
       {savedJobs.length > 0 ? (
         <div className="saved-jobs">
