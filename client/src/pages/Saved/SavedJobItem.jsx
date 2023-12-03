@@ -31,6 +31,7 @@ function SavedJobItem({
 
     setTimeout(() => {
       setIsDeleted(false);
+      setAppliedState(prev); // to fix the toggle applied bug upon deletion
     }, 1000);
   };
 
