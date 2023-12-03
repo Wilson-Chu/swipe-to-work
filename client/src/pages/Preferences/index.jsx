@@ -65,7 +65,7 @@ function Preferences(props) {
       });
   };
 
-  //login info
+  //retrive userid from backend based on the email from frontend
   const [userId, setUserId] = useState("");
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
@@ -88,21 +88,6 @@ function Preferences(props) {
         .catch((error) => console.error("error in the axios", error));
     }
   }, [isAuthenticated, user]);
-
-// useEffect(() => {
-//   axios.get("/api/login")
-//     .then((data)=>{console.log('login frontend get request', data)})
-//     .catch(error => console.log(error))
-// }, []);
-
-// useEffect(() => {
-//   axios
-//     .post("/api/login", { email: "lorraine.quinyee@gmail.com" })
-//     .then((data) => console.log("login frontend post req", data))
-//     .catch((error) => console.log(error));
-// }, []);
-
-
 
 
   return (
