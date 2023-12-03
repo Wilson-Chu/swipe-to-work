@@ -64,6 +64,27 @@ function Saved(props) {
     setSavedJobs(savedJobs.filter((item) => item.id !== id));
   };
 
+  const updateSavedJobMarker = function (id, updatedData) {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`/api/savedJobs/${id}`, updatedData)
+        .then((res) => {
+          // Assuming setSavedJobs is a function to update state
+          setSavedJobs((prevSavedJobs) =>
+            prevSavedJobs.map((job) =>
+              job.id === id ? { ...job, ...updatedData } : job
+            )
+          );
+          console.log("Server response:", res.data);
+          resolve(res.data.applied); // Resolve with the response data
+        })
+        .catch((err) => {
+          console.log(err.message);
+          reject(err); // Reject with the error
+        });
+    });
+  };
+
   return (
     <div className="saved-jobs-container">
       {!props.modal && <h2 className="no-modal-title">My Saved Jobs</h2>}
@@ -79,9 +100,11 @@ function Saved(props) {
                 company={job.company}
                 website={job.website}
                 deleteSavedJob={deleteSavedJob}
+                updateSavedJobMarker={updateSavedJobMarker}
                 openModal={props.openModal}
                 jobIndex={props.jobIndex}
                 modal={props.modal}
+                applied={job.applied}
               />
             </div>
           ))}

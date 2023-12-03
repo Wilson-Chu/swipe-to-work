@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import useApplicationData from "./hooks/useApplicationData";
+// import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
@@ -8,10 +8,10 @@ import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login/LoginButton";
-import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
-import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons";
+import { useApplicationDataContext } from "./providers/ApplicationDataProvider";
+import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas, faCheck, faCircleXmark);
 import { useState } from "react";
 
@@ -25,8 +25,9 @@ export default function App() {
     swipeLeft,
     swipeRight,
     setLoading,
-    updateAppliedJobs, // update appliedJobs array with jobId
-  } = useApplicationData();
+  } = useApplicationDataContext();
+
+  console.log("Context Value:", state); // Log the context value
 
   // just for layout testing:
   // const [jobIndex, setJobIndex] = useState(0);
@@ -61,13 +62,13 @@ export default function App() {
   // const state = { jobs: data.data, jobIndex, modal };
 
   /* testing only... */
-  console.log(state.appliedJobs.length);
+  console.log("How many total applied jobs? ", state.appliedJobs.length)
   /* end of testing */
 
   // const [value, setValue] = useState(null);
 
   return (
-    <AppliedJobsProvider>
+    // <ApplicationDataProvider>
       <div className="App">
         <Router>
           <Navbar />
@@ -93,18 +94,7 @@ export default function App() {
             />
 
             {/* <Route path="/account" element={<Account />} /> */}
-            <Route
-              path="/saved"
-              element={
-                <Saved
-                  jobs={state.jobs}
-                  jobIndex={state.jobIndex}
-                  modal={state.modal}
-                  openModal={openModal}
-                  closeModal={closeModal}
-                />
-              }
-            />
+            <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
             <Route
               path="/preferences"
               element={
@@ -117,10 +107,11 @@ export default function App() {
               }
             />
             <Route path="/login" element={<Login />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </div>
-    </AppliedJobsProvider>
+        </Routes>
+
+        <Footer />
+      </Router>
+    </div>
+    // </ApplicationDataProvider>
   );
 }

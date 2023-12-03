@@ -3,10 +3,12 @@ import axios from "axios"
 import { descWithLineBreaks } from "../Home/homeHelpers"
 import "./ActionButtons.scss"
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useApplicationDataContext } from "../../providers/ApplicationDataProvider";
 
 const ActionButtons = function (props) {
   
   const { swipeLeft, swipeRight } = props;
+  const { userId } = useApplicationDataContext();
 
   const saveJob = function () {
     const jobData = {
@@ -16,17 +18,18 @@ const ActionButtons = function (props) {
       job_title: props.jobs[props.jobIndex].job_title,
       city: props.jobs[props.jobIndex].job_city,
       province: props.jobs[props.jobIndex].job_state,
-      min_salary: props.jobs[props.jobIndex].job_min_salary,
+      min_salary: parseInt(props.jobs[props.jobIndex].job_min_salary),
       job_description: props.jobs[props.jobIndex].job_description,
       job_type: props.jobs[props.jobIndex].job_employment_type,
       is_remote: props.jobs[props.jobIndex].job_is_remote,
       posted_at: props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift(),
       website: props.jobs[props.jobIndex].job_apply_link || props.jobs[props.jobIndex].employer_website || 'https://www.google.com',
-      user_id: 2
+      user_id: userId
     }
 
     return axios.post("/api/savedJobs", jobData)
       .then(response => {
+        console.log("Saved Job for UserId: ", userId);
         console.log("Data saved:", response.data);
       })
       .catch(error => {
@@ -35,7 +38,12 @@ const ActionButtons = function (props) {
   };
 
   const handleSaveAndNext = function() {
-    saveJob();
+    try {
+      saveJob();
+    } catch (error) {
+      console.log("Save Job Error:", error)
+    }
+    
     swipeRight();
     props.nextJob();
   };

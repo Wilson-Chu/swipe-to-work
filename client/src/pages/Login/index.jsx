@@ -55,10 +55,10 @@
 
 //   };
 
-//   const handleSubmitAndVal = function() {
-//     handleSubmit();
-//     userValidation();
-//   }
+  const handleSubmitAndVal = function() {
+    handleSubmit();
+    userValidation();
+  }
 
 //   return (
 //     <>
@@ -124,6 +124,7 @@ function Login(props) {
               placeholder="name@example.com"
               value={email}
               onChange={handleEmailChange}
+              required
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
@@ -136,6 +137,7 @@ function Login(props) {
               placeholder="Password"
               value={password}
               onChange={handlePasswordChange}
+              required
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>

@@ -4,8 +4,28 @@ const router = express.Router();
 
 const routes = function(pool) {
 
+  router.post("/", (req, res) => {
+    const { userId } = req.body;
+    // console.log("POST req body backend:", req.body)
+
+    // console.log("prefRoutes.jsx: ", userId);
+    getPref(Number(userId))
+      .then((data) => {
+        console.log("POST pref:", data)
+        res.json(data);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+        console.log(err.message);
+      })
+  });
+
   router.get("/", (req, res) => {
-    getPref(2) // hardcoded userid for now
+
+    const { userId } = req.query;
+    console.log("prefRoutes GET", req.query)
+
+    getPref(userId) 
       .then((data) => {
         res.json(data);
       })

@@ -1,6 +1,6 @@
 const pool = require("./connect");
 
-const getSavedJobs = function () {
+const getSavedJobs = function() {
   const sql = "SELECT * FROM saved_jobs ORDER BY id DESC";
 
   return pool.query(sql)
@@ -9,7 +9,7 @@ const getSavedJobs = function () {
     });
 };
 
-const getSavedJobsByEmail = function (sessionEmail) {
+const getSavedJobsByEmail = function(sessionEmail) {
   const sql = `
     SELECT * FROM saved_jobs
     JOIN users ON users.id = saved_jobs.user_id
@@ -22,20 +22,20 @@ const getSavedJobsByEmail = function (sessionEmail) {
 };
 
 
-const addSavedJob = function (
-    job_posting_id,
-    applied,
-    company,
-    job_title,
-    city,
-    province,
-    min_salary,
-    job_description,
-    job_type,
-    is_remote,
-    posted_at,
-    website,
-    user_id
+const addSavedJob = function(
+  job_posting_id,
+  applied,
+  company,
+  job_title,
+  city,
+  province,
+  min_salary,
+  job_description,
+  job_type,
+  is_remote,
+  posted_at,
+  website,
+  user_id
 ) {
   const sql = `INSERT into saved_jobs (
       job_posting_id,
@@ -73,7 +73,23 @@ const addSavedJob = function (
     });
 };
 
-const deleteSavedJob = function (id) {
+const updateSavedJobMarker = function(id, updatedJobMarkerData) {
+  const { applied } = updatedJobMarkerData;
+
+  const sql = `
+    UPDATE saved_jobs
+    SET applied = $1
+    WHERE id = $2
+    RETURNING *
+  `;
+
+  return pool.query(sql, [applied, id])
+    .then(res => {
+      return res.rows[0];
+    });
+};
+
+const deleteSavedJob = function(id) {
   const sql = 'delete from saved_jobs where id=($1) returning *';
 
   return pool.query(sql, [id])
@@ -86,5 +102,6 @@ module.exports = {
   getSavedJobs,
   addSavedJob,
   deleteSavedJob,
-  getSavedJobsByEmail,
+  updateSavedJobMarker,
+  getSavedJobsByEmail
 };

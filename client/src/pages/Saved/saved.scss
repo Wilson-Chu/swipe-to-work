@@ -42,7 +42,7 @@
     width: 40rem;
     height: 20rem;
     padding-top: 5rem;
-    margin-left: 4rem;
+    margin-left: 4.5rem;
   }
 
 }
@@ -109,7 +109,7 @@
   font-weight: bold;
 
   span {
-    color: #854893;
+    // color: #854893;
   }
 
   .review-link {
@@ -126,6 +126,10 @@
   }
 }
 
+.mark-applied {
+  color: greenyellow;
+}
+
 .delete-saved {
   color: grey;
 
@@ -136,12 +140,20 @@
 }
 
 .apply-link {
-  color: darkgreen;
+  color: #854893;
   font-weight: bold;
   text-decoration: none;
 
   &:hover{
     cursor: pointer;
-    color: green;
+    color: #bf74d0;
+  }
+}
+
+.review-link {
+
+  &:hover{
+    cursor: pointer;
+    color: #bf74d0;
   }
 }
