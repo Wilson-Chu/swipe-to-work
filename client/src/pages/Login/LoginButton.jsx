@@ -8,11 +8,11 @@ const LoginButton = function () {
   return (
     !isAuthenticated && (
       <div className="login-page">
-        <section>
+        <section className="welcome-message">
           Welcome to Swipe to Work, let's get you matched with your perfect job!
         </section>
         <button className="button-74" role="button" type="submit" onClick={() => loginWithRedirect()}>
-          Log In
+          Register/Log In
         </button>
       </div>
     )
