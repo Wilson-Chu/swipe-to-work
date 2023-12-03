@@ -59,7 +59,7 @@ function Navbar(props) {
                 style={{ color: "#f8fcfc" }}
               />
             </span>
-            <span onClick={() => logout({ returnTo: loginURL })}>
+            <span className="logout" onClick={() => logout({ returnTo: loginURL })}>
               Log out
             </span>
           </li>}

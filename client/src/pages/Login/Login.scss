@@ -8,5 +8,24 @@
   justify-content: center;
   width: 40rem;
   height: 30rem;
+  gap: 10rem;
+  padding: 2rem;
+  background-image: url("../../public/bg-po1.png");
 }
 
+.welcome-message {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.logout {
+  color: #f8fcf9;
+  font-family: "Raleway", sans-serif;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #f3b46a !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+}
