@@ -9,6 +9,19 @@ const getSavedJobs = function () {
     });
 };
 
+const getSavedJobsByEmail = function (sessionEmail) {
+  const sql = `
+    SELECT * FROM saved_jobs
+    JOIN users ON users.id = saved_jobs.user_id
+    WHERE users.email= $1
+  `;
+
+  return pool.query(sql, [sessionEmail]).then((res) => {
+    return res.rows;
+  });
+};
+
+
 const addSavedJob = function (
     job_posting_id,
     applied,
@@ -69,4 +82,9 @@ const deleteSavedJob = function (id) {
     });
 };
 
-module.exports = { getSavedJobs, addSavedJob, deleteSavedJob };
+module.exports = {
+  getSavedJobs,
+  addSavedJob,
+  deleteSavedJob,
+  getSavedJobsByEmail,
+};

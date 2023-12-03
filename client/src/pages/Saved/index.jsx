@@ -4,19 +4,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SavedJobItem from "./SavedJobItem";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Saved(props) {
-
   const [savedJobs, setSavedJobs] = useState([]);
 
+  const { user, isAuthenticated } = useAuth0();
+  // isAuthenticated && console.log(user.sub);
+  
+
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     const email = user.email;
+  //     console.log(email);
+  //     axios
+  //       .post("/api/savedJobs", email)
+  //       // .get("/api/savedJobs")
+  //       // .then((res) => {
+  //       //   setSavedJobs(res.data);
+  //       // })
+  //       // .catch((error) => console.log(error));
+  //   }
+  // }, [])
+
   useEffect(() => {
-    axios
-      .get("/api/savedJobs")
-      .then((res) => {
-        setSavedJobs(res.data);
-      })
-      .catch((error) => console.log(error));
+    if (isAuthenticated) {
+      const email = user.email;
+      console.log(email);
+
+      // First, make the POST request
+      axios
+        .post("/api/savedJobs", { email })
+        .then(() => {
+          // After the POST request, make the GET request
+          axios
+            .get("/api/savedJobs", { params: { email } })
+            .then((res) => {
+              console.log("frontend res", res.data);
+              setSavedJobs(res.data);
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.log(error));
+    }
   }, []);
+
+
 
   const deleteSavedJob = function (id) {
     axios

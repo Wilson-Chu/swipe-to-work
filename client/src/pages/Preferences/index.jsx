@@ -1,9 +1,10 @@
 import React from "react";
 import "./Preferences.scss";
 import "./buttons.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Preferences(props) {
   const [jobTitle, setJobTitle] = useState("");
@@ -55,14 +56,45 @@ function Preferences(props) {
     };
 
     axios
-      .put("/api/prefs", newPrefs, {headers: { 'x-user-auth': 999}}) // headers can be accessed using req.headers later [useful for userID]
+      .put("/api/prefs", newPrefs, { headers: { "x-user-auth": 999 } }) // headers can be accessed using req.headers later [useful for userID]
       .then(() => props.fetchItems())
       .then(() => navigate("/"))
       .catch((error) => {
-        props.setLoading(false)
-        console.log(error)
+        props.setLoading(false);
+        console.log(error);
       });
   };
+
+  //login info
+  const [userId, setUserId] = useState("");
+  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+
+  useEffect(() => {
+    console.log("USE EFFECT HAS RUN BEFORE IF");
+    if (isAuthenticated) {
+      console.log("USE EFFECT HAS RUN");
+      const email = user.email;
+
+      axios
+        .post("/api/login", { email })
+        .then(() => {
+          console.log("axios called?")
+          axios
+            .get("/api/login", { params: { email } })
+            .then((res) => {
+              console.log("frontend login res", res.data);
+              setUserId(res.data);
+            })
+            .catch((error) => console.log(error));
+        })
+        .catch((error) => console.error("error in the axios", error));
+    }
+  }, [isAuthenticated, user]);
+
+
+
+
+
 
   return (
     <div className="pref">
@@ -111,7 +143,9 @@ function Preferences(props) {
             value={province}
             onChange={(e) => setProvince(e.target.value)}
           >
-            <option className="opt" value="">Select Province</option>
+            <option className="opt" value="">
+              Select Province
+            </option>
             <option value="Ontario">ON</option>
             <option value="Quebec">QC</option>
             <option value="Nova Scotia">NS</option>

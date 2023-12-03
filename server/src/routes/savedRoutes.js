@@ -1,18 +1,39 @@
 const express = require('express');
-const {getSavedJobs, addSavedJob, deleteSavedJob} = require('../database/savedJobs');
+const {
+  getSavedJobs,
+  addSavedJob,
+  deleteSavedJob,
+  getSavedJobsByEmail,
+} = require("../database/savedJobs");
 const router = express.Router();
 
 const routes = function() {
 
-  router.get("/", (req, res) => {
-    getSavedJobs().then(data => {
-      res.json(data);
-    })
-      .catch(err => {
-        console.log(err.message);
-        res.status(500).json({error: err.message});
-      });
-  });
+  // router.get("/", (req, res) => {
+  //   getSavedJobs().then(data => {
+  //     res.json(data);
+  //   })
+  //     .catch(err => {
+  //       console.log(err.message);
+  //       res.status(500).json({error: err.message});
+  //     });
+  // });
+
+   router.get("/", (req, res) => {
+    
+    const { email } = req.query;
+    console.log("from backend savedRoutes req", req.query);
+
+     getSavedJobsByEmail(email)
+       .then((data) => {
+          // console.log("data from backend helper fx", data)
+         res.json(data);
+       })
+       .catch((err) => {
+         console.log(err.message);
+         res.status(500).json({ error: err.message });
+       });
+   });
 
   router.post("/", (req, res) => {
     const {
