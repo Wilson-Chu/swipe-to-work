@@ -21,7 +21,7 @@ function Preferences(props) {
   const [jobTitleError, setJobTitleError] = useState("");
 
       
-  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const { userId, setUserId } = useApplicationDataContext();
 
   const navigate = useNavigate();
@@ -86,7 +86,6 @@ function Preferences(props) {
 
   //retrive userid from backend based on the email from frontend
   // const [userId, setUserId] = useState(""); // moved to ApplicationDataProvider.jsx
-
   useEffect(() => {
     if (isAuthenticated) {
       const email = user.email;
