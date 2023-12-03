@@ -69,7 +69,7 @@ const MainJobPoints = function (props) {
           </div>
         </div>) : (
         <h2 className="no-more-jobs-text">
-          There are no more results! Change your preferenes and try again!
+          There are no more results! <br/>Change your preferences and try again!
         </h2>
       )}
       </>
