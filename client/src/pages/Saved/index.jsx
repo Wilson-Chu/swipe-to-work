@@ -40,7 +40,7 @@ function Saved(props) {
           axios
             .get("/api/savedJobs", { params: { email } })
             .then((res) => {
-              console.log("frontend res", res.data);
+              console.log("frontend savedJob res", res.data);
               setSavedJobs(res.data);
             })
             .catch((error) => console.log(error));

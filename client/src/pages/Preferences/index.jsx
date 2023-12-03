@@ -70,20 +70,18 @@ function Preferences(props) {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
   useEffect(() => {
-    console.log("USE EFFECT HAS RUN BEFORE IF");
     if (isAuthenticated) {
-      console.log("USE EFFECT HAS RUN");
       const email = user.email;
 
       axios
-        .post("/api/login", { email })
+        .post("/api/login", {email})
         .then(() => {
-          console.log("axios called?")
+          // console.log("1st axios post called")
           axios
             .get("/api/login", { params: { email } })
             .then((res) => {
-              console.log("frontend login res", res.data);
-              setUserId(res.data);
+              console.log("USER ID received from backedend", res.data);
+              setUserId(res.data.id);
             })
             .catch((error) => console.log(error));
         })
@@ -91,7 +89,18 @@ function Preferences(props) {
     }
   }, [isAuthenticated, user]);
 
+// useEffect(() => {
+//   axios.get("/api/login")
+//     .then((data)=>{console.log('login frontend get request', data)})
+//     .catch(error => console.log(error))
+// }, []);
 
+// useEffect(() => {
+//   axios
+//     .post("/api/login", { email: "lorraine.quinyee@gmail.com" })
+//     .then((data) => console.log("login frontend post req", data))
+//     .catch((error) => console.log(error));
+// }, []);
 
 
 

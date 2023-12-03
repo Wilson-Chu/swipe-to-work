@@ -5,7 +5,7 @@ const router = express.Router();
 const routes = function(pool) {
 
   router.get("/", (req, res) => {
-    getPref(1) // hardcoded userid for now
+    getPref(2) // hardcoded userid for now
       .then((data) => {
         res.json(data);
       })
@@ -16,7 +16,7 @@ const routes = function(pool) {
   });
 
   router.put("/", (req, res) => {
-    console.log(req.headers)
+    // console.log(req.headers)
     const {
       jobTitle,
       company,

@@ -7,28 +7,28 @@ import React, { useState, useEffect } from "react";
 const LoginButton = function () {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
 
-  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
 
-  useEffect(() => {
-    console.log("USE EFFECT HAS RUN BEFORE IF");
-    if (isAuthenticated) {
-      console.log("USE EFFECT HAS RUN");
-      const email = user.email;
+  // useEffect(() => {
+  //   console.log("USE EFFECT HAS RUN BEFORE IF");
+  //   if (isAuthenticated) {
+  //     console.log("USE EFFECT HAS RUN");
+  //     const email = user.email;
 
-      axios
-        .post("/api/login", { email })
-        .then(() => {
-          axios
-            .get("/api/login", { params: { email } })
-            .then((res) => {
-              console.log("frontend login res", res.data);
-              setUserId(res.data);
-            })
-            .catch((error) => console.log(error));
-        })
-        .catch((error) => console.log(error));
-    }
-  }, [isAuthenticated]);
+  //     axios
+  //       .post("/api/login", { email })
+  //       .then(() => {
+  //         axios
+  //           .get("/api/login", { params: { email } })
+  //           .then((res) => {
+  //             console.log("frontend login res", res.data);
+  //             setUserId(res.data);
+  //           })
+  //           .catch((error) => console.log(error));
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+  // }, [isAuthenticated]);
 
   return (
     !isAuthenticated && (

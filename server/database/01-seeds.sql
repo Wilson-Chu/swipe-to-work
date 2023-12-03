@@ -64,3 +64,30 @@ VALUES (
     'bachelor''s degree',
     1
   );
+
+INSERT INTO preferences (
+    id,
+    job_title,
+    company,
+    city,
+    province,
+    min_salary,
+    job_type,
+    is_remote,
+    no_experience_required,
+    min_education_level,
+    user_id
+  )
+VALUES (
+    2,
+    'teacher',
+    null,
+    'Toronto',
+    'ON',
+    40000,
+    'Fulltime',
+    true,
+    true,
+    'bachelor''s degree',
+    2
+  );
