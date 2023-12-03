@@ -8,7 +8,7 @@ import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
-import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
+import { ApplicationDataProvider } from "./providers/ApplicationDataProvider";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -65,7 +65,7 @@ export default function App() {
   /* end of testing */
 
   return (
-    <AppliedJobsProvider>
+    <ApplicationDataProvider>
       <div className="App">
         <Router>
           <Navbar />
@@ -102,6 +102,6 @@ export default function App() {
         <Footer />
       </Router>
     </div>
-    </AppliedJobsProvider>
+    </ApplicationDataProvider>
   );
 }
