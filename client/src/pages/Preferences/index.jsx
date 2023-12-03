@@ -76,7 +76,7 @@ function Preferences(props) {
       .post("/api/prefs", {userId})
       .then(() => {
         axios
-          .get("/api/prefs", { params: { userId } })
+          .get("/api/prefs?userId=${userId}")
           .then((res) => {
             console.log("GET userID send from frontend")
           })
