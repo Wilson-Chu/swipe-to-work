@@ -7,7 +7,7 @@ import Preferences from "./pages/Preferences";
 import Saved from "./pages/Saved";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Login from "./pages/Login";
+import Login from "./pages/Login/LoginButton";
 import { useApplicationDataContext } from "./providers/ApplicationDataProvider";
 import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';

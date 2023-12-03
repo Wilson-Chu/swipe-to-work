@@ -21,11 +21,17 @@ export const ApplicationDataProvider = ({ children }) => {
   // const appliedJobs = state.appliedJobs;
   // const { appliedJobs } = state;
 
+  // define a state here
+  const [userId, setUserId] = useState("");
+  
+
   if (!contextInitialized) {
     setContextInitialized(true);
   }
 
   const contextValue = {
+    userId,
+    setUserId,
     state,
     openModal,
     closeModal,

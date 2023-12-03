@@ -55,10 +55,10 @@
 
 //   };
 
-//   const handleSubmitAndVal = function() {
-//     handleSubmit();
-//     userValidation();
-//   }
+  const handleSubmitAndVal = function() {
+    handleSubmit();
+    userValidation();
+  }
 
 //   return (
 //     <>

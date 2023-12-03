@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useApplicationDataContext } from "../../providers/ApplicationDataProvider";
 
 function Preferences(props) {
   const [jobTitle, setJobTitle] = useState("");
@@ -18,6 +19,10 @@ function Preferences(props) {
   const [education, setEducation] = useState("");
 
   const [jobTitleError, setJobTitleError] = useState("");
+
+      
+  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  const { userId, setUserId } = useApplicationDataContext();
 
   const navigate = useNavigate();
 
@@ -52,7 +57,7 @@ function Preferences(props) {
       remote: formattedRemote,
       experience: formattedExperience,
       education,
-      userID: 1,
+      userID: userId,
     };
 
     axios
@@ -65,9 +70,22 @@ function Preferences(props) {
       });
   };
 
+  console.log("userID from pref index", userId);
+  useEffect(() => {
+     axios
+      .post("/api/prefs", {userId})
+      .then(() => {
+        axios
+          .get("/api/prefs", { params: { userId } })
+          .then((res) => {
+            console.log("GET userID send from frontend")
+          })
+      })
+      .catch(error => console.log(error));
+  }, [isAuthenticated])
+
   //retrive userid from backend based on the email from frontend
-  const [userId, setUserId] = useState("");
-  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+  // const [userId, setUserId] = useState(""); // moved to ApplicationDataProvider.jsx
 
   useEffect(() => {
     if (isAuthenticated) {
