@@ -47,7 +47,7 @@ const reducer = (state, action) => {
     case ACTIONS.UPDATE_APPLIED:
       const { jobId } = action.payload;
       const applied = state.appliedJobs.includes(jobId);
-      
+      // Either adds or removes specific jobId to the appliedJobs array based on click
       if (!applied) {
         return {
           ...state,

@@ -8,7 +8,8 @@ export const AppliedJobsProvider = ({ children }) => {
   const [contextInitialized, setContextInitialized] = useState(false);
   const { state, updateAppliedJobs } = useApplicationData();
 
-  const appliedJobs = state.appliedJobs;
+  // const appliedJobs = state.appliedJobs;
+  const { appliedJobs } = state;
 
   if (!contextInitialized) {
     setContextInitialized(true);

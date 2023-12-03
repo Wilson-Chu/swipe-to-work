@@ -48,13 +48,12 @@ function SavedJobItem({
   };
 
   const handleAppliedToggle = async () => {
+
     setAppliedState((prevState) => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
       applied: appliedState ? false : true, // DB NOT BEING UPDATED HERE FOR SOME REASON?
     };
-
-    // console.log("Applied before update: ", applied);
 
     try {
       let updatedAppliedToggleValue = await updateSavedJobMarker(
@@ -70,7 +69,7 @@ function SavedJobItem({
   };
 
   const handleApplyToJob = async () => {
-    event.preventDefault();
+    // event.preventDefault();
 
     setAppliedState(true);
     // Always set applied to true if Apply to Job link is clicked
@@ -88,15 +87,14 @@ function SavedJobItem({
     }
   };
 
-  useEffect(() => {
-    console.log("appliedJobsInUseEffect:", appliedJobs);
-  }, [appliedJobs]);
-  const handleUpdateAppliedJobs = () => {
-    // Call updateAppliedJobs function here
-    updateAppliedJobs(id);
-
-    console.log("appliedJobs: ", appliedJobs);
+  const handleUpdateAppliedJobs = async () => {
+    await updateAppliedJobs(id);
   };
+
+  useEffect(() => {
+    setAppliedState(appliedJobs.includes(id));
+    console.log("appliedJobs:", appliedJobs);
+  }, [appliedJobs]);
 
   return (
     <>
@@ -126,7 +124,7 @@ function SavedJobItem({
           </span>
           <span
             onClick={() => {
-              handleApplyToJob();
+              // handleApplyToJob();
             }}
           >
             <a
