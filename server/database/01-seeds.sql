@@ -1,5 +1,8 @@
 INSERT INTO users (id, email, password)
 VALUES (1, 'alice@example.com', 'password');
+INSERT INTO users (id, email, password)
+VALUES (2, 'lorraine.quinyee@gmail.com', 'password');
+
 INSERT INTO saved_jobs (
     id,
     job_posting_id,
@@ -32,6 +35,9 @@ VALUES (
     'http://www.dg.ca',
     1
   );
+
+
+  
 INSERT INTO preferences (
     id,
     job_title,
@@ -57,4 +63,31 @@ VALUES (
     true,
     'bachelor''s degree',
     1
+  );
+
+INSERT INTO preferences (
+    id,
+    job_title,
+    company,
+    city,
+    province,
+    min_salary,
+    job_type,
+    is_remote,
+    no_experience_required,
+    min_education_level,
+    user_id
+  )
+VALUES (
+    2,
+    'teacher',
+    null,
+    'Toronto',
+    'ON',
+    40000,
+    'Fulltime',
+    true,
+    true,
+    'bachelor''s degree',
+    2
   );

@@ -8,9 +8,11 @@
   justify-content: center;
   width: 40rem;
   height: 30rem;
-  gap: 10rem;
-  padding: 2rem;
-  background-image: url("../../public/bg-po1.png");
+  font-size: 1.7rem;
+
+  button {
+    margin-top: 3rem;
+  }
 }
 
 .welcome-message {

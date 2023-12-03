@@ -1,6 +1,6 @@
 const pool = require("./connect");
 
-const getSavedJobs = function () {
+const getSavedJobs = function() {
   const sql = "SELECT * FROM saved_jobs ORDER BY id DESC";
 
   return pool.query(sql)
@@ -9,20 +9,33 @@ const getSavedJobs = function () {
     });
 };
 
-const addSavedJob = function (
-    job_posting_id,
-    applied,
-    company,
-    job_title,
-    city,
-    province,
-    min_salary,
-    job_description,
-    job_type,
-    is_remote,
-    posted_at,
-    website,
-    user_id
+const getSavedJobsByEmail = function(sessionEmail) {
+  const sql = `
+    SELECT * FROM saved_jobs
+    JOIN users ON users.id = saved_jobs.user_id
+    WHERE users.email= $1
+  `;
+
+  return pool.query(sql, [sessionEmail]).then((res) => {
+    return res.rows;
+  });
+};
+
+
+const addSavedJob = function(
+  job_posting_id,
+  applied,
+  company,
+  job_title,
+  city,
+  province,
+  min_salary,
+  job_description,
+  job_type,
+  is_remote,
+  posted_at,
+  website,
+  user_id
 ) {
   const sql = `INSERT into saved_jobs (
       job_posting_id,
@@ -60,7 +73,7 @@ const addSavedJob = function (
     });
 };
 
-const updateSavedJobMarker = function (id, updatedJobMarkerData) {
+const updateSavedJobMarker = function(id, updatedJobMarkerData) {
   const { applied } = updatedJobMarkerData;
 
   const sql = `
@@ -76,7 +89,7 @@ const updateSavedJobMarker = function (id, updatedJobMarkerData) {
     });
 };
 
-const deleteSavedJob = function (id) {
+const deleteSavedJob = function(id) {
   const sql = 'delete from saved_jobs where id=($1) returning *';
 
   return pool.query(sql, [id])
@@ -85,4 +98,10 @@ const deleteSavedJob = function (id) {
     });
 };
 
-module.exports = { getSavedJobs, addSavedJob, updateSavedJobMarker, deleteSavedJob };
+module.exports = {
+  getSavedJobs,
+  addSavedJob,
+  deleteSavedJob,
+  updateSavedJobMarker,
+  getSavedJobsByEmail
+};

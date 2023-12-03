@@ -1,11 +1,12 @@
 const pool = require("./connect");
 
-const getUserByEmail = function (inputEmail) {
-  const sql = "SELECT * FROM users WHERE email= $1 ";
+const getUserIdByEmail = function (inputEmail) {
+  const sql = "SELECT id FROM users WHERE email= $1 ";
 
   return pool.query(sql, [inputEmail]).then((res) => {
-    return res.rows;
+    return res.rows[0];
   });
 };
 
-module.exports = { getUserByEmail };
+
+module.exports = { getUserIdByEmail };

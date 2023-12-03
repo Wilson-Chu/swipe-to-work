@@ -22,7 +22,7 @@ const ActionButtons = function (props) {
       is_remote: props.jobs[props.jobIndex].job_is_remote,
       posted_at: props.jobs[props.jobIndex].job_posted_at_datetime_utc.split("T").shift(),
       website: props.jobs[props.jobIndex].job_apply_link || props.jobs[props.jobIndex].employer_website || 'https://www.google.com',
-      user_id: 1
+      user_id: 2
     }
 
     return axios.post("/api/savedJobs", jobData)
