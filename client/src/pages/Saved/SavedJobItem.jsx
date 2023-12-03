@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedJobModal from "./SavedJobModal";
-import { useAppliedJobsContext } from "../../providers/ApplicationDataProvider";
+import { useApplicationDataContext } from "../../providers/ApplicationDataProvider";
 
 function SavedJobItem({
   id,
@@ -21,7 +21,8 @@ function SavedJobItem({
   // slideout animation
   const [isDeleted, setIsDeleted] = useState(false);
 
-  const { appliedJobs, updateAppliedJobs } = useAppliedJobsContext();
+  const { state, updateAppliedJobs } = useApplicationDataContext();
+  const appliedJobs = state.appliedJobs;
 
   const removeSavedJob = function (id) {
     //for slideout animation
@@ -31,8 +32,9 @@ function SavedJobItem({
 
     setTimeout(() => {
       setIsDeleted(false);
-      setAppliedState(prev); // to fix the toggle applied bug upon deletion
+      
     }, 1000);
+    setAppliedState(() => appliedJobs.includes(id)); // to fix the toggle applied bug upon deletion
   };
 
   const closeModal = () => {
@@ -103,7 +105,7 @@ function SavedJobItem({
           <FontAwesomeIcon
             icon="fa-solid fa-check"
             size="xl"
-            className={`check-applied ${appliedState ? "mark-applied" : ""}`}
+            className={`check-applied ${applied ? "mark-applied" : ""}`}
             onClick={() => {
               handleAppliedToggle();
               handleUpdateAppliedJobs(true);

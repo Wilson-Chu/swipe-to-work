@@ -71,7 +71,7 @@ function Saved(props) {
                 openModal={props.openModal}
                 jobIndex={props.jobIndex}
                 modal={props.modal}
-                applied={props.applied}
+                applied={job.applied}
               />
             </div>
           ))}

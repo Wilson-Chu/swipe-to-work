@@ -73,7 +73,7 @@ const reducer = (state, action) => {
             : [...state.appliedJobs, jobId],
         };
       } else {
-        // If toggle is false, jobId should stay in appliedJobs but not be added multiple times
+        // If toggle is false (clicking on Apply To Job), jobId should stay in appliedJobs but not be added multiple times
         if (!applied) {
           return {
             ...state,
@@ -160,7 +160,7 @@ const useApplicationData = function () {
     axios
       .get("/api/jobs")
       .then((res) => {
-        console.log("test");
+        console.log("testing - API call here");
         dispatch({ type: ACTIONS.SET_JOBS_DATA, value: res.data });
         setLoading(false);
       })
