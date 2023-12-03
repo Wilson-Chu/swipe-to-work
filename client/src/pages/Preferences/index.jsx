@@ -74,7 +74,7 @@ function Preferences(props) {
       const email = user.email;
 
       axios
-        .post("/api/login", {email})
+        .post("/api/login", { email })
         .then(() => {
           // console.log("1st axios post called")
           axios
@@ -82,13 +82,13 @@ function Preferences(props) {
             .then((res) => {
               console.log("USER ID received from backedend", res.data);
               setUserId(res.data.id);
+              // props.setValue(res.data.id);
             })
             .catch((error) => console.log(error));
         })
         .catch((error) => console.error("error in the axios", error));
     }
   }, [isAuthenticated, user]);
-
 
   return (
     <div className="pref">

@@ -9,14 +9,13 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./pages/Login/LoginButton";
 import { AppliedJobsProvider } from "./providers/AppliedJobsProvider";
-import { faCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas, faCheck, faCircleXmark);
-
+import { useState } from "react";
 
 export default function App() {
-
   const {
     state,
     openModal,
@@ -26,7 +25,7 @@ export default function App() {
     swipeLeft,
     swipeRight,
     setLoading,
-    updateAppliedJobs // update appliedJobs array with jobId 
+    updateAppliedJobs, // update appliedJobs array with jobId
   } = useApplicationData();
 
   // just for layout testing:
@@ -62,8 +61,10 @@ export default function App() {
   // const state = { jobs: data.data, jobIndex, modal };
 
   /* testing only... */
-  console.log(state.appliedJobs.length)
+  console.log(state.appliedJobs.length);
   /* end of testing */
+
+  // const [value, setValue] = useState(null);
 
   return (
     <AppliedJobsProvider>
@@ -92,10 +93,28 @@ export default function App() {
             />
 
             {/* <Route path="/account" element={<Account />} /> */}
-            <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal} />} />
+            <Route
+              path="/saved"
+              element={
+                <Saved
+                  jobs={state.jobs}
+                  jobIndex={state.jobIndex}
+                  modal={state.modal}
+                  openModal={openModal}
+                  closeModal={closeModal}
+                />
+              }
+            />
             <Route
               path="/preferences"
-              element={<Preferences jobs={state.jobs} fetchItems={fetchItems} setLoading={setLoading} />}
+              element={
+                <Preferences
+                  jobs={state.jobs}
+                  fetchItems={fetchItems}
+                  setLoading={setLoading}
+                  // setValue={setValue}
+                />
+              }
             />
             <Route path="/login" element={<Login />} />
           </Routes>
