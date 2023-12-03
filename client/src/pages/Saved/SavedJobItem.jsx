@@ -34,7 +34,7 @@ function SavedJobItem({
       setIsDeleted(false);
       
     }, 1000);
-    setAppliedState(() => appliedJobs.includes(id)); // to fix the toggle applied bug upon deletion
+    // setAppliedState(() => appliedJobs.includes(id)); // to fix the toggle applied bug upon deletion
   };
 
   const closeModal = () => {

@@ -23,9 +23,9 @@ const routes = function(pool) {
   router.get("/", (req, res) => {
 
     const { userId } = req.query;
-    console.log("prefRoutes GET", req.query)
+    console.log("prefRoutes GET", req.query);
 
-    getPref(userId) 
+    getPref(Number(userId)) 
       .then((data) => {
         res.json(data);
       })
