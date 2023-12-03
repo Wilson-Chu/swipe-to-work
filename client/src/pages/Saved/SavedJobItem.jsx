@@ -4,6 +4,7 @@ import SavedJobModal from "./SavedJobModal";
 import { useAppliedJobsContext } from "../../providers/AppliedJobsProvider";
 
 function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateSavedJobMarker, job, modal, applied}) {
+  const [appliedState, setAppliedState] = useState(!!applied);
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [oneSavedJob, setOneSavedJob] = useState({});
@@ -37,9 +38,10 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateS
   };
 
   const handleAppliedToggle = async () => {
+    setAppliedState(prevState => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
-      applied: !applied, // CHECK TO SEE IF THE DATABASE IS BEING UPDATED!!! (maybe use the updateAppliedJobs, appliedJobs etc..)
+      applied: !appliedState, // DB NOT BEING UPDATED HERE FOR SOME REASON?
     };
     
     console.log("Applied before update: ", applied);
@@ -47,36 +49,36 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateS
     try {
       let updatedAppliedToggleValue = await updateSavedJobMarker(id, updatedData);
       console.log(`Saved job ${id} updated successfully. Applied toggle: ${updatedAppliedToggleValue}`);
-      // You can perform additional actions if needed
+      
     } catch (error) {
       console.error("Error updating saved job:", error);
-      // Handle the error as needed
+      
     }
   };
 
   const handleApplyToJob = async () => {
+    setAppliedState(true);
     // Always set applied to true if Apply to Job link is clicked
     const updatedData = {
       applied: true,
     };
   
     try {
-      const updatedAppliedValue = await updateSavedJobMarker(id, updatedData);
+      let updatedAppliedValue = await updateSavedJobMarker(id, updatedData);
       console.log(`Saved job ${id} updated successfully. Applied: ${updatedAppliedValue}`);
-      // You can perform additional actions if needed
+      
     } catch (error) {
       console.error("Error updating saved job:", error);
-      // Handle the error as needed
+      
     }
   };
 
+  useEffect(() => {
+    console.log("appliedJobsInUseEffect:", appliedJobs);
+  }, [appliedJobs]);
   const handleUpdateAppliedJobs = () => {
     // Call updateAppliedJobs function here
     updateAppliedJobs(id);
-
-    useEffect(() => {
-      console.log("appliedJobsInUseEffect:", appliedJobs);
-    }, [appliedJobs]);
 
     console.log("appliedJobs: ", appliedJobs);
   };
@@ -88,8 +90,8 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateS
           <FontAwesomeIcon
             icon="fa-solid fa-check"
             size="xl"
-            className={`check-applied ${applied ? "mark-applied": ""}`}
-            onClick={handleAppliedToggle}
+            className={`check-applied ${appliedState ? "mark-applied": ""}`}
+            onClick={()=>{handleAppliedToggle(); handleUpdateAppliedJobs();}}
           />
           <h3>
             {job_title}, {company}
@@ -104,7 +106,7 @@ function SavedJobItem({ id, job_title, company, website, deleteSavedJob, updateS
           <span className = "review-link" onClick={() => reviewPosting()}>
             Review Posting
           </span>
-          <span onClick={handleApplyToJob}>
+          <span onClick={()=>{handleApplyToJob(); }}>
             <a href={website} target="_blank" rel="noopener noreferrer" className="apply-link">
               <span>Apply To Job  </span>
               <FontAwesomeIcon icon="fa-solid fa-arrow-up-right-from-square" />

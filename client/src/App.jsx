@@ -61,7 +61,7 @@ export default function App() {
   // const state = { jobs: data.data, jobIndex, modal };
 
   /* testing only... */
-  console.log(state.appliedJobs.length)
+  console.log("How many applied jobs? ", state.appliedJobs.length)
   /* end of testing */
 
   return (

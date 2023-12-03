@@ -46,7 +46,7 @@ function Saved(props) {
           resolve(res.data.applied); // Resolve with the response data
         })
         .catch((err) => {
-          setError(err.message);
+          console.log(err.message);
           reject(err); // Reject with the error
         });
     });
