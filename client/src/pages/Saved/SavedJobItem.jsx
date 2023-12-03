@@ -86,8 +86,8 @@ function SavedJobItem({
     }
   };
 
-  const handleUpdateAppliedJobs = async () => {
-    await updateAppliedJobs(id);
+  const handleUpdateAppliedJobs = async (toggle) => {
+    await updateAppliedJobs(id, toggle);
   };
 
   useEffect(() => {
@@ -105,7 +105,7 @@ function SavedJobItem({
             className={`check-applied ${appliedState ? "mark-applied" : ""}`}
             onClick={() => {
               handleAppliedToggle();
-              handleUpdateAppliedJobs();
+              handleUpdateAppliedJobs(true);
             }}
           />
           <h3>
@@ -124,6 +124,7 @@ function SavedJobItem({
           <span
             onClick={() => {
               handleApplyToJob();
+              handleUpdateAppliedJobs(false);
             }}
           >
             <a
