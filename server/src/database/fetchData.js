@@ -3,7 +3,7 @@ const { getPref } = require("../database/prefHelpers");
 
 const fetchData = async function() {
   try {
-    const data = await getPref(2); // 2 is a sample userID
+    const data = await getPref(1); // 1 is a sample userID
     console.log(data);
 
     let {
