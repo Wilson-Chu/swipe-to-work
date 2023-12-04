@@ -18,53 +18,62 @@ export const ACTIONS = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.SET_JOBS_DATA:
-      return { ...state, jobs: action.value }
+      return { ...state, jobs: action.value };
 
     case ACTIONS.SHOW_MORE_DETAILS:
-      return { ...state, modal: true }
+      return { ...state, modal: true };
 
     case ACTIONS.CLOSE_MODAL:
-      return { ...state, modal: false }
+      return { ...state, modal: false };
 
     case ACTIONS.NEXT_JOB:
       return { ...state, jobIndex: state.jobIndex + 1 };
-    
+
     case ACTIONS.SWIPE_RIGHT:
-      return {...state, isJobSaved: action.value};
+      return { ...state, isJobSaved: action.value };
 
     case ACTIONS.SWIPE_LEFT:
-      return {...state, isJobPassed: action.value};
+      return { ...state, isJobPassed: action.value };
 
     case ACTIONS.LOADING:
-        return { ...state, loading: true }
-  
+      return { ...state, loading: true };
+
     case ACTIONS.FINISHED_LOADING:
-        return { ...state, loading: false }
-    
+      return { ...state, loading: false };
+
     case ACTIONS.CLEAR_JOBS:
-      return {...state, jobs: []}
+      return { ...state, jobs: [] };
 
     case ACTIONS.UPDATE_APPLIED:
-      const { jobId } = action.payload;
+      const { jobId, toggle } = action.payload;
       const applied = state.appliedJobs.includes(jobId);
-      
-      if (!applied) {
+
+      if (toggle) {
+        // If toggle is true, either adds or removes jobId
         return {
           ...state,
-          appliedJobs: [...state.appliedJobs, jobId]
+          appliedJobs: applied
+            ? state.appliedJobs.filter((appliedJobId) => appliedJobId !== jobId)
+            : [...state.appliedJobs, jobId],
         };
       } else {
-        return {
-          ...state,
-          appliedJobs: state.appliedJobs.filter(appliedJobId => appliedJobId !== jobId)
-        };
-      };
+        // If toggle is false (clicking on Apply To Job), jobId should stay in appliedJobs but not be added multiple times
+        if (!applied) {
+          return {
+            ...state,
+            appliedJobs: [...state.appliedJobs, jobId],
+          };
+        } else {
+          // jobId is already present, no need to add it again
+          return state;
+        }
+      }
 
     case ACTIONS.RESET_JOB_INDEX:
-      return {...state, jobIndex: 0}
+      return { ...state, jobIndex: 0 };
 
     default:
-      throw new Error(`${action.type} is not recognized`)
+      throw new Error(`${action.type} is not recognized`);
   }
 }
 
