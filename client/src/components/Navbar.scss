@@ -20,6 +20,7 @@ nav {
       margin: 0 1em;
       margin-left: 18px;
       letter-spacing:1px;
+      margin-bottom: 1.5rem;
 
       span {
         margin: 8px;
@@ -32,11 +33,13 @@ a {
   --bs-link-color-rgb:248, 252, 249;
   // color: #f8fcf9;
   font-family: "Raleway", sans-serif;
+  text-decoration: auto;
 }
 
 nav a:hover {
   color: #f3b46a !important;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
 }
 
 #logo {
@@ -47,3 +50,4 @@ nav a:hover {
     width: 12rem;
   }
 }
+
