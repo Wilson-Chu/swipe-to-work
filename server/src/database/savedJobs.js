@@ -60,6 +60,22 @@ const addSavedJob = function (
     });
 };
 
+const updateSavedJobMarker = function (id, updatedJobMarkerData) {
+  const { applied } = updatedJobMarkerData;
+
+  const sql = `
+    UPDATE saved_jobs
+    SET applied = $1
+    WHERE id = $2
+    RETURNING *
+  `;
+
+  return pool.query(sql, [applied, id])
+    .then(res => {
+      return res.rows[0];
+    });
+};
+
 const deleteSavedJob = function (id) {
   const sql = 'delete from saved_jobs where id=($1) returning *';
 
@@ -69,4 +85,4 @@ const deleteSavedJob = function (id) {
     });
 };
 
-module.exports = { getSavedJobs, addSavedJob, deleteSavedJob };
+module.exports = { getSavedJobs, addSavedJob, updateSavedJobMarker, deleteSavedJob };

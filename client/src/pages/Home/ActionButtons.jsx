@@ -16,7 +16,7 @@ const ActionButtons = function (props) {
       job_title: props.jobs[props.jobIndex].job_title,
       city: props.jobs[props.jobIndex].job_city,
       province: props.jobs[props.jobIndex].job_state,
-      min_salary: props.jobs[props.jobIndex].job_min_salary,
+      min_salary: parseInt(props.jobs[props.jobIndex].job_min_salary),
       job_description: props.jobs[props.jobIndex].job_description,
       job_type: props.jobs[props.jobIndex].job_employment_type,
       is_remote: props.jobs[props.jobIndex].job_is_remote,
@@ -35,7 +35,12 @@ const ActionButtons = function (props) {
   };
 
   const handleSaveAndNext = function() {
-    saveJob();
+    try {
+      saveJob();
+    } catch (error) {
+      console.log("Save Job Error:", error)
+    }
+    
     swipeRight();
     props.nextJob();
   };

@@ -69,6 +69,8 @@ function Preferences(props) {
       <h2>My Job Preferences</h2>
 
       <form className="preferences-inputs">
+        <div className="input-box-container">
+        <div className="freeform-inputs">
         <label>
           {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
           Job Title:
@@ -104,6 +106,8 @@ function Preferences(props) {
             onChange={(e) => setCity(e.target.value)}
           />
         </label>
+        </div>
+        </div>
 
         <label>
           Province:

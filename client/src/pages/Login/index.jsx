@@ -19,17 +19,14 @@
 //     setPassword(e.target.value);
 //   };
 
-
-//   const userValidation = function() {
-//         //client-side validation
-//         if (!email || !password) {
-//           alert("Please enter both email and password");
-//           return;
-//         }
-//   }
-
 //   const handleSubmit = async () => {
 //     e.preventDefault();
+
+//     //client-side validation
+//     if (!email || !password) {
+//       alert("Please enter both email and password");
+//       // return;
+//     }
 
 //     // talk to backend auth
 //     try {
@@ -55,15 +52,11 @@
 
 //   };
 
-//   const handleSubmitAndVal = function() {
-//     handleSubmit();
-//     userValidation();
-//   }
 
 //   return (
 //     <>
 //       <main className="form-signin w-100 m-auto">
-//         <form onSubmit={handleSubmitAndVal}>
+//         <form onSubmit={handleSubmit}>
 //           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
 //           <div className="form-floating">
@@ -74,6 +67,7 @@
 //               placeholder="name@example.com"
 //               value={email}
 //               onChange={handleEmailChange}
+//               required
 //             />
 //             <label htmlFor="floatingInput">Email address</label>
 //           </div>
@@ -86,6 +80,7 @@
 //               placeholder="Password"
 //               value={password}
 //               onChange={handlePasswordChange}
+//               required
 //             />
 //             <label htmlFor="floatingPassword">Password</label>
 //           </div>
@@ -112,7 +107,7 @@ function Login(props) {
 
   return (
     <>
-      <main className="form-signin w-100 m-auto">
+      {/* <main className="form-signin w-100 m-auto">
         <form onSubmit={handleSubmitAndVal}>
           <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
@@ -144,7 +139,7 @@ function Login(props) {
             Sign in
           </button>
         </form>
-      </main>
+      </main> */}
       <LoginButton />
     </>
   );

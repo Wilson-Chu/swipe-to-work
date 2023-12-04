@@ -1,5 +1,5 @@
 const express = require('express');
-const {getSavedJobs, addSavedJob, deleteSavedJob} = require('../database/savedJobs');
+const { getSavedJobs, addSavedJob, updateSavedJobMarker, deleteSavedJob } = require('../database/savedJobs');
 const router = express.Router();
 
 const routes = function() {
@@ -10,7 +10,7 @@ const routes = function() {
     })
       .catch(err => {
         console.log(err.message);
-        res.status(500).json({error: err.message});
+        res.status(500).json({ error: err.message });
       });
   });
 
@@ -31,7 +31,7 @@ const routes = function() {
       user_id
     } = req.body;
 
-    addSavedJob(    
+    addSavedJob(
       job_posting_id,
       applied,
       company,
@@ -46,11 +46,32 @@ const routes = function() {
       website,
       user_id)
       .then(data => {
-      res.json(data);
-    })
+        res.json(data);
+      })
       .catch(err => {
         console.log(err.message);
-        res.status(500).json({error: err.message});
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  router.put("/:id", (req, res) => {
+    const id = req.params.id;
+    const { applied } = req.body;
+
+    // Ensure 'applied' is a boolean
+    const isValidApplied = typeof applied === 'boolean';
+
+    if (!isValidApplied) {
+      return res.status(400).json({ error: 'Invalid value for "applied". It should be a boolean.' });
+    }
+
+    updateSavedJobMarker(id, { applied })
+      .then(data => {
+        res.json(data);
+      })
+      .catch(err => {
+        console.log(err.message);
+        res.status(500).json({ error: err.message });
       });
   });
 
@@ -61,7 +82,7 @@ const routes = function() {
     })
       .catch(err => {
         console.log(err.message);
-        res.status(500).json({error: err.message});
+        res.status(500).json({ error: err.message });
       });
   });
 
