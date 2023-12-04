@@ -35,8 +35,7 @@ function Navbar(props) {
             <img src={logo} alt="logo" />
           </Link>
         </li> */}
-
-        {isAuthenticated && (
+        {isAuthenticated &&
           <li>
             <span>
               <FontAwesomeIcon
@@ -46,8 +45,7 @@ function Navbar(props) {
               />
             </span>
             <Link to="/saved">Saved Jobs</Link>
-          </li>
-        )}
+        </li>}
 
         {isAuthenticated && (
           <li>

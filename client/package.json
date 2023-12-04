@@ -9,6 +9,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.3",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
