@@ -70,19 +70,16 @@ function Preferences(props) {
       });
   };
 
+  console.log("useAppDataContext: ", useApplicationDataContext());
   console.log("userID from pref index", userId);
   useEffect(() => {
      axios
       .post("/api/prefs", {userId})
-      .then(() => {
-        axios
-          .get("/api/prefs", { params: { userId } })
-          .then((res) => {
-            console.log("GET userID send from frontend")
-          })
+      .then((data) => {
+        console.log("axios /api/prefs", data)
       })
       .catch(error => console.log(error));
-  }, [isAuthenticated])
+  }, [isAuthenticated, userId])
 
   //retrive userid from backend based on the email from frontend
   // const [userId, setUserId] = useState(""); // moved to ApplicationDataProvider.jsx
@@ -93,20 +90,20 @@ function Preferences(props) {
 
       axios
         .post("/api/login", {email})
-        .then(() => {
-          // console.log("1st axios post called")
-          axios
-            .get("/api/login", { params: { email } })
-            .then((res) => {
-              console.log("USER ID received from backedend", res.data);
-              setUserId(res.data.id);
-            })
-            .catch((error) => console.log(error));
+        .then((data) => {
+          console.log("userId from post request /api/log: ", data.data.id);
+          setUserId(data.data.id);
+        //   axios
+        //     .get("/api/login", { params: { email } })
+        //     .then((res) => {
+        //       console.log("USER ID received from backedend", res.data);
+        //       setUserId(res.data.id);
+        //     })
+        //     .catch((error) => console.log(error));
         })
         .catch((error) => console.error("error in the axios", error));
     }
   }, [isAuthenticated, user]);
-
 
   return (
     <div className="pref">

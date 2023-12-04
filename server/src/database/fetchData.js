@@ -1,13 +1,13 @@
 const axios = require("axios");
 const { getPref } = require("../database/prefHelpers");
 
-const fetchData = async function() {
+const fetchData = async function(userId) {
   try {
-    const data = await getPref(2); // 2 is a sample userID
-    console.log(data);
+    console.log("check userid type in fetchData.js",typeof(userId));
+    const data = await getPref(userId); // 2 is a sample userID
 
     let {
-      id,
+      // id,
       job_title,
       company,
       city,

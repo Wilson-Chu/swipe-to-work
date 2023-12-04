@@ -8,6 +8,8 @@ export const ApplicationDataProvider = ({ children }) => {
   const [contextInitialized, setContextInitialized] = useState(false);
   const {
     state,
+    userId,
+    setUserId,
     openModal,
     closeModal,
     nextJob,
@@ -22,8 +24,7 @@ export const ApplicationDataProvider = ({ children }) => {
   // const { appliedJobs } = state;
 
   // define a state here
-  const [userId, setUserId] = useState("");
-  
+  // const [userId, setUserId] = useState("");
 
   if (!contextInitialized) {
     setContextInitialized(true);

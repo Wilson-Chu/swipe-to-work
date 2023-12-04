@@ -1,5 +1,7 @@
 import axios from "axios";
-import { useCallback, useEffect, useReducer } from "react";
+import { useCallback, useEffect, useState, useReducer } from "react";
+import { useApplicationDataContext } from "../providers/ApplicationDataProvider";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const ACTIONS = {
   SET_JOBS_DATA: "SET_JOBS_DATA",
@@ -101,10 +103,12 @@ const initialState = {
   isJobPassed: false,
   loading: true,
   appliedJobs: [],
+  // userId: ""
 };
 
 const useApplicationData = function () {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [userId, setUserId] = useState("");
 
   const setLoading = (loading) => {
     dispatch({ type: loading ? ACTIONS.LOADING : ACTIONS.FINISHED_LOADING });
@@ -152,13 +156,19 @@ const useApplicationData = function () {
     dispatch({ type: ACTIONS.UPDATE_APPLIED, payload: { jobId, toggle } });
   };
 
+  // userAuth
+  const { isAuthenticated, user } = useAuth0();
+
+  console.log("userId in useAppData: ", userId);
+
   const fetchItems = useCallback(() => {
     setLoading(true);
     clearJobs();
     resetJobIndex();
 
+    console.log("userid before axios in UseAppData", userId)
     axios
-      .get("/api/jobs")
+      .get("/api/jobs", { params: { userId } })
       .then((res) => {
         console.log("testing - API call here");
         dispatch({ type: ACTIONS.SET_JOBS_DATA, value: res.data });
@@ -168,12 +178,12 @@ const useApplicationData = function () {
         setLoading(false);
         console.log(error.message);
       });
-  });
+  }, );
 
   // Fetch data on first render
   useEffect(() => {
     fetchItems();
-  }, []);
+  }, [isAuthenticated, userId]);
 
   return {
     state,
@@ -185,6 +195,8 @@ const useApplicationData = function () {
     swipeRight,
     setLoading,
     updateAppliedJobs,
+    userId,
+    setUserId
   };
 };
 

@@ -6,12 +6,11 @@ const routes = function(pool) {
 
   router.post("/", (req, res) => {
     const { userId } = req.body;
-    // console.log("POST req body backend:", req.body)
+    // console.log("POST req body backend:", req.body);
 
-    // console.log("prefRoutes.jsx: ", userId);
     getPref(Number(userId))
       .then((data) => {
-        console.log("POST pref:", data)
+        console.log("1. POST pref:", data)
         res.json(data);
       })
       .catch((err) => {

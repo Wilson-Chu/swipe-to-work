@@ -7,8 +7,11 @@ const {fetchData} = require("../database/fetchData")
 const routes = function() {
 
   router.get("/", (req, res) => {
-    console.log("fetchdata test")
-    fetchData()
+    // console.log("fetchdata test", req.query);
+    const userId = parseInt(req.query.userId);
+    // console.log("fetchdata test", typeof(userId))
+
+    fetchData(userId)
       .then(data => res.json(data.data))
       .catch(error => console.error(error, "job route error"));
 
