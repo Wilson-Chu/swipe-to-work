@@ -104,7 +104,7 @@
 .bottom-saved-box {
   display: flex;
   justify-content: space-between;
-  text-decoration:underline;
+  text-decoration:none;
   color: #854893;
   font-weight: bold;
 
@@ -122,12 +122,12 @@
 
   &:hover{
     cursor: pointer;
-    color: greenyellow;
+    color: rgb(0, 255, 0);
   }
 }
 
 .mark-applied {
-  color: greenyellow;
+  color: rgb(0, 255, 0);
 }
 
 .delete-saved {
