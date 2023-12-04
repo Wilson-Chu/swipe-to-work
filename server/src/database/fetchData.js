@@ -23,22 +23,24 @@ const fetchData = async function() {
     // Set default values if the variables are undefined
     job_title = job_title || 'Web developer';
     city = city ? `in ${city}` : 'in Toronto';
+    company = company ? `at ${company}` : "";
     province = province || 'ON';
     is_remote = is_remote ? "remote" : "";
     no_experience_required = no_experience_required ? 'no_experience' : 'more_than_3_years_experience';
-    min_salary = min_salary ? `minimum salary of ${min_salary}` : null;
-    min_education_level = min_education_level ? `${min_education_level} required` : null;
+    min_salary = min_salary ? `minimum salary of ${min_salary}` : "";
+    min_education_level = min_education_level ? `${min_education_level} required` : "";
 
     const options = {
       method: "GET",
       url: "https://jsearch.p.rapidapi.com/search",
       params: {
-        query: `${job_type} ${is_remote} ${job_title} ${city} ${province}`,
+        query: `${job_type} ${company} ${is_remote} ${job_title} ${city} ${province}`,
         page: "1",
         num_pages: "1",
         date_posted: "all",
         country: "CA",
-        employment_types: `${job_type}`
+        employment_types: `${job_type}`,
+        job_requirements: no_experience_required
       },
       headers: {
         "X-RapidAPI-Key": process.env.RAPIDAPI_KEY,

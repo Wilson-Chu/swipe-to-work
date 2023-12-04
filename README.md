@@ -41,7 +41,3 @@ npm start
 - Github -> User Settings
 - Integrations.Applications
 - Render - Configure
-
-### TESTING TESTING TESTING 
-
-### Lorraine'test Wilson's Test over here!
