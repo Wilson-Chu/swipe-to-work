@@ -61,7 +61,7 @@ const MainJobPoints = function (props) {
               </li>
               <li>
                 <i className="fa-solid fa-location-dot"></i>
-                <p>{props.jobs[props.jobIndex].job_city}</p>
+                <p>{props.jobs[props.jobIndex].job_city ? props.jobs[props.jobIndex].job_city : "N/A"}</p>
               </li>
               <li>
                 <i className="fa-regular fa-clock"></i>

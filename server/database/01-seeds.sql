@@ -29,7 +29,7 @@ VALUES (
     'FULLTIME',
     false,
     '2023-11-24T19:47:06.000Z',
-    'http://www.dg.ca',
+    'https://www.agilus.ca/',
     1
   );
 INSERT INTO preferences (

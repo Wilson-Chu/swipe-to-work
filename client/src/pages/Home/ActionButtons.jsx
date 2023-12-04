@@ -66,7 +66,7 @@ const ActionButtons = function (props) {
         Pass
       </button>
       <button className="action-button" type="button" onClick={randomChoice}>
-        Random!
+        50/50
       </button>
       <button className="action-button" type="button" onClick={handleSaveAndNext}>
         Save

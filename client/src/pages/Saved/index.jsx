@@ -54,13 +54,20 @@ function Saved(props) {
     });
   };
 
+  // Filter out duplicates based on job_posting_id
+  const uniqueSavedJobs = Array.from(new Set(savedJobs.map((job) => job.job_posting_id))).map(
+    (job_posting_id) => {
+      return savedJobs.find((job) => job.job_posting_id === job_posting_id);
+    }
+  );
+
   return (
     isAuthenticated ? (<div className="saved-jobs-container">
       {!props.modal && <h2 className="no-modal-title">My Saved Jobs</h2>}
 
       {savedJobs.length > 0 ? (
         <div className="saved-jobs">
-          {savedJobs.map((job, index) => (
+          {uniqueSavedJobs.map((job, index) => (
             <div key={index}>
               <SavedJobItem
                 id={job.id}
