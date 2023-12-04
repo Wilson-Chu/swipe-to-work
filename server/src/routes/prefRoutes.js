@@ -8,7 +8,6 @@ const routes = function(pool) {
     const { userId } = req.body;
     // console.log("POST req body backend:", req.body)
 
-    // console.log("prefRoutes.jsx: ", userId);
     getPref(Number(userId))
       .then((data) => {
         console.log("POST pref:", data)

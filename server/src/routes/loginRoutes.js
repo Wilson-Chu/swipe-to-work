@@ -20,7 +20,7 @@ const routes = function () {
 
   router.get("/", (req, res) => {
     const { email } = req.query;
-    console.log("GET Login backend:", email);
+    // console.log("GET Login backend:", email);
 
     getUserIdByEmail(email)
       .then((data) =>{

@@ -26,6 +26,17 @@ function Preferences(props) {
 
   const navigate = useNavigate();
 
+
+    useEffect(() => {
+      axios
+        .get("/api/pref", { params: { userId } })
+        .then((res) => console.log("GET user pref send from frontend", res))
+        .catch((error) => console.log(error));
+    }, [isAuthenticated,user]);
+
+
+
+
   const handleSave = (event) => {
     event.preventDefault();
 
@@ -71,22 +82,25 @@ function Preferences(props) {
   };
 
   console.log("userID from pref index", userId);
-  useEffect(() => {
-     axios
-      .post("/api/prefs", {userId})
-      .then(() => {
-        axios
-          .get("/api/prefs", { params: { userId } })
-          .then((res) => {
-            console.log("GET userID send from frontend")
-          })
-      })
-      .catch(error => console.log(error));
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //    axios
+  //     .post("/api/prefs", {userId})
+  //     // .then(() => {
+  //     //   axios
+  //     //     .get("/api/prefs", { params: { userId } })
+  //     //     .then((res) => {
+  //     //       console.log("GET userID send from frontend")
+  //     //     })
+  //     // })
+  //     .catch(error => console.log(error));
+  // }, [isAuthenticated])
+
+
+
+
 
   //retrive userid from backend based on the email from frontend
   // const [userId, setUserId] = useState(""); // moved to ApplicationDataProvider.jsx
-
   useEffect(() => {
     if (isAuthenticated) {
       const email = user.email;
