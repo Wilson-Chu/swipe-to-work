@@ -4,6 +4,7 @@ import "./buttons.scss";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Preferences(props) {
   const [jobTitle, setJobTitle] = useState("");
@@ -17,6 +18,7 @@ function Preferences(props) {
   const [education, setEducation] = useState("");
 
   const [jobTitleError, setJobTitleError] = useState("");
+  const { isAuthenticated } = useAuth0();
 
   const navigate = useNavigate();
 
@@ -65,48 +67,48 @@ function Preferences(props) {
   };
 
   return (
-    <div className="pref">
+    isAuthenticated ? (<div className="pref">
       <h2>My Job Preferences</h2>
 
       <form className="preferences-inputs">
         <div className="input-box-container">
-        <div className="freeform-inputs">
-        <label>
-          {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
-          Job Title:
-          <input
-            required
-            placeholder="web developer...?"
-            type="text"
-            value={jobTitle}
-            onChange={(e) => {
-              setJobTitle(e.target.value);
-              // Clear the error when the user types
-              setJobTitleError((prev) =>
-                e.target.value ? "" : "Job Title cannot be empty"
-              );
-            }}
-          />
-        </label>
+          <div className="freeform-inputs">
+            <label>
+              {jobTitleError && <p style={{ color: "red" }}>{jobTitleError}</p>}
+              Job Title:
+              <input
+                required
+                placeholder="web developer...?"
+                type="text"
+                value={jobTitle}
+                onChange={(e) => {
+                  setJobTitle(e.target.value);
+                  // Clear the error when the user types
+                  setJobTitleError((prev) =>
+                    e.target.value ? "" : "Job Title cannot be empty"
+                  );
+                }}
+              />
+            </label>
 
-        <label>
-          Company:
-          <input
-            type="text"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
-          />
-        </label>
+            <label>
+              Company:
+              <input
+                type="text"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+              />
+            </label>
 
-        <label>
-          City:
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-        </label>
-        </div>
+            <label>
+              City:
+              <input
+                type="text"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+              />
+            </label>
+          </div>
         </div>
 
         <label>
@@ -167,8 +169,8 @@ function Preferences(props) {
                 e.target.value === "true"
                   ? true
                   : e.target.value === "false"
-                  ? false
-                  : null
+                    ? false
+                    : null
               )
             }
           >
@@ -187,8 +189,8 @@ function Preferences(props) {
                 e.target.value === "true"
                   ? true
                   : e.target.value === "false"
-                  ? false
-                  : null
+                    ? false
+                    : null
               )
             }
           >
@@ -216,7 +218,11 @@ function Preferences(props) {
       <button className="button-74" role="button" onClick={handleSave}>
         Save
       </button>
-    </div>
+    </div>) : (
+      <h2 className="logged-out">
+        You must be logged in to use Swipe to Work!
+      </h2>
+    )
   );
 }
 

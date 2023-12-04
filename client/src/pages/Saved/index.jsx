@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import SavedJobItem from "./SavedJobItem";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Saved(props) {
 
   const [savedJobs, setSavedJobs] = useState([]);
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     axios
@@ -53,7 +55,7 @@ function Saved(props) {
   };
 
   return (
-    <div className="saved-jobs-container">
+    isAuthenticated ? (<div className="saved-jobs-container">
       {!props.modal && <h2 className="no-modal-title">My Saved Jobs</h2>}
 
       {savedJobs.length > 0 ? (
@@ -79,7 +81,11 @@ function Saved(props) {
       ) : (
         <p id="msg-no-saved">No saved jobs</p>
       )}
-    </div>
+    </div>) : (
+      <h2 className="logged-out">
+        You must be logged in to use Swipe to Work!
+      </h2>
+    )
   );
 }
 

@@ -2,11 +2,13 @@ import React from 'react';
 import { jobTypeFormatter } from './homeHelpers'
 import { css } from "@emotion/react";
 import { DotLoader, ClipLoader } from "react-spinners";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const MainJobPoints = function (props) {
 
   const { isJobSaved, isJobPassed } = props;
+  const { isAuthenticated } = useAuth0();
 
   const handleImageError = (event) => {
     // Replace any broken image with the default image
@@ -14,21 +16,21 @@ const MainJobPoints = function (props) {
   };
 
   return (
-    props.jobs.length > 0 && (
+    isAuthenticated ? (props.jobs.length > 0 && (
       <>
         {!!props.loading &&
-        <div className="spinner-container">
-        <DotLoader
-          css={`.spinner {
+          <div className="spinner-container">
+            <DotLoader
+              css={`.spinner {
               background-color: transparent;
             }`
-          }
-          size={70}
-          color="#854893"
-        />
-        <h2>Finding your perfect job!</h2>
-      </div>}
-        {!props.loading && props.jobs.length > 0 && props.jobIndex < props.jobs.length ?(<div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
+              }
+              size={70}
+              color="#854893"
+            />
+            <h2>Finding your perfect job!</h2>
+          </div>}
+        {!props.loading && props.jobs.length > 0 && props.jobIndex < props.jobs.length ? (<div className={`main-points-container ${isJobSaved ? "saved" : ""} ${isJobPassed ? "passed" : ""}`}>
           {props.jobs[props.jobIndex].employer_logo && (
             <div className="main-img-container">
               <img
@@ -68,29 +70,33 @@ const MainJobPoints = function (props) {
             </ul>
           </div>
         </div>) : (
-        <h2 className="no-more-jobs-text">
-          There are no more results! <br/> Change your preferences and try again!
-        </h2>
-      )}
+          <h2 className="no-more-jobs-text">
+            There are no more results! <br /> Change your preferences and try again!
+          </h2>
+        )}
       </>
     ) ||
-    props.jobs.length === 0 && (
-      <>
-        {!!props.loading && 
-        <div className="spinner-container">
-        <DotLoader
-          css={`.spinner {
+      props.jobs.length === 0 && (
+        <>
+          {!!props.loading &&
+            <div className="spinner-container">
+              <DotLoader
+                css={`.spinner {
               background-color: transparent;
             }`
-          }
-          size={70}
-          color="#854893"
-        />
-        <h2>Finding your perfect job!</h2>
-      </div>}
-        {!props.loading && <h2 className='try-again-text'>Oops, we couldn't find any jobs that match your set of preferences, please expand your search!</h2>}
-      </>
-    )
+                }
+                size={70}
+                color="#854893"
+              />
+              <h2>Finding your perfect job!</h2>
+            </div>}
+          {!props.loading && <h2 className='try-again-text'>Oops, we couldn't find any jobs that match your set of preferences, please expand your search!</h2>}
+        </>
+      )) : (
+        <h2 className="logged-out">
+        You must be logged in to use Swipe to Work!
+      </h2>
+      )
   );
 };
 

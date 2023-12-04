@@ -3,10 +3,12 @@ import axios from "axios"
 import { descWithLineBreaks } from "../Home/homeHelpers"
 import "./ActionButtons.scss"
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const ActionButtons = function (props) {
   
   const { swipeLeft, swipeRight } = props;
+  const { isAuthenticated } = useAuth0();
 
   const saveJob = function () {
     const jobData = {
@@ -59,7 +61,7 @@ const ActionButtons = function (props) {
   }
 
   return (
-    <div className="action-buttons">
+    isAuthenticated ? (<div className="action-buttons">
       <button className="action-button" type="button" onClick={handlePass}>
         Pass
       </button>
@@ -69,7 +71,7 @@ const ActionButtons = function (props) {
       <button className="action-button" type="button" onClick={handleSaveAndNext}>
         Save
       </button>
-    </div>
+    </div>) : null
   );
 }
 
