@@ -1,10 +1,29 @@
-# Shell-React-Express
 
-React-Express Shell app ready for node deployment to a cloud platform.  React and Express code are separate mini-projects and build/deployment is handled by the top level package.json
 
-When the React App starts, it makes a single API call to the API server for the version number and renders that, or an error if API call was unsucessful
 
-Built for node 18
+# Swipe to Work
+
+<!-- ![App Logo](https://github.com/Wilson-Chu/swipe-to-work/blob/main/client/src/public/logo-yellowbg.png?raw=true ) -->
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/client/src/public/logo-yellowbg.png?raw=true" alt="App Logo" width="500">
+</div>
+
+Swipe to Work is a dating app clone that takes in the user's job-related preferences such as the job title, company, FT/PT, remote/on-site, etc and fetches jobs from an external API (JSearch) to display jobs that match those preferences in an easy-to-read format. The user can "pass" on the job and move on to the next one, "save" that specific job to their own saved job list, or use the "50/50" button that will make a decision for them at random. 
+
+The saved jobs list allows users to review the full job posting, visit a link where they can apply directly, keep track of the jobs that they have applied to, and delete jobs that they no longer want to keep. 
+
+In situations where the user reaches the end of the fetched job list, or where there are no jobs available based on the preferences entered, users will see a message that reflects these cases.
+
+This project was made with React, NodeJS, Express, postgreSQL and the JSearch API.
+
+### Future Developments
+Some ideas for future app features include:
+* "My Profile" page: users can enter their resumes and other relevant info so that they could automatically be matched with jobs based on their background
+
+* "My Achievements" page: gamifying the app to record job applications and other job-related activities like attending networking events, and rewarding users with achievements like special badges and hidden graphics
+
+* Use geolocation API so users can get jobs directly in their area
+
 
 ### Environment Setup (don't skip this!)
 Copy `env.example` to `.env` to override the default env values.
