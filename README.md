@@ -16,13 +16,33 @@ In situations where the user reaches the end of the fetched job list, or where t
 
 This project was made with React, NodeJS, Express, postgreSQL and the JSearch API.
 
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-login.PNG?raw=true" alt="Login/Register page" width="500">
+</div>
+
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-login-auth0.PNG?raw=true" alt="Login with Auth0" width="500">
+</div>
+
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-prefs.PNG?raw=true" alt="Preferences page" width="500">
+</div>
+
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-home-results.PNG?raw=true" alt="Home page with results" width="500">
+</div>
+
+<div style="text-align:center;">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-saved.png?raw=true" alt="Saved jobs page" width="500">
+</div>
+
 ### Future Developments
 Some ideas for future app features include:
-* "My Profile" page: users can enter their resumes and other relevant info so that they could automatically be matched with jobs based on their background
+- "My Profile" page: users can enter their resumes and other relevant info so that they could automatically be matched with jobs based on their background
 
-* "My Achievements" page: gamifying the app to record job applications and other job-related activities like attending networking events, and rewarding users with achievements like special badges and hidden graphics
+- "My Achievements" page: gamifying the app to record job applications and other job-related activities like attending networking events, and rewarding users with achievements like special badges and hidden graphics
 
-* Use geolocation API so users can get jobs directly in their area
+- Use geolocation API so users can get jobs directly in their area
 
 
 ### Environment Setup (don't skip this!)
