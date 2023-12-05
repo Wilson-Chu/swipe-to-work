@@ -1,25 +1,11 @@
-// @import 'bootstrap/scss/bootstrap';
-// @import "bootstrap/scss/functions";
-// @import './bootstrap-variables.scss';
-// @import "bootstrap/scss/variables";
-// @import "bootstrap/scss/mixins";
-// @import "bootstrap/scss/reboot";
-// @import "bootstrap/scss/type";
-// @import "bootstrap/scss/variables-dark";
-// @import "bootstrap/scss/maps";
-// @import "bootstrap/scss/root";
-
 body {
   display: flex;
   justify-content: center;
-  // align-items: center;
   margin-top: 1rem;
 
   background-image: url("./public/bg2-t77.png");
   background-size: cover;
   background-repeat: repeat;
-  // height: 100vh;
-  // overflow: hidden;
   
 }
 
@@ -33,22 +19,10 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
- 
   border-radius: 5%;
-  // border-bottom-left-radius: 3%;
-  // border-bottom-right-radius: 3%;
   padding-bottom: 0.5rem;
   
   a {
     text-decoration: auto;
   }
 }
-
-/* theme color
-black: #08110b
-white: #f8fcf9
-purple: #bd7aa8
-pink: #e2c5ca
-dark purple: #854893
-*/

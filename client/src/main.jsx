@@ -19,16 +19,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     redirect_uri: prefsURL,
   }}
 >
-  <ApplicationDataProvider>
-    {/* <Auth0Provider
-      domain={domain}
-      clientId={clientId}
-      authorizationParams={{
-        redirect_uri: prefsURL,
-      }}
-    > */}
+    <ApplicationDataProvider>
       <App />
-    {/* </Auth0Provider> */}
-  </ApplicationDataProvider>
+    </ApplicationDataProvider>
   </Auth0Provider>
 );

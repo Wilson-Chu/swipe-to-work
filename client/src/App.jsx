@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import useApplicationData from "./hooks/useApplicationData";
 import "./App.scss";
 import Home from "./pages/Home";
 import Preferences from "./pages/Preferences";
@@ -28,46 +27,7 @@ export default function App() {
     setLoading,
   } = useApplicationDataContext();
 
-  console.log("Context Value:", state); // Log the context value
-
-  // just for layout testing:
-  // const [jobIndex, setJobIndex] = useState(0);
-  // const [modal, setModal] = useState(false);
-
-  // const openModal = function () {
-  //   setModal(true);
-  // };
-
-  // const closeModal = function () {
-  //   setModal(false);
-  // };
-
-  // const nextJob = function () {
-  //   setJobIndex((prev) => prev + 1);
-  // };
-
-  // const fetchItems = useCallback(() => {
-  //   axios
-  //     .get("/api/jobs")
-  //     .then((res) => {
-  //       setJobs(res.data);
-  //     })
-  //     .catch((error) => console.log(error.message));
-  // });
-
-  // useEffect(() => {
-  //   console.log("job postings fetched from jsearch api");
-  //   fetchItems();
-  // }, []);
-
-  // const state = { jobs: data.data, jobIndex, modal };
-
-  /* testing only... */
-  console.log("How many total applied jobs? ", state.appliedJobs.length)
-  /* end of testing */
-
   return (
-    // <ApplicationDataProvider>
       <div className="App">
         <Router>
           <Navbar />
@@ -91,8 +51,6 @@ export default function App() {
                 />
               }
             />
-
-            {/* <Route path="/account" element={<Account />} /> */}
             <Route path="/saved" element={<Saved jobs={state.jobs} jobIndex={state.jobIndex} modal={state.modal} openModal={openModal} closeModal={closeModal}/>} />
             <Route
               path="/preferences"
@@ -104,6 +62,5 @@ export default function App() {
         <Footer />
       </Router>
     </div>
-    // </ApplicationDataProvider>
   );
 }

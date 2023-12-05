@@ -18,9 +18,6 @@ export const ApplicationDataProvider = ({ children }) => {
     updateAppliedJobs,
   } = useApplicationData();
 
-  // const appliedJobs = state.appliedJobs;
-  // const { appliedJobs } = state;
-
   if (!contextInitialized) {
     setContextInitialized(true);
   }

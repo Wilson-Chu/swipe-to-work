@@ -34,7 +34,7 @@ function SavedJobItem({
       setIsDeleted(false);
       
     }, 1000);
-    setAppliedState(() => appliedJobs.includes(id-1)); // to fix the toggle applied bug upon deletion
+    setAppliedState(() => appliedJobs.includes(id-1));
   };
 
   const closeModal = () => {
@@ -54,7 +54,7 @@ function SavedJobItem({
     setAppliedState((prevState) => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
-      applied: appliedState ? false : true, // DB NOT BEING UPDATED HERE FOR SOME REASON?
+      applied: appliedState ? false : true,
     };
 
     try {
@@ -62,9 +62,7 @@ function SavedJobItem({
         id,
         updatedData
       );
-      console.log(
-        `1. Saved job ${id} updated successfully. Applied toggle: ${updatedAppliedToggleValue}`
-      );
+      
     } catch (error) {
       console.error("Error updating saved job:", error);
     }
@@ -81,9 +79,6 @@ function SavedJobItem({
 
     try {
       let updatedAppliedValue = await updateSavedJobMarker(id, updatedData);
-      console.log(
-        `2. Saved job ${id} updated successfully. Applied: ${updatedAppliedValue}`
-      );
     } catch (error) {
       console.error("Error updating saved job:", error);
     }
@@ -95,7 +90,6 @@ function SavedJobItem({
 
   useEffect(() => {
     setAppliedState(appliedJobs.includes(id));
-    console.log("3. appliedJobs:", appliedJobs);
   }, [appliedJobs]);
 
   return (

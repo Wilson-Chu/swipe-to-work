@@ -24,10 +24,6 @@ const routes = function() {
     })
   );
 
-  // router.get("/", (req, res) => {
-  //   getUserByEmail("alice@example.com").then((data) => res.json(data));
-  // });
-
   router.post("/", async (req, res) => {
     const { email, password } = req.body;
 
