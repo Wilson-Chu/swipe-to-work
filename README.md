@@ -4,9 +4,9 @@
 # Swipe to Work
 
 <!-- ![App Logo](https://github.com/Wilson-Chu/swipe-to-work/blob/main/client/src/public/logo-yellowbg.png?raw=true ) -->
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/client/src/public/logo-yellowbg.png?raw=true" alt="App Logo" width="500">
-</div>
+</p>
 
 Swipe to Work is a dating app clone that takes in the user's job-related preferences such as the job title, company, FT/PT, remote/on-site, etc and fetches jobs from an external API (JSearch) to display jobs that match those preferences in an easy-to-read format. The user can "pass" on the job and move on to the next one, "save" that specific job to their own saved job list, or use the "50/50" button that will make a decision for them at random. 
 
