@@ -16,25 +16,25 @@ In situations where the user reaches the end of the fetched job list, or where t
 
 This project was made with React, NodeJS, Express, postgreSQL and the JSearch API.
 
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-login.PNG?raw=true" alt="Login/Register page" width="500">
-</div>
+</p>
 
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-login-auth0.PNG?raw=true" alt="Login with Auth0" width="500">
-</div>
+</p>
 
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-prefs.PNG?raw=true" alt="Preferences page" width="500">
-</div>
+</p>
 
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-home-results.PNG?raw=true" alt="Home page with results" width="500">
-</div>
+</p>
 
-<div style="text-align:center;">
+<p align="center">
   <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-saved.png?raw=true" alt="Saved jobs page" width="500">
-</div>
+</p>
 
 ### Future Developments
 Some ideas for future app features include:
