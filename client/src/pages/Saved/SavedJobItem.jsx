@@ -32,9 +32,8 @@ function SavedJobItem({
 
     setTimeout(() => {
       setIsDeleted(false);
-      
     }, 1000);
-    setAppliedState(() => appliedJobs.includes(id-1));
+    setAppliedState(() => appliedJobs.includes(id - 1));
   };
 
   const closeModal = () => {
@@ -62,7 +61,6 @@ function SavedJobItem({
         id,
         updatedData
       );
-      
     } catch (error) {
       console.error("Error updating saved job:", error);
     }
@@ -96,18 +94,33 @@ function SavedJobItem({
     <>
       <section className={`saved-job-item ${isDeleted ? "deleted" : ""}`}>
         <div className="top-saved-box">
-          <FontAwesomeIcon
-            icon="fa-solid fa-check"
-            size="xl"
-            className={`check-applied ${applied ? "mark-applied" : ""}`}
-            onClick={() => {
-              handleAppliedToggle();
-              handleUpdateAppliedJobs(true);
-            }}
-          />
-          <h3>
-            {job_title}, {company}
-          </h3>
+          {applied ? (
+            <FontAwesomeIcon
+              icon="fa-solid fa-check"
+              size="xl"
+              className="mark-applied"
+              onClick={() => {
+                handleAppliedToggle();
+                handleUpdateAppliedJobs(true);
+              }}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon="fa-solid fa-question"
+              size="xl"
+              className="question-applied"
+              flip={null}
+              onClick={() => {
+                handleAppliedToggle();
+                handleUpdateAppliedJobs(true);
+              }}
+            />
+          )}
+          <div className="job-info-container">
+            <h3>
+              {job_title}, {company}
+            </h3>
+          </div>
           <FontAwesomeIcon
             icon="fa-solid fa-circle-xmark"
             className="delete-saved"

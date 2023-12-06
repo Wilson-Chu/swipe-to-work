@@ -85,7 +85,6 @@
 
 .top-saved-box {
   display: flex;
-  justify-content: space-around;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
@@ -101,6 +100,11 @@
   }
 }
 
+.job-info-container {
+  max-width: 88%;
+  overflow: hidden;
+}
+
 .bottom-saved-box {
   display: flex;
   justify-content: space-between;
@@ -113,21 +117,34 @@
   }
 }
 
-.check-applied {
+.question-applied {
   color: grey;
 
   &:hover{
     cursor: pointer;
-    color: rgb(0, 255, 0);
+    color: rgb(0, 200, 0);
   }
 }
 
 .mark-applied {
   color: rgb(0, 255, 0);
+
+  &:hover{
+    cursor: pointer;
+    color: rgb(0, 200, 0);
+  }
+}
+
+.question-applied,
+.mark-applied {
+  width: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .delete-saved {
   color: grey;
+  width: 1.5rem;
+  margin-left: 0.5rem;
 
   &:hover{
     cursor: pointer;
