@@ -120,7 +120,7 @@ const useApplicationData = function () {
       setTimeout(() => {
         dispatch({ type: ACTIONS.SWIPE_RIGHT, value: false });
         dispatch({ type: ACTIONS.SWIPE_LEFT, value: false });
-      }, 1000);
+      }, 800);
     }
   }, [state.isJobSaved, state.isJobPassed]);
 

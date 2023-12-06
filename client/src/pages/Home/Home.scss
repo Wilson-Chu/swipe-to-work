@@ -93,13 +93,14 @@
     justify-content: space-around;
     align-items: flex-start;
     width: 100%;
+    height: 8rem;
     padding: 0;
     list-style-type: none;
     padding-top: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
     li {
-      width: 5rem;
+      width: 9rem;
       
       .fa-solid, .fas {
         font-size: x-large;

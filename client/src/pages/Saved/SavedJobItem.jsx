@@ -39,7 +39,8 @@ function SavedJobItem({
     setTimeout(() => {
       setIsDeleted(false);
     }, 1000);
-    setAppliedState(() => appliedJobs.includes(id - 1));
+
+    setAppliedState(() => applied);
   };
 
   const closeModal = () => {
@@ -60,7 +61,8 @@ function SavedJobItem({
     setAppliedState((prevState) => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
-      applied: appliedState ? false : true,
+      // applied: appliedState ? false : true,
+      applied: !applied,
     };
 
     try {
