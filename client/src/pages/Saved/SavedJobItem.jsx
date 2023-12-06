@@ -24,6 +24,12 @@ function SavedJobItem({
   const { state, updateAppliedJobs } = useApplicationDataContext();
   const appliedJobs = state.appliedJobs;
 
+  // question/checkmark animation
+  const [clicked, setClicked] = useState(false);
+  const handleAnimationEnd = () => {
+    setClicked(false);
+  };
+
   const removeSavedJob = function (id) {
     //for slideout animation
     setIsDeleted(true);
@@ -50,6 +56,7 @@ function SavedJobItem({
   };
 
   const handleAppliedToggle = async () => {
+    setClicked(true);
     setAppliedState((prevState) => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
@@ -68,7 +75,7 @@ function SavedJobItem({
 
   const handleApplyToJob = async () => {
     // event.preventDefault();
-
+    setClicked(true);
     setAppliedState(true);
     // Always set applied to true if Apply to Job link is clicked
     const updatedData = {
@@ -98,22 +105,23 @@ function SavedJobItem({
             <FontAwesomeIcon
               icon="fa-solid fa-check"
               size="xl"
-              className="mark-applied"
+              className={`mark-applied ${clicked ? 'flip-once' : ''}`}
               onClick={() => {
                 handleAppliedToggle();
                 handleUpdateAppliedJobs(true);
               }}
+              onAnimationEnd={handleAnimationEnd}
             />
           ) : (
             <FontAwesomeIcon
               icon="fa-solid fa-question"
               size="xl"
-              className="question-applied"
-              flip={null}
+              className={`question-applied ${clicked ? 'flip-once' : ''}`}
               onClick={() => {
                 handleAppliedToggle();
                 handleUpdateAppliedJobs(true);
               }}
+              onAnimationEnd={handleAnimationEnd}
             />
           )}
           <div className="job-info-container">

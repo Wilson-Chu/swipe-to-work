@@ -126,6 +126,21 @@
   }
 }
 
+@keyframes customFlip {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+}
+
+.flip-once {
+  animation: customFlip 0.4s ease-in-out; /* Adjust the animation duration as needed */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out 0.3s;
+  animation-iteration-count: 1;
+}
+
 .mark-applied {
   color: rgb(0, 255, 0);
 
@@ -137,13 +152,13 @@
 
 .question-applied,
 .mark-applied {
-  width: 1.5rem;
+  width: 2rem;
   margin-right: 0.5rem;
 }
 
 .delete-saved {
   color: grey;
-  width: 1.5rem;
+  width: 2rem;
   margin-left: 0.5rem;
 
   &:hover{
