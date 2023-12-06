@@ -24,6 +24,12 @@ function SavedJobItem({
   const { state, updateAppliedJobs } = useApplicationDataContext();
   const appliedJobs = state.appliedJobs;
 
+  // question/checkmark animation
+  const [clicked, setClicked] = useState(false);
+  const handleAnimationEnd = () => {
+    setClicked(false);
+  };
+
   const removeSavedJob = function (id) {
     //for slideout animation
     setIsDeleted(true);
@@ -32,9 +38,8 @@ function SavedJobItem({
 
     setTimeout(() => {
       setIsDeleted(false);
-      
     }, 1000);
-    setAppliedState(() => appliedJobs.includes(id-1));
+    setAppliedState(() => appliedJobs.includes(id - 1));
   };
 
   const closeModal = () => {
@@ -51,6 +56,7 @@ function SavedJobItem({
   };
 
   const handleAppliedToggle = async () => {
+    setClicked(true);
     setAppliedState((prevState) => !prevState);
     // Toggle the 'applied' value if clicking on Check Mark icon
     const updatedData = {
@@ -62,7 +68,6 @@ function SavedJobItem({
         id,
         updatedData
       );
-      
     } catch (error) {
       console.error("Error updating saved job:", error);
     }
@@ -70,7 +75,7 @@ function SavedJobItem({
 
   const handleApplyToJob = async () => {
     // event.preventDefault();
-
+    setClicked(true);
     setAppliedState(true);
     // Always set applied to true if Apply to Job link is clicked
     const updatedData = {
@@ -96,18 +101,34 @@ function SavedJobItem({
     <>
       <section className={`saved-job-item ${isDeleted ? "deleted" : ""}`}>
         <div className="top-saved-box">
-          <FontAwesomeIcon
-            icon="fa-solid fa-check"
-            size="xl"
-            className={`check-applied ${applied ? "mark-applied" : ""}`}
-            onClick={() => {
-              handleAppliedToggle();
-              handleUpdateAppliedJobs(true);
-            }}
-          />
-          <h3>
-            {job_title}, {company}
-          </h3>
+          {applied ? (
+            <FontAwesomeIcon
+              icon="fa-solid fa-check"
+              size="xl"
+              className={`mark-applied ${clicked ? 'flip-once' : ''}`}
+              onClick={() => {
+                handleAppliedToggle();
+                handleUpdateAppliedJobs(true);
+              }}
+              onAnimationEnd={handleAnimationEnd}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon="fa-solid fa-question"
+              size="xl"
+              className={`question-applied ${clicked ? 'flip-once' : ''}`}
+              onClick={() => {
+                handleAppliedToggle();
+                handleUpdateAppliedJobs(true);
+              }}
+              onAnimationEnd={handleAnimationEnd}
+            />
+          )}
+          <div className="job-info-container">
+            <h3>
+              {job_title}, {company}
+            </h3>
+          </div>
           <FontAwesomeIcon
             icon="fa-solid fa-circle-xmark"
             className="delete-saved"

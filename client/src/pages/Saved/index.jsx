@@ -55,11 +55,10 @@ function Saved(props) {
   };
 
   // Filter out duplicates based on job_posting_id
-  const uniqueSavedJobs = Array.from(new Set(savedJobs.map((job) => job.job_posting_id))).map(
-    (job_posting_id) => {
-      return savedJobs.find((job) => job.job_posting_id === job_posting_id);
-    }
-  );
+  const uniqueSavedJobs = Object.values(savedJobs.reduce((uniqueJobs, job) => {
+    uniqueJobs[job.job_posting_id] = job;
+    return uniqueJobs;
+  }, {}));  
 
   return (
     isAuthenticated ? (<div className="saved-jobs-container">
