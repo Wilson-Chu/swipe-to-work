@@ -17,7 +17,7 @@ In situations where the user reaches the end of the fetched job list, or where t
 This project was made with React, NodeJS, Express, postgreSQL and the JSearch API.
 
 <p align="center">
-  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-video-gif.gif?raw=true" alt="Video of job-seeking user flow" width="500">
+  <img src="https://github.com/Wilson-Chu/swipe-to-work/blob/main/docs/stw-video-gif.gif?raw=true" alt="Video of job-seeking user flow" width="300">
 </p>
 
 <p align="center">
